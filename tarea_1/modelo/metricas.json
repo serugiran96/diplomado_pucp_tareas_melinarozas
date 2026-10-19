@@ -5,5 +5,10 @@
   "test_accuracy": 0.8485,
   "test_f1_macro": 0.8524,
   "test_n": 66,
-  "modelo_base": "distilbert-base-multilingual-cased"
+  "modelo_base": "distilbert-base-multilingual-cased",
+  "acuerdo_llm_humano": 12,
+  "auditoria_n": 20,
+  "llm_test_accuracy": 0.3939,
+  "llm_test_f1_macro": 0.2831,
+  "llm_modelo": "local:Qwen/Qwen2.5-0.5B-Instruct"
 }

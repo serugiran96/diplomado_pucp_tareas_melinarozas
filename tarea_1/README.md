@@ -35,8 +35,9 @@ pip install -r requirements.txt
 # Parte 1: reconstruye todo desde datos/raw/ (FORZAR_DESCARGA=True para volver a descargar)
 jupyter nbconvert --to notebook --execute --inplace 01_recoleccion.ipynb
 
-# Parte 2: requiere GEMINI_API_KEY en tarea_1/.env (o LLM_BACKEND=ollama con Ollama local)
-jupyter nbconvert --to notebook --execute --inplace 02_clasificacion.ipynb
+# Parte 2: el LLM es local (Qwen2.5-0.5B-Instruct, sin API de pago). Si falta datos/etiquetas_llm.csv,
+# el notebook ejecuta llm_etiquetado.py (≈5 min en CPU). Alternativas: LLM_BACKEND=gemini u ollama
+HF_HUB_DISABLE_XET=1 jupyter nbconvert --to notebook --execute --inplace 02_clasificacion.ipynb
 
 # Parte 3: dashboard
 streamlit run app.py
@@ -48,29 +49,39 @@ La exportación de gráficos a PNG (`kaleido`) requiere Google Chrome instalado 
 tarea_1/
 ├── 01_recoleccion.ipynb      # Scraping (RSS + sitemaps), limpieza, mapeo, descartes y EDA
 ├── 02_clasificacion.ipynb    # Zero-shot, LLM débil + auditoría, split 70/15/15, fine-tuning y evaluación
+├── llm_etiquetado.py         # Supervisión débil con LLM local (Qwen2.5-0.5B-Instruct)
 ├── app.py                    # Dashboard Streamlit
 ├── requirements.txt
 ├── datos/
 │   ├── noticias.csv          # Dataset final (7 columnas)
-│   ├── etiquetas_llm.csv     # Se genera en la Parte 2
+│   ├── etiquetas_llm.csv     # Etiquetas del LLM: titular, etiqueta_llm, confianza, modelo_llm, fecha
+│   ├── auditoria_llm_20.csv  # 20 predicciones del LLM revisadas manualmente (etiqueta_humana)
 │   └── raw/                  # Respaldo crudo: robots.txt, feeds/sitemaps (.gz), candidatos y metadatos por artículo
 ├── graficos/                 # PNG de los gráficos (visibles en GitHub)
 └── modelo/                   # metricas.json, config y tokenizer; los pesos (.safetensors) no se suben
 ```
 
-## Estado de avance (18/10/2026, 23:48)
-- **Parte 1 – completa:**
-  - `01_recoleccion.ipynb` ejecutado, con 440 noticias y 3 gráficos Plotly (PNG en `graficos/`).
-  - Respaldo crudo en `datos/raw/`.
-- **Parte 2 – parcial:** `02_clasificacion.ipynb` está ejecutado con resultados reales.
-  - Zero-shot: F1 macro de 0.682 en 40 titulares de test.
-  - Split estratificado 70/15/15 (`random_state=42`).
-  - DistilBERT fine-tuned: F1 macro de **0.852** en test (66 titulares). La matriz de confusión está en `graficos/04_matriz_confusion_test.png`.
-  - **Pendiente:**
-    - el etiquetado con LLM (`datos/etiquetas_llm.csv`), porque falta `GEMINI_API_KEY` en `tarea_1/.env`;
-    - la auditoría humana de 20 casos (`datos/auditoria_llm_20.csv`, que se genera al ejecutar con el LLM disponible).
-- **Parte 3 – funcional en local:** `streamlit run app.py` muestra:
-  - filtros, métricas, gráfico, tabla con descarga;
-  - el probador en vivo, que usa el modelo entrenado en `modelo/`.
+## Resultados de la clasificación (`02_clasificacion.ipynb`)
+| Enfoque | Evaluado en | Accuracy | F1 macro |
+|---|---|---|---|
+| Zero-shot (`Recognai/bert-base-spanish-wwm-cased-xnli`) | 40 titulares de test | 0.700 | 0.682 |
+| LLM débil (`Qwen/Qwen2.5-0.5B-Instruct`, local) | 66 titulares de test | 0.394 | 0.283 |
+| **DistilBERT multilingüe fine-tuned** | 66 titulares de test | **0.848** | **0.852** |
 
-  La métrica de acuerdo LLM-humano aparece como "pendiente". Los pesos (`modelo/model.safetensors`, 516 MB) no se suben a GitHub: para usar la app en otra máquina hay que ejecutar `02_clasificacion.ipynb`, que regenera el modelo.
+- **Auditoría humana del LLM:** 12/20 coincidencias (60 %).
+- **Split:** estratificado 70/15/15 con `random_state=42`.
+- **Matriz de confusión:** `graficos/04_matriz_confusion_test.png`. El error principal es la confusión entre `politica` y `economia` (4 en cada sentido).
+
+**¿Por qué el LLM clasificó noticias deportivas como economía?** El modelo de 0.5B colapsa hacia `economia`: predijo esa etiqueta en 376 de 440 titulares y nunca eligió `politica` ni `deportes`. Hay tres causas probables:
+- **Tamaño del modelo:** sigue mal instrucciones de clasificación en español y, ante la duda, cae en una etiqueta por defecto. En los titulares deportivos la confianza mediana fue de 0.71, frente a 0.96 en los económicos.
+- **Método de puntuación:** solo se compara el primer token de cada categoría, y los nombres se tokenizan de forma desigual (`polit`, `e`, `de`, `ci`). El token genérico `e` favorece a `economia`.
+- **Señales léxicas engañosas:** marcadores, fechas y nombres comerciales ("ESPN Premium") que un modelo pequeño asocia a mercados.
+
+DistilBERT, con supervisión, obtiene F1 = 1.00 en `deportes`. El detalle está en la sección 2.2 del notebook.
+
+## Estado de avance (19/10/2026)
+- **Parte 1 – completa:** notebook ejecutado, 440 noticias, 3 gráficos Plotly (PNG en `graficos/`) y respaldo crudo en `datos/raw/`.
+- **Parte 2 – completa:** notebook ejecutado con zero-shot, etiquetas LLM, auditoría de 20 casos, split, fine-tuning, métricas en test, tabla comparativa y justificación.
+- **Parte 3 – completa en local:** `streamlit run app.py` muestra filtros, las 3 métricas, el gráfico, la tabla con descarga y el probador en vivo.
+  - Los pesos (`modelo/model.safetensors`, 516 MB) no se suben a GitHub. En otra máquina, ejecutar `02_clasificacion.ipynb` regenera el modelo.
+  - No se desplegó en Streamlit Cloud (opcional).
