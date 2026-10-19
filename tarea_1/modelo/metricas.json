@@ -1,0 +1,9 @@
+{
+  "zero_shot_accuracy": 0.7,
+  "zero_shot_f1_macro": 0.6822,
+  "zero_shot_n": 40,
+  "test_accuracy": 0.8485,
+  "test_f1_macro": 0.8524,
+  "test_n": 66,
+  "modelo_base": "distilbert-base-multilingual-cased"
+}
