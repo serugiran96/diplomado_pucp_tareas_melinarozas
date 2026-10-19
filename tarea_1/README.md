@@ -58,9 +58,19 @@ tarea_1/
 └── modelo/                   # metricas.json, config y tokenizer; los pesos (.safetensors) no se suben
 ```
 
-## Estado de avance
-- **Parte 1:** ver Issue #1.
-- **Parte 2:** el código de `02_clasificacion.ipynb` está preparado, pero **aún no se ejecutó**. No hay métricas, etiquetas LLM ni entrenamiento todavía. Para ejecutarlo hace falta:
-  - una API key de Gemini (u Ollama local);
-  - completar la auditoría humana en `datos/auditoria_llm_20.csv`.
-- **Parte 3:** `app.py` está implementado. Hasta que exista el modelo entrenado, las métricas del modelo aparecen como "pendiente" y el probador en vivo avisa que falta el modelo.
+## Estado de avance (18/10/2026, 23:48)
+- **Parte 1 – completa:**
+  - `01_recoleccion.ipynb` ejecutado, con 440 noticias y 3 gráficos Plotly (PNG en `graficos/`).
+  - Respaldo crudo en `datos/raw/`.
+- **Parte 2 – parcial:** `02_clasificacion.ipynb` está ejecutado con resultados reales.
+  - Zero-shot: F1 macro de 0.682 en 40 titulares de test.
+  - Split estratificado 70/15/15 (`random_state=42`).
+  - DistilBERT fine-tuned: F1 macro de **0.852** en test (66 titulares). La matriz de confusión está en `graficos/04_matriz_confusion_test.png`.
+  - **Pendiente:**
+    - el etiquetado con LLM (`datos/etiquetas_llm.csv`), porque falta `GEMINI_API_KEY` en `tarea_1/.env`;
+    - la auditoría humana de 20 casos (`datos/auditoria_llm_20.csv`, que se genera al ejecutar con el LLM disponible).
+- **Parte 3 – funcional en local:** `streamlit run app.py` muestra:
+  - filtros, métricas, gráfico, tabla con descarga;
+  - el probador en vivo, que usa el modelo entrenado en `modelo/`.
+
+  La métrica de acuerdo LLM-humano aparece como "pendiente". Los pesos (`modelo/model.safetensors`, ~540 MB) no se suben a GitHub: para usar la app en otra máquina hay que ejecutar `02_clasificacion.ipynb`, que regenera el modelo.
