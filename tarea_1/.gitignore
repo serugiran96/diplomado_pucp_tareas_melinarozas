@@ -1,0 +1,21 @@
+# Entorno virtual y credenciales (nunca se suben)
+.venv/
+.env
+*.env
+
+# Jupyter / Python
+.ipynb_checkpoints/
+__pycache__/
+
+# Pesos del modelo: GitHub rechaza archivos > 100 MB
+modelo/*.safetensors
+modelo/*.bin
+modelo/checkpoint-*/
+modelo/**/*.safetensors
+modelo/**/*.bin
+modelo/**/checkpoint-*/
+*.pt
+*.ckpt
+
+# Sistema
+.DS_Store
