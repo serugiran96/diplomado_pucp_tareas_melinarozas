@@ -10,7 +10,16 @@
 - **Buenas prácticas:** User-Agent descriptivo, pausa aleatoria de 1–2 s después de cada solicitud, máximo 1 reintento y un hilo por dominio. Cada URL se valida contra el `robots.txt`.
 
 ## 3. Hallazgos analíticos
-_Se completan con las salidas de `01_recoleccion.ipynb` (sección 3)._
+Datos: 440 noticias, 55 por medio y categoría; todas las URLs respondieron HTTP 200 al descargarlas. Los detalles están en `01_recoleccion.ipynb`.
+
+1. **La República titula más largo; El Comercio, con más dispersión.**
+   - Mediana: 104 caracteres en La República frente a 97 en El Comercio.
+   - El Comercio concentra los dos extremos: columnas de opinión de economía con titulares de 23–43 caracteres y poca señal temática (por ejemplo, "AlaCena no tiene precio"), y citas textuales de hasta 178 caracteres en deportes y política.
+   - Esos titulares tan cortos son los candidatos más claros a error de clasificación.
+2. **Los medios difieren en profundidad temporal.**
+   - El Comercio: noticias del 9 al 18 de octubre de 2026 (mediana, el 16).
+   - La República: mediana el 12 de octubre, con notas que llegan hasta 2019, porque su contenido accesible se limita a ~48 h y el resto proviene de enlaces internos.
+   - De 682 URLs únicas descubiertas, 236 (35 %) eran de secciones fuera de las 4 categorías, sobre todo `sociedad`, `mundo`, `espectaculos` y `mag`. Esas noticias se descartaron.
 
 ## 4. Limitaciones técnicas
 1. **Ventana corta en La República.** Sus RSS y sitemaps solo cubren unas 48 horas, y su `robots.txt` prohíbe el archivo (`/archivo/*`) y la paginación (`/*/pag/*`). Para llegar a ~50 noticias por categoría se siguieron los enlaces internos que cada artículo publica hacia notas de su misma sección. Por eso las fechas de La República abarcan un rango más amplio que las de El Comercio, y la muestra no es aleatoria: depende de qué notas enlaza el propio medio.
