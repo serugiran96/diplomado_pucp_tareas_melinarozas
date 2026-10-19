@@ -1,0 +1,257 @@
+{
+  "inicio": "2026-10-18T23:31:30-05:00",
+  "fin": "2026-10-18T23:42:38-05:00",
+  "user_agent": "Mozilla/5.0 (compatible; TareaPUCP-Diplomado/1.0; uso academico; +https://github.com/serugiran96/diplomado_pucp_tareas_melinarozas)",
+  "pausa_segundos": [
+    1.0,
+    2.0
+  ],
+  "max_reintentos": 1,
+  "cuota": 55,
+  "solicitudes_http": {
+    "El Comercio": 234,
+    "La Republica": 239
+  },
+  "fuentes": [
+    {
+      "medio": "La Republica",
+      "tipo": "rss",
+      "seccion": "politica",
+      "url": "https://larepublica.pe/rss/politica.xml",
+      "estado": 200,
+      "items": 24
+    },
+    {
+      "medio": "La Republica",
+      "tipo": "sitemap_news",
+      "seccion": "politica",
+      "url": "https://larepublica.pe/sitemap/politica.xml",
+      "estado": 200,
+      "items": 24
+    },
+    {
+      "medio": "La Republica",
+      "tipo": "sitemap_web",
+      "seccion": "politica",
+      "url": "https://larepublica.pe/sitemap/web/politica.xml",
+      "estado": 200,
+      "items": 24
+    },
+    {
+      "medio": "La Republica",
+      "tipo": "portada_seccion",
+      "seccion": "politica",
+      "url": "https://larepublica.pe/politica",
+      "estado": 200,
+      "items": 31
+    },
+    {
+      "medio": "La Republica",
+      "tipo": "rss",
+      "seccion": "economia",
+      "url": "https://larepublica.pe/rss/economia.xml",
+      "estado": 200,
+      "items": 6
+    },
+    {
+      "medio": "La Republica",
+      "tipo": "sitemap_news",
+      "seccion": "economia",
+      "url": "https://larepublica.pe/sitemap/economia.xml",
+      "estado": 200,
+      "items": 6
+    },
+    {
+      "medio": "La Republica",
+      "tipo": "sitemap_web",
+      "seccion": "economia",
+      "url": "https://larepublica.pe/sitemap/web/economia.xml",
+      "estado": 200,
+      "items": 6
+    },
+    {
+      "medio": "La Republica",
+      "tipo": "portada_seccion",
+      "seccion": "economia",
+      "url": "https://larepublica.pe/economia",
+      "estado": 200,
+      "items": 25
+    },
+    {
+      "medio": "La Republica",
+      "tipo": "rss",
+      "seccion": "deportes",
+      "url": "https://larepublica.pe/rss/deportes.xml",
+      "estado": 200,
+      "items": 14
+    },
+    {
+      "medio": "La Republica",
+      "tipo": "sitemap_news",
+      "seccion": "deportes",
+      "url": "https://larepublica.pe/sitemap/deportes.xml",
+      "estado": 200,
+      "items": 14
+    },
+    {
+      "medio": "La Republica",
+      "tipo": "sitemap_web",
+      "seccion": "deportes",
+      "url": "https://larepublica.pe/sitemap/web/deportes.xml",
+      "estado": 200,
+      "items": 14
+    },
+    {
+      "medio": "La Republica",
+      "tipo": "portada_seccion",
+      "seccion": "deportes",
+      "url": "https://larepublica.pe/deportes",
+      "estado": 200,
+      "items": 26
+    },
+    {
+      "medio": "La Republica",
+      "tipo": "rss",
+      "seccion": "ciencia",
+      "url": "https://larepublica.pe/rss/ciencia.xml",
+      "estado": 200,
+      "items": 10
+    },
+    {
+      "medio": "La Republica",
+      "tipo": "sitemap_news",
+      "seccion": "ciencia",
+      "url": "https://larepublica.pe/sitemap/ciencia.xml",
+      "estado": 200,
+      "items": 10
+    },
+    {
+      "medio": "La Republica",
+      "tipo": "sitemap_web",
+      "seccion": "ciencia",
+      "url": "https://larepublica.pe/sitemap/web/ciencia.xml",
+      "estado": 200,
+      "items": 10
+    },
+    {
+      "medio": "La Republica",
+      "tipo": "portada_seccion",
+      "seccion": "ciencia",
+      "url": "https://larepublica.pe/ciencia",
+      "estado": 200,
+      "items": 24
+    },
+    {
+      "medio": "La Republica",
+      "tipo": "rss_general",
+      "seccion": "home",
+      "url": "https://larepublica.pe/rss/home.xml",
+      "estado": 200,
+      "items": 199
+    },
+    {
+      "medio": "El Comercio",
+      "tipo": "rss",
+      "seccion": "politica",
+      "url": "https://elcomercio.pe/arc/outboundfeeds/rss/category/politica/?outputType=xml",
+      "estado": 200,
+      "items": 22
+    },
+    {
+      "medio": "El Comercio",
+      "tipo": "sitemap_news",
+      "seccion": "politica",
+      "url": "https://elcomercio.pe/sitemap/news/politica/?outputType=xml",
+      "estado": 200,
+      "items": 100
+    },
+    {
+      "medio": "El Comercio",
+      "tipo": "sitemap_web",
+      "seccion": "politica",
+      "url": "https://elcomercio.pe/sitemap/web/politica/?outputType=xml",
+      "estado": 200,
+      "items": 100
+    },
+    {
+      "medio": "El Comercio",
+      "tipo": "rss",
+      "seccion": "economia",
+      "url": "https://elcomercio.pe/arc/outboundfeeds/rss/category/economia/?outputType=xml",
+      "estado": 200,
+      "items": 12
+    },
+    {
+      "medio": "El Comercio",
+      "tipo": "sitemap_news",
+      "seccion": "economia",
+      "url": "https://elcomercio.pe/sitemap/news/economia/?outputType=xml",
+      "estado": 200,
+      "items": 100
+    },
+    {
+      "medio": "El Comercio",
+      "tipo": "sitemap_web",
+      "seccion": "economia",
+      "url": "https://elcomercio.pe/sitemap/web/economia/?outputType=xml",
+      "estado": 200,
+      "items": 100
+    },
+    {
+      "medio": "El Comercio",
+      "tipo": "rss",
+      "seccion": "deporte-total",
+      "url": "https://elcomercio.pe/arc/outboundfeeds/rss/category/deporte-total/?outputType=xml",
+      "estado": 200,
+      "items": 84
+    },
+    {
+      "medio": "El Comercio",
+      "tipo": "sitemap_news",
+      "seccion": "deporte-total",
+      "url": "https://elcomercio.pe/sitemap/news/deporte-total/?outputType=xml",
+      "estado": 200,
+      "items": 100
+    },
+    {
+      "medio": "El Comercio",
+      "tipo": "sitemap_web",
+      "seccion": "deporte-total",
+      "url": "https://elcomercio.pe/sitemap/web/deporte-total/?outputType=xml",
+      "estado": 200,
+      "items": 100
+    },
+    {
+      "medio": "El Comercio",
+      "tipo": "rss",
+      "seccion": "tecnologia",
+      "url": "https://elcomercio.pe/arc/outboundfeeds/rss/category/tecnologia/?outputType=xml",
+      "estado": 200,
+      "items": 15
+    },
+    {
+      "medio": "El Comercio",
+      "tipo": "sitemap_news",
+      "seccion": "tecnologia",
+      "url": "https://elcomercio.pe/sitemap/news/tecnologia/?outputType=xml",
+      "estado": 200,
+      "items": 100
+    },
+    {
+      "medio": "El Comercio",
+      "tipo": "sitemap_web",
+      "seccion": "tecnologia",
+      "url": "https://elcomercio.pe/sitemap/web/tecnologia/?outputType=xml",
+      "estado": 200,
+      "items": 100
+    },
+    {
+      "medio": "El Comercio",
+      "tipo": "rss_general",
+      "seccion": "general",
+      "url": "https://elcomercio.pe/arc/outboundfeeds/rss/?outputType=xml",
+      "estado": 200,
+      "items": 100
+    }
+  ]
+}
