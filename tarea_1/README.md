@@ -73,4 +73,4 @@ tarea_1/
   - filtros, métricas, gráfico, tabla con descarga;
   - el probador en vivo, que usa el modelo entrenado en `modelo/`.
 
-  La métrica de acuerdo LLM-humano aparece como "pendiente". Los pesos (`modelo/model.safetensors`, ~540 MB) no se suben a GitHub: para usar la app en otra máquina hay que ejecutar `02_clasificacion.ipynb`, que regenera el modelo.
+  La métrica de acuerdo LLM-humano aparece como "pendiente". Los pesos (`modelo/model.safetensors`, 516 MB) no se suben a GitHub: para usar la app en otra máquina hay que ejecutar `02_clasificacion.ipynb`, que regenera el modelo.
