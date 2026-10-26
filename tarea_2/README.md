@@ -5,7 +5,7 @@
 | Parte | Estado |
 |---|---|
 | 1 · Corpus y extracción (OCR + ASR) — `01_extraccion.ipynb` | Lista (pendiente la revisión humana de las transcripciones) |
-| 2 · Evaluación y extracción estructurada — `02_evaluacion.ipynb` | Ejecutada: CER, WER y tabla comparativa listos; falta cerrar la auditoría humana de 20 extracciones |
+| 2 · Evaluación y extracción estructurada — `02_evaluacion.ipynb` | Completa |
 | 3 · Dashboard Streamlit — `app.py` | Desplegado: https://voces-documentos-peruanos-mr.streamlit.app/ (CER/WER y LLM se suman con la Parte 2) |
 
 ## Corpus
@@ -109,7 +109,9 @@ Muestra fija de 10 documentos (3 impresos, 4 fotos, 3 manuscritos) y 10 clips (l
 | Audio | **faster-whisper large-v3-turbo** | **WER 0,13** | factor de tiempo real 0,25 |
 | Audio | Parakeet TDT 0.6B v3 vía sherpa-onnx (alternativo) | WER 0,21 | factor de tiempo real 0,09 |
 
-**Elección:** PaddleOCR con la configuración de la Parte 1 y faster-whisper large-v3-turbo; Parakeet si la latencia importa más que la precisión. Para manuscritos ningún modelo sirve (CER 0,28–0,67). La extracción estructurada usa Qwen2.5-0.5B-Instruct local (`datos/extraccion_llm.csv`, JSON válido en 44 de 46 textos); su auditoría humana está en `datos/auditoria_llm.csv`.
+**Elección:** PaddleOCR con la configuración de la Parte 1 y faster-whisper large-v3-turbo; Parakeet si la latencia importa más que la precisión. Para manuscritos ningún modelo sirve (CER 0,28–0,67). La extracción estructurada usa Qwen2.5-0.5B-Instruct local (`datos/extraccion_llm.csv`, JSON válido en 44 de 46 textos); en la auditoría humana (`datos/auditoria_llm.csv`) solo **2 de 20 extracciones fueron completamente correctas (10 %)**: inventa hechos cuando el OCR es ilegible y deja en `null` fechas y emisores que sí aparecen.
+
+**Resultados finales:** WER 0,13 · CER 0,16 · Acuerdo LLM–humano 2/20.
 
 ## Hallazgos
 

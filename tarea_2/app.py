@@ -32,7 +32,7 @@ def cargar_datos(version_datos):
     audios = audios.merge(fuentes[["id", "url_descarga", "licencia", "autor"]], on="id", how="left")
     for tabla in [documentos, audios]:
         tabla["texto_referencia"] = tabla["texto_referencia"].fillna("")
-    # Resultados de la Parte 2 (si todavía no existen, la app muestra «Parte 2»).
+    # Resultados de la Parte 2 (si todavía no existen, la app muestra «pendiente»).
     opcionales = {}
     for nombre in ["extraccion_llm", "metricas_modelos", "salidas_modelos", "auditoria_llm"]:
         ruta = CARPETA_DATOS / f"{nombre}.csv"
