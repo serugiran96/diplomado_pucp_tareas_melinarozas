@@ -6,7 +6,7 @@
 |---|---|
 | 1 · Corpus y extracción (OCR + ASR) — `01_extraccion.ipynb` | Lista (pendiente la revisión humana de las transcripciones) |
 | 2 · Evaluación y extracción estructurada — `02_evaluacion.ipynb` | Pendiente |
-| 3 · Dashboard Streamlit — `app.py` | Pendiente |
+| 3 · Dashboard Streamlit — `app.py` | App lista con los datos de la Parte 1; falta el despliegue en Streamlit Cloud |
 
 ## Corpus
 
@@ -84,6 +84,28 @@ De los 24 audios descargados, 3 entrevistas de Shansha (Áncash) resultaron esta
 
 Se reemplazan nombres de personas privadas (entrevistados, ciudadanos en documentos recientes), DNI, teléfonos y correos con `voz.seudonimizar`: reglas automáticas más una lista de nombres armada revisando a mano las salidas. Se mantienen figuras públicas e históricas en su papel público. El texto automático original se conserva en `datos/raw/` (no versionado) para la evaluación.
 
+## Dashboard (Parte 3)
+
+**Enlace público:** _pendiente de despliegue en Streamlit Community Cloud_.
+
+La app solo lee los CSV de `datos/` (no instala PaddleOCR, Whisper ni LLM): indicadores, búsqueda en textos OCR y ASR, filtros por tipo de documento, modelo, tipo de grabación, fuente y duración, gráficos Plotly, tablas descargables y exploradores de documentos y audios. Las imágenes se muestran desde sus URLs públicas de Commons/archive.org, salvo las que contienen nombres de personas privadas; los audios se reproducen solo si su transcripción no tuvo que seudonimizarse (las frases de OpenSLR van en `datos/ejemplos/`, CC BY-SA 4.0).
+
+```bash
+cd tarea_2
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+## Hallazgos (Parte 1)
+
+1. **El tipo de documento decide la calidad del OCR.** En impresos nítidos PaddleOCR reconoce el texto casi completo (confianza media ≈0,98); en fotos tras vidrio y en manuscritos la confianza cae a 0,4–0,7 y el texto es mayormente ilegible.
+2. **El ASR rinde bien en español peruano, pero solo en español.** faster-whisper large-v3-turbo transcribe entrevistas callejeras a unas 120 palabras por minuto y en un tercio del tiempo real; con audio en quechua, forzado a español, inventa frases repetidas: por eso se descartaron 3 clips.
+
+## Limitaciones
+
+1. **Diarización aproximada.** En grabaciones de celular el diarizador separa de más; `n_hablantes` es fiable solo en `clip_011` (fijado en 3 según su ficha) y en el resto es una estimación.
+2. **Métricas pendientes.** CER, WER y el acuerdo LLM–humano requieren las transcripciones manuales y la auditoría de la Parte 2; hasta entonces el dashboard muestra «Parte 2» en esos indicadores. Todo se procesó en CPU (Apple M1), lo que limita el tamaño de los modelos.
+
 ## Cómo ejecutar la Parte 1
 
 ```bash
@@ -110,10 +132,13 @@ tarea_2/
 ├── datos.py                    # descarga del corpus desde datos/fuentes.csv
 ├── voz.py                      # VAD, transcripción, diarización, SRT/TXT, seudonimización
 ├── requirements-extraccion.txt # versiones exactas del pipeline
+├── app.py                      # dashboard Streamlit
+├── requirements.txt            # dependencias de la app
 ├── graficos/                   # gráficos Plotly exportados (HTML)
 └── datos/
     ├── documentos.csv          # corpus OCR
     ├── transcripciones.csv     # corpus ASR
     ├── fuentes.csv             # procedencia, licencia y acceso de cada archivo
+    ├── ejemplos/               # 5 frases de OpenSLR 73 para reproducir en la app
     └── raw/                    # (no versionado) originales, respaldos crudos, recortes, SRT/TXT
 ```
