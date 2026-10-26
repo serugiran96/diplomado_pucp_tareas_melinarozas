@@ -6,7 +6,7 @@
 |---|---|
 | 1 · Corpus y extracción (OCR + ASR) — `01_extraccion.ipynb` | Lista (pendiente la revisión humana de las transcripciones) |
 | 2 · Evaluación y extracción estructurada — `02_evaluacion.ipynb` | Pendiente |
-| 3 · Dashboard Streamlit — `app.py` | App lista con los datos de la Parte 1; falta el despliegue en Streamlit Cloud |
+| 3 · Dashboard Streamlit — `app.py` | Desplegado: https://voces-documentos-peruanos-mr.streamlit.app/ (CER/WER y LLM se suman con la Parte 2) |
 
 ## Corpus
 
@@ -86,7 +86,7 @@ Se reemplazan nombres de personas privadas (entrevistados, ciudadanos en documen
 
 ## Dashboard (Parte 3)
 
-**Enlace público:** _pendiente de despliegue en Streamlit Community Cloud_.
+**Enlace público:** https://voces-documentos-peruanos-mr.streamlit.app/
 
 La app solo lee los CSV de `datos/` (no instala PaddleOCR, Whisper ni LLM): indicadores, búsqueda en textos OCR y ASR, filtros por tipo de documento, modelo, tipo de grabación, fuente y duración, gráficos Plotly, tablas descargables y exploradores de documentos y audios. Las imágenes se muestran desde sus URLs públicas de Commons/archive.org, salvo las que contienen nombres de personas privadas; los audios se reproducen solo si su transcripción no tuvo que seudonimizarse (las frases de OpenSLR van en `datos/ejemplos/`, CC BY-SA 4.0).
 
