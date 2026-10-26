@@ -22,7 +22,8 @@ st.set_page_config(page_title="Voces y documentos peruanos", page_icon="🎙️"
 
 
 @st.cache_data
-def cargar_datos():
+def cargar_datos(version_datos):
+    # version_datos cambia cuando se actualiza algún CSV: así la caché no sirve datos viejos.
     # texto_referencia se lee como texto aunque esté vacía (se llena en la Parte 2).
     documentos = pd.read_csv(CARPETA_DATOS / "documentos.csv", dtype={"texto_referencia": str})
     audios = pd.read_csv(CARPETA_DATOS / "transcripciones.csv", dtype={"texto_referencia": str})
@@ -47,7 +48,8 @@ def url_vista_previa(fila):
     return fila["url_descarga"].replace("_w1800", "_w900")
 
 
-documentos, audios, opcionales = cargar_datos()
+version_datos = max(ruta.stat().st_mtime for ruta in CARPETA_DATOS.glob("*.csv"))
+documentos, audios, opcionales = cargar_datos(version_datos)
 extraccion = opcionales["extraccion_llm"]
 metricas = opcionales["metricas_modelos"]
 salidas_modelos = opcionales["salidas_modelos"]
@@ -122,11 +124,11 @@ if auditoria is not None:
 columnas = st.columns(5)
 columnas[0].metric("Documentos procesados", f"{len(docs_filtrados)} / {len(documentos)}")
 columnas[1].metric("Minutos de audio transcritos", f"{audios_filtrados['duracion_seg'].sum() / 60:.1f}")
-columnas[2].metric("CER PaddleOCR (10 docs)", f"{cer:.2f}" if cer is not None else "Parte 2")
-columnas[3].metric("WER Whisper turbo (10 clips)", f"{wer:.2f}" if wer is not None else "Parte 2")
-columnas[4].metric("Acuerdo LLM–auditoría humana", acuerdo if acuerdo else "Parte 2")
-if cer is None or wer is None or acuerdo is None:
-    st.caption("Los indicadores marcados «Parte 2» se completan con las referencias manuales y la auditoría humana.")
+columnas[2].metric("CER PaddleOCR (10 docs)", f"{cer:.2f}" if cer is not None else "pendiente")
+columnas[3].metric("WER Whisper turbo (10 clips)", f"{wer:.2f}" if wer is not None else "pendiente")
+columnas[4].metric("Acuerdo LLM–auditoría humana", acuerdo if acuerdo else "pendiente")
+st.caption("CER y WER: modelos elegidos, medidos contra transcripciones manuales de 10 documentos y 10 clips. "
+           "Acuerdo: extracciones del LLM completamente correctas según la auditoría humana de 20 casos.")
 
 pestana_resultados, pestana_documentos, pestana_audios = st.tabs(["📊 Resultados", "📄 Documentos", "🎙️ Audios"])
 
@@ -194,12 +196,12 @@ with pestana_documentos:
                     comparacion["modelo"] = comparacion["modelo"].map(NOMBRES_MODELOS)
                     st.dataframe(comparacion.rename(columns={"valor": "CER"}), hide_index=True)
             else:
-                st.caption("Sin transcripción manual de referencia: se completa en la Parte 2 para la muestra de evaluación.")
+                st.caption("Este documento no forma parte de la muestra de evaluación (10 documentos con transcripción manual).")
             st.markdown("**Campos estructurados (LLM)**")
             if extraccion is not None and fila["id"] in set(extraccion["id"]):
                 st.json(json.loads(extraccion[extraccion["id"] == fila["id"]].iloc[0]["campos_json"]))
             else:
-                st.caption("La extracción con LLM se agrega en la Parte 2.")
+                st.caption("Sin extracción del LLM para este documento.")
         with imagen_col:
             if fila["id"] in DOCUMENTOS_SIN_VISTA:
                 st.info("Vista previa no disponible: la imagen muestra nombres de personas privadas.")
@@ -245,5 +247,5 @@ with pestana_audios:
                 if pd.notna(salida.valor):
                     etiqueta += f" · WER {salida.valor:.2f}"
                 st.text_area(etiqueta, salida.texto, height=120)
-        elif not fila["texto_referencia"]:
-            st.caption("Sin referencia manual ni segundo modelo todavía: la comparación de WER entre modelos llega en la Parte 2.")
+        else:
+            st.caption("Este clip no forma parte de la muestra de evaluación: se muestra solo la transcripción del modelo elegido.")
