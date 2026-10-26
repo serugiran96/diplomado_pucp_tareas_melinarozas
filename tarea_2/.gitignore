@@ -20,3 +20,6 @@ __pycache__/
 
 # Enunciado del curso: material de clase, no se publica
 Tarea 2 instrucciones.rtf
+
+# Transcripciones manuales originales (pueden tener nombres reales; en los CSV van seudonimizadas)
+datos/referencias/*.txt

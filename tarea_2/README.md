@@ -5,7 +5,7 @@
 | Parte | Estado |
 |---|---|
 | 1 · Corpus y extracción (OCR + ASR) — `01_extraccion.ipynb` | Lista (pendiente la revisión humana de las transcripciones) |
-| 2 · Evaluación y extracción estructurada — `02_evaluacion.ipynb` | Pendiente |
+| 2 · Evaluación y extracción estructurada — `02_evaluacion.ipynb` | Ejecutada: CER, WER y tabla comparativa listos; falta cerrar la auditoría humana de 20 extracciones |
 | 3 · Dashboard Streamlit — `app.py` | Desplegado: https://voces-documentos-peruanos-mr.streamlit.app/ (CER/WER y LLM se suman con la Parte 2) |
 
 ## Corpus
@@ -96,15 +96,30 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-## Hallazgos (Parte 1)
+## Evaluación (Parte 2)
 
-1. **El tipo de documento decide la calidad del OCR.** En impresos nítidos PaddleOCR reconoce el texto casi completo (confianza media ≈0,98); en fotos tras vidrio y en manuscritos la confianza cae a 0,4–0,7 y el texto es mayormente ilegible.
-2. **El ASR rinde bien en español peruano, pero solo en español.** faster-whisper large-v3-turbo transcribe entrevistas callejeras a unas 120 palabras por minuto y en un tercio del tiempo real; con audio en quechua, forzado a español, inventa frases repetidas: por eso se descartaron 3 clips.
+Muestra fija de 10 documentos (3 impresos, 4 fotos, 3 manuscritos) y 10 clips (lecturas, testimonios, entrevistas en la calle y una con música), con transcripciones manuales de referencia. Todos los modelos con su configuración por defecto, sin ajustes mirando los resultados.
+
+| Modalidad | Modelo | Error | Costo en CPU (Apple M1) |
+|---|---|---|---|
+| Documentos | PaddleOCR por defecto (línea base) | CER 0,29 | 19 s por imagen |
+| Documentos | **PaddleOCR sin desdoblado ni orientación (Parte 1)** | **CER 0,16** | 15 s por imagen |
+| Documentos | EasyOCR 1.7 (alternativo) | CER 0,30 | 33 s por imagen |
+| Audio | faster-whisper small (línea base) | WER 0,23 | factor de tiempo real 0,25 |
+| Audio | **faster-whisper large-v3-turbo** | **WER 0,13** | factor de tiempo real 0,25 |
+| Audio | Parakeet TDT 0.6B v3 vía sherpa-onnx (alternativo) | WER 0,21 | factor de tiempo real 0,09 |
+
+**Elección:** PaddleOCR con la configuración de la Parte 1 y faster-whisper large-v3-turbo; Parakeet si la latencia importa más que la precisión. Para manuscritos ningún modelo sirve (CER 0,28–0,67). La extracción estructurada usa Qwen2.5-0.5B-Instruct local (`datos/extraccion_llm.csv`, JSON válido en 44 de 46 textos); su auditoría humana está en `datos/auditoria_llm.csv`.
+
+## Hallazgos
+
+1. **La configuración del OCR pesa tanto como el modelo.** PaddleOCR por defecto activa el desdoblado de página y la corrección de orientación, que deforman las fotos de placas (CER 0,74–0,77 en dos de ellas); sin esos módulos el CER medio baja de 0,29 a 0,16. En impresos nítidos el OCR es casi perfecto y en manuscritos ninguno sirve.
+2. **En audio el cuello de botella fue la detección de voz, no el reconocedor.** large-v3-turbo transcribe testimonios, entrevistas y hasta un clip con música con WER de 0,02 a 0,12; el peor caso (WER ≈0,8 en todos los modelos) es una entrevista donde el VAD solo marcó 28 de 90 s como voz porque la entrevistada habla bajo y lejos del micrófono. Con audio en quechua, Whisper forzado a español inventa frases: por eso se descartaron 3 clips.
 
 ## Limitaciones
 
-1. **Diarización aproximada.** En grabaciones de celular el diarizador separa de más; `n_hablantes` es fiable solo en `clip_011` (fijado en 3 según su ficha) y en el resto es una estimación.
-2. **Métricas pendientes.** CER, WER y el acuerdo LLM–humano requieren las transcripciones manuales y la auditoría de la Parte 2; hasta entonces el dashboard muestra «Parte 2» en esos indicadores. Todo se procesó en CPU (Apple M1), lo que limita el tamaño de los modelos.
+1. **Diarización aproximada y referencias inciertas en manuscritos.** `n_hablantes` es fiable solo en `clip_011` (fijado en 3 según su ficha); en el resto es una estimación. En manuscritos coloniales también la referencia humana es dudosa, así que su CER debe leerse con cautela.
+2. **Modelos chicos por el hardware.** Todo corrió en CPU con 8 GB de RAM: el LLM es de solo 0,5 mil millones de parámetros (inventa datos en algunos resúmenes) y no se probó MMS para el quechua por su tamaño.
 
 ## Cómo ejecutar la Parte 1
 
@@ -129,6 +144,7 @@ PaddleOCR (~200 MB) y faster-whisper `large-v3-turbo` (~1,6 GB) descargan sus mo
 ```
 tarea_2/
 ├── 01_extraccion.ipynb         # OCR, ASR, diarización, seudonimización, limpieza y EDA
+├── 02_evaluacion.ipynb         # CER/WER, 3 OCR, 3 ASR, extracción con LLM y auditoría
 ├── datos.py                    # descarga del corpus desde datos/fuentes.csv
 ├── voz.py                      # VAD, transcripción, diarización, SRT/TXT, seudonimización
 ├── requirements-extraccion.txt # versiones exactas del pipeline
@@ -139,6 +155,11 @@ tarea_2/
     ├── documentos.csv          # corpus OCR
     ├── transcripciones.csv     # corpus ASR
     ├── fuentes.csv             # procedencia, licencia y acceso de cada archivo
+    ├── extraccion_llm.csv      # campos JSON extraídos por Qwen2.5-0.5B
+    ├── auditoria_llm.csv       # revisión humana de 20 extracciones
+    ├── metricas_modelos.csv    # CER/WER y costo de cada modelo
+    ├── salidas_modelos.csv     # texto de cada modelo en la muestra de evaluación
+    ├── referencias/LEEME.md    # reglas de las transcripciones manuales
     ├── ejemplos/               # 5 frases de OpenSLR 73 para reproducir en la app
     └── raw/                    # (no versionado) originales, respaldos crudos, recortes, SRT/TXT
 ```
