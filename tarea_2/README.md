@@ -118,7 +118,7 @@ Muestra fija de 10 documentos (3 impresos, 4 fotos, 3 manuscritos) y 10 clips (l
 
 ## Limitaciones
 
-1. **Diarización aproximada y referencias inciertas en manuscritos.** `n_hablantes` es fiable solo en `clip_011` (fijado en 3 según su ficha); en el resto es una estimación. En manuscritos coloniales también la referencia humana es dudosa, así que su CER debe leerse con cautela.
+1. **Diarización y detección de voz aproximadas.** `n_hablantes` es fiable solo en `clip_011` (fijado en 3 según su ficha); en el resto es una estimación. El VAD descarta voces bajas o lejanas, lo que deja frases sin transcribir en entrevistas grabadas con celular.
 2. **Modelos chicos por el hardware.** Todo corrió en CPU con 8 GB de RAM: el LLM es de solo 0,5 mil millones de parámetros (inventa datos en algunos resúmenes) y no se probó MMS para el quechua por su tamaño.
 
 ## Cómo ejecutar la Parte 1
