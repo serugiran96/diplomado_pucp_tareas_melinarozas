@@ -1,0 +1,18 @@
+# Corpus crudo, salidas pesadas de OCR/ASR y respaldos: se recuperan con `python datos.py`
+datos/raw/
+
+# Pesos de modelos (se descargan solos: PaddleOCR, faster-whisper; diarización desde GitHub de sherpa-onnx)
+modelos/*.safetensors
+modelos/*.bin
+modelos/checkpoint-*/
+modelos/diarizacion/
+
+# Entorno y cachés
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+*.part
+.DS_Store
+
+# Enunciado del curso: material de clase, no se publica
+Tarea 2 instrucciones.rtf
