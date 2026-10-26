@@ -88,7 +88,7 @@ Se reemplazan nombres de personas privadas (entrevistados, ciudadanos en documen
 
 **Enlace público:** https://voces-documentos-peruanos-mr.streamlit.app/
 
-La app solo lee los CSV de `datos/` (no instala PaddleOCR, Whisper ni LLM): indicadores, búsqueda en textos OCR y ASR, filtros por tipo de documento, modelo, tipo de grabación, fuente y duración, gráficos Plotly, tablas descargables y exploradores de documentos y audios. Las imágenes se muestran desde sus URLs públicas de Commons/archive.org, salvo las que contienen nombres de personas privadas; los audios se reproducen solo si su transcripción no tuvo que seudonimizarse (las frases de OpenSLR van en `datos/ejemplos/`, CC BY-SA 4.0).
+La app solo lee los CSV de `datos/` (no instala PaddleOCR, Whisper ni LLM): indicadores, búsqueda en textos OCR y ASR, filtros por tipo de documento, modelo, tipo de grabación, fuente y duración, gráficos Plotly, tablas descargables y exploradores de documentos y audios. Las vistas previas de documentos son copias livianas (900 px) de imágenes con licencia libre en `datos/ejemplos/`, salvo las 3 que contienen nombres de personas privadas; los audios se reproducen solo si su transcripción no tuvo que seudonimizarse (las frases de OpenSLR también van en `datos/ejemplos/`, CC BY-SA 4.0). El tema claro está fijado en `.streamlit/config.toml`.
 
 ```bash
 cd tarea_2
@@ -150,7 +150,8 @@ tarea_2/
 ├── datos.py                    # descarga del corpus desde datos/fuentes.csv
 ├── voz.py                      # VAD, transcripción, diarización, SRT/TXT, seudonimización
 ├── requirements-extraccion.txt # versiones exactas del pipeline
-├── app.py                      # dashboard Streamlit
+├── app.py                      # dashboard Streamlit (tema en .streamlit/config.toml)
+├── modelos/README.md           # modelos usados, configuración y cómo descargarlos
 ├── requirements.txt            # dependencias de la app
 ├── graficos/                   # gráficos Plotly exportados (HTML)
 └── datos/
@@ -162,6 +163,6 @@ tarea_2/
     ├── metricas_modelos.csv    # CER/WER y costo de cada modelo
     ├── salidas_modelos.csv     # texto de cada modelo en la muestra de evaluación
     ├── referencias/LEEME.md    # reglas de las transcripciones manuales
-    ├── ejemplos/               # 5 frases de OpenSLR 73 para reproducir en la app
+    ├── ejemplos/               # vistas previas de 22 documentos y 5 frases de OpenSLR 73 (licencias libres)
     └── raw/                    # (no versionado) originales, respaldos crudos, recortes, SRT/TXT
 ```
