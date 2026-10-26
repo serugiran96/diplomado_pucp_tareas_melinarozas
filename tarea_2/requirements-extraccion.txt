@@ -1,4 +1,4 @@
-# Dependencias exactas del notebook 01_extraccion.ipynb (OCR + ASR). Python 3.12.
+# Dependencias exactas de 01_extraccion.ipynb y 02_evaluacion.ipynb. Python 3.12.
 # Instalación: uv venv --python 3.12 && uv pip install -r requirements-extraccion.txt
 paddlepaddle==3.3.1
 paddleocr==3.7.0
@@ -19,3 +19,8 @@ remotezip==0.12.6
 jupyter==1.1.1
 nbconvert==7.17.2
 ipykernel==7.4.0
+torch==2.14.1
+transformers==5.20.2
+easyocr==1.7.2
+jiwer==4.0.0
+streamlit==1.66.1

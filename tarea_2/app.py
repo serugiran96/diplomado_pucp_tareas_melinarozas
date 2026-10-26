@@ -31,31 +31,12 @@ def cargar_datos():
     audios = audios.merge(fuentes[["id", "url_descarga", "licencia", "autor"]], on="id", how="left")
     for tabla in [documentos, audios]:
         tabla["texto_referencia"] = tabla["texto_referencia"].fillna("")
-    extraccion = None
-    if (CARPETA_DATOS / "extraccion_llm.csv").exists():
-        extraccion = pd.read_csv(CARPETA_DATOS / "extraccion_llm.csv")
-    return documentos, audios, extraccion
-
-
-def distancia_edicion(a, b):
-    # Levenshtein por filas: suficiente para textos de pocas páginas.
-    anterior = list(range(len(b) + 1))
-    for i, letra_a in enumerate(a, start=1):
-        actual = [i]
-        for j, letra_b in enumerate(b, start=1):
-            actual.append(min(anterior[j] + 1, actual[j - 1] + 1, anterior[j - 1] + (letra_a != letra_b)))
-        anterior = actual
-    return anterior[-1]
-
-
-def tasa_error(automatico, referencia, por_palabras):
-    if por_palabras:
-        automatico = automatico.replace("[HABLANTE_", " [HABLANTE_").split()
-        automatico = [palabra for palabra in automatico if not palabra.startswith("[HABLANTE_")]
-        referencia = referencia.split()
-    if len(referencia) == 0:
-        return None
-    return distancia_edicion(automatico, referencia) / len(referencia)
+    # Resultados de la Parte 2 (si todavía no existen, la app muestra «Parte 2»).
+    opcionales = {}
+    for nombre in ["extraccion_llm", "metricas_modelos", "salidas_modelos", "auditoria_llm"]:
+        ruta = CARPETA_DATOS / f"{nombre}.csv"
+        opcionales[nombre] = pd.read_csv(ruta, dtype={"correcta": str}) if ruta.exists() else None
+    return documentos, audios, opcionales
 
 
 def url_vista_previa(fila):
@@ -66,7 +47,20 @@ def url_vista_previa(fila):
     return fila["url_descarga"].replace("_w1800", "_w900")
 
 
-documentos, audios, extraccion = cargar_datos()
+documentos, audios, opcionales = cargar_datos()
+extraccion = opcionales["extraccion_llm"]
+metricas = opcionales["metricas_modelos"]
+salidas_modelos = opcionales["salidas_modelos"]
+auditoria = opcionales["auditoria_llm"]
+
+NOMBRES_MODELOS = {
+    "paddle_por_defecto": "PaddleOCR por defecto (línea base)",
+    "paddle_parte1": "PaddleOCR configuración Parte 1",
+    "easyocr": "EasyOCR (alternativo)",
+    "whisper_small": "faster-whisper small (línea base)",
+    "whisper_large_v3_turbo": "faster-whisper large-v3-turbo (Parte 1)",
+    "parakeet_tdt_0.6b_v3": "Parakeet TDT 0.6B v3 (alternativo)",
+}
 
 # --- Encabezado --------------------------------------------------------------
 
@@ -107,25 +101,32 @@ if busqueda:
 
 # --- Indicadores ---------------------------------------------------------------
 
-con_referencia_docs = documentos[documentos["texto_referencia"] != ""]
-con_referencia_audios = audios[audios["texto_referencia"] != ""]
-cer = None
-if len(con_referencia_docs) > 0:
-    errores = [tasa_error(f.texto_ocr, f.texto_referencia, False) for f in con_referencia_docs.itertuples()]
-    cer = sum(errores) / len(errores)
-wer = None
-if len(con_referencia_audios) > 0:
-    errores = [tasa_error(f.texto_asr, f.texto_referencia, True) for f in con_referencia_audios.itertuples()]
-    wer = sum(errores) / len(errores)
+def metrica_de(modelo):
+    if metricas is None:
+        return None
+    fila = metricas[metricas["modelo"] == modelo]
+    if len(fila) == 0 or pd.isna(fila.iloc[0]["valor"]):
+        return None
+    return float(fila.iloc[0]["valor"])
+
+
+cer = metrica_de("paddle_parte1")
+wer = metrica_de("whisper_large_v3_turbo")
+acuerdo = None
+if auditoria is not None:
+    revisadas = auditoria[auditoria["correcta"].fillna("").str.strip() != ""]
+    if len(revisadas) > 0:
+        correctas = revisadas["correcta"].str.strip().str.lower().isin(["sí", "si", "s"]).sum()
+        acuerdo = f"{correctas}/{len(revisadas)} ({100 * correctas / len(revisadas):.0f} %)"
 
 columnas = st.columns(5)
 columnas[0].metric("Documentos procesados", f"{len(docs_filtrados)} / {len(documentos)}")
 columnas[1].metric("Minutos de audio transcritos", f"{audios_filtrados['duracion_seg'].sum() / 60:.1f}")
-columnas[2].metric(f"CER OCR ({len(con_referencia_docs)} docs)", f"{cer:.2f}" if cer is not None else "Parte 2")
-columnas[3].metric(f"WER ASR ({len(con_referencia_audios)} clips)", f"{wer:.2f}" if wer is not None else "Parte 2")
-columnas[4].metric("Acuerdo LLM–auditoría humana", "Parte 2")
-if cer is None or wer is None:
-    st.caption("CER, WER y acuerdo LLM–humano se completan con las referencias manuales y la auditoría de la Parte 2.")
+columnas[2].metric("CER PaddleOCR (10 docs)", f"{cer:.2f}" if cer is not None else "Parte 2")
+columnas[3].metric("WER Whisper turbo (10 clips)", f"{wer:.2f}" if wer is not None else "Parte 2")
+columnas[4].metric("Acuerdo LLM–auditoría humana", acuerdo if acuerdo else "Parte 2")
+if cer is None or wer is None or acuerdo is None:
+    st.caption("Los indicadores marcados «Parte 2» se completan con las referencias manuales y la auditoría humana.")
 
 pestana_resultados, pestana_documentos, pestana_audios = st.tabs(["📊 Resultados", "📄 Documentos", "🎙️ Audios"])
 
@@ -150,6 +151,15 @@ with pestana_resultados:
                         labels={"id": "Clip", "duracion_seg": "Duración (s)", "tipo": "Tipo"},
                         title="Las entrevistas en la calle concentran la mayor parte del audio")
         derecha.plotly_chart(figura, width="stretch")
+    if metricas is not None and metricas["valor"].notna().any():
+        st.subheader("Comparación de modelos sobre la misma muestra (10 documentos y 10 clips)")
+        tabla_modelos = metricas.copy()
+        tabla_modelos["modelo"] = tabla_modelos["modelo"].map(NOMBRES_MODELOS).fillna(tabla_modelos["modelo"])
+        figura = px.bar(tabla_modelos, x="modelo", y="valor", color="modalidad", text=tabla_modelos["valor"].round(2),
+                        labels={"valor": "CER / WER (menor es mejor)", "modelo": ""},
+                        title="Error de cada modelo en la muestra de evaluación")
+        st.plotly_chart(figura, width="stretch")
+        st.dataframe(tabla_modelos, width="stretch", hide_index=True)
     if len(audios_filtrados) > 0:
         figura = px.scatter(audios_filtrados, x="duracion_seg", y="palabras", color="tipo", hover_name="id",
                             labels={"duracion_seg": "Duración (s)", "palabras": "Palabras transcritas", "tipo": "Tipo"},
@@ -179,7 +189,10 @@ with pestana_documentos:
             st.text_area("Texto OCR (automático, seudonimizado)", fila["texto_ocr"], height=320)
             if fila["texto_referencia"]:
                 st.text_area("Texto de referencia (manual)", fila["texto_referencia"], height=200)
-                st.metric("CER de este documento", f"{tasa_error(fila['texto_ocr'], fila['texto_referencia'], False):.2f}")
+                if salidas_modelos is not None:
+                    comparacion = salidas_modelos[salidas_modelos["id"] == fila["id"]][["modelo", "valor"]].copy()
+                    comparacion["modelo"] = comparacion["modelo"].map(NOMBRES_MODELOS)
+                    st.dataframe(comparacion.rename(columns={"valor": "CER"}), hide_index=True)
             else:
                 st.caption("Sin transcripción manual de referencia: se completa en la Parte 2 para la muestra de evaluación.")
             st.markdown("**Campos estructurados (LLM)**")
@@ -225,6 +238,12 @@ with pestana_audios:
         st.text_area("Transcripción ASR (automática, seudonimizada)", texto, height=320)
         if fila["texto_referencia"]:
             st.text_area("Texto de referencia (manual)", fila["texto_referencia"], height=200)
-            st.metric("WER de este clip", f"{tasa_error(fila['texto_asr'], fila['texto_referencia'], True):.2f}")
-        else:
+        if salidas_modelos is not None and fila["id"] in set(salidas_modelos["id"]):
+            st.markdown("**Comparación de modelos en este clip**")
+            for salida in salidas_modelos[salidas_modelos["id"] == fila["id"]].itertuples():
+                etiqueta = NOMBRES_MODELOS.get(salida.modelo, salida.modelo)
+                if pd.notna(salida.valor):
+                    etiqueta += f" · WER {salida.valor:.2f}"
+                st.text_area(etiqueta, salida.texto, height=120)
+        elif not fila["texto_referencia"]:
             st.caption("Sin referencia manual ni segundo modelo todavía: la comparación de WER entre modelos llega en la Parte 2.")

@@ -1,0 +1,7 @@
+modalidad,modelo,metrica,valor,costo
+documento,paddle_por_defecto,CER,,19 s por imagen (CPU)
+documento,paddle_parte1,CER,,15 s por imagen (CPU)
+documento,easyocr,CER,,33 s por imagen (CPU)
+audio,whisper_small,WER,,factor de tiempo real 0.25 (CPU)
+audio,whisper_large_v3_turbo,WER,,factor de tiempo real 0.25 (CPU)
+audio,parakeet_tdt_0.6b_v3,WER,,factor de tiempo real 0.09 (CPU)

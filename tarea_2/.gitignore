@@ -6,12 +6,16 @@ modelos/*.safetensors
 modelos/*.bin
 modelos/checkpoint-*/
 modelos/diarizacion/
+modelos/sherpa-onnx-*/
+*.onnx
+*.tar.bz2
 
 # Entorno y cachés
 .venv/
 __pycache__/
 .ipynb_checkpoints/
 *.part
+.env
 .DS_Store
 
 # Enunciado del curso: material de clase, no se publica
