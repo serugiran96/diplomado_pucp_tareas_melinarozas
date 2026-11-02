@@ -1,0 +1,17 @@
+{
+  "nasa_power": {
+    "url": "https://power.larc.nasa.gov/api/temporal/monthly/point",
+    "filas": 252135,
+    "descargado_utc": "2026-11-01T23:50:14+00:00"
+  },
+  "era5_open_meteo": {
+    "url": "https://archive-api.open-meteo.com/v1/archive",
+    "filas": 1125,
+    "descargado_utc": "2026-11-02T00:21:04+00:00"
+  },
+  "era5_lluvia_open_meteo": {
+    "url": "https://archive-api.open-meteo.com/v1/archive",
+    "filas": 1125,
+    "descargado_utc": "2026-11-02T01:04:51+00:00"
+  }
+}

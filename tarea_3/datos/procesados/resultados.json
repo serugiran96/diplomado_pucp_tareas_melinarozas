@@ -1,0 +1,1114 @@
+{
+  "periodos": {
+    "p1": [
+      1981,
+      2000
+    ],
+    "p2": [
+      2006,
+      2025
+    ],
+    "base": [
+      1991,
+      2020
+    ]
+  },
+  "nacional": {
+    "por_decada": 0.21566007905138326,
+    "ic95": 0.10125437158233776,
+    "p_ols": 9.774824536680148e-05,
+    "sen_por_decada": 0.21658333333333346,
+    "p_mk": 7.748221860314946e-05,
+    "cambio_temp": 0.5003999999999991,
+    "temp_p1": 19.3431,
+    "temp_p2": 19.8435,
+    "cambio_max": 0.44750000000000867,
+    "cambio_min": 0.5224500000000027,
+    "lluvia_p1": 1132.713,
+    "lluvia_p2": 1123.3884999999998,
+    "cambio_lluvia_pct": -0.8232005812593424,
+    "p_lluvia": 0.7247156399752861,
+    "anios_mas_calidos": [
+      {
+        "anio": 2024,
+        "anomalia": 1.535
+      },
+      {
+        "anio": 2023,
+        "anomalia": 1.15
+      },
+      {
+        "anio": 1983,
+        "anomalia": 0.968
+      },
+      {
+        "anio": 2016,
+        "anomalia": 0.573
+      },
+      {
+        "anio": 1998,
+        "anomalia": 0.504
+      },
+      {
+        "anio": 2010,
+        "anomalia": 0.498
+      },
+      {
+        "anio": 2020,
+        "anomalia": 0.476
+      },
+      {
+        "anio": 2005,
+        "anomalia": 0.459
+      },
+      {
+        "anio": 2025,
+        "anomalia": 0.447
+      },
+      {
+        "anio": 1992,
+        "anomalia": 0.387
+      }
+    ],
+    "anios_mas_frios": [
+      {
+        "anio": 1984,
+        "anomalia": -1.002
+      },
+      {
+        "anio": 1999,
+        "anomalia": -0.825
+      },
+      {
+        "anio": 1986,
+        "anomalia": -0.698
+      },
+      {
+        "anio": 1985,
+        "anomalia": -0.692
+      },
+      {
+        "anio": 1981,
+        "anomalia": -0.685
+      }
+    ]
+  },
+  "departamentos": {
+    "tendencia_positiva": 25,
+    "significativos_q05": 25,
+    "lluvia_baja": 10,
+    "lluvia_sube": 15,
+    "lluvia_significativos_q05": 9
+  },
+  "ranking_temp": [
+    {
+      "departamento": "Ucayali",
+      "zona": "Selva",
+      "altitud_m": 341.0,
+      "tend_temp": 0.469,
+      "tend_temp_ic95": 0.163,
+      "tend_temp_sen": 0.468,
+      "q_temp": 0.0,
+      "cambio_temp": 1.104
+    },
+    {
+      "departamento": "Huánuco",
+      "zona": "Sierra",
+      "altitud_m": 1947.0,
+      "tend_temp": 0.302,
+      "tend_temp_ic95": 0.146,
+      "tend_temp_sen": 0.318,
+      "q_temp": 0.0,
+      "cambio_temp": 0.749
+    },
+    {
+      "departamento": "San Martín",
+      "zona": "Selva",
+      "altitud_m": 1308.0,
+      "tend_temp": 0.256,
+      "tend_temp_ic95": 0.162,
+      "tend_temp_sen": 0.281,
+      "q_temp": 0.0,
+      "cambio_temp": 0.697
+    },
+    {
+      "departamento": "Pasco",
+      "zona": "Sierra",
+      "altitud_m": 2168.0,
+      "tend_temp": 0.253,
+      "tend_temp_ic95": 0.116,
+      "tend_temp_sen": 0.263,
+      "q_temp": 0.0,
+      "cambio_temp": 0.573
+    },
+    {
+      "departamento": "Cajamarca",
+      "zona": "Sierra",
+      "altitud_m": 2198.0,
+      "tend_temp": 0.249,
+      "tend_temp_ic95": 0.109,
+      "tend_temp_sen": 0.25,
+      "q_temp": 0.0,
+      "cambio_temp": 0.691
+    },
+    {
+      "departamento": "Tacna",
+      "zona": "Costa",
+      "altitud_m": 2437.0,
+      "tend_temp": 0.245,
+      "tend_temp_ic95": 0.078,
+      "tend_temp_sen": 0.248,
+      "q_temp": 0.0,
+      "cambio_temp": 0.583
+    },
+    {
+      "departamento": "Áncash",
+      "zona": "Sierra",
+      "altitud_m": 2563.0,
+      "tend_temp": 0.229,
+      "tend_temp_ic95": 0.092,
+      "tend_temp_sen": 0.23,
+      "q_temp": 0.0,
+      "cambio_temp": 0.594
+    },
+    {
+      "departamento": "Amazonas",
+      "zona": "Selva",
+      "altitud_m": 1457.0,
+      "tend_temp": 0.229,
+      "tend_temp_ic95": 0.132,
+      "tend_temp_sen": 0.223,
+      "q_temp": 0.001,
+      "cambio_temp": 0.634
+    },
+    {
+      "departamento": "Moquegua",
+      "zona": "Costa",
+      "altitud_m": 2778.0,
+      "tend_temp": 0.227,
+      "tend_temp_ic95": 0.077,
+      "tend_temp_sen": 0.215,
+      "q_temp": 0.0,
+      "cambio_temp": 0.542
+    },
+    {
+      "departamento": "Tumbes",
+      "zona": "Costa",
+      "altitud_m": 310.0,
+      "tend_temp": 0.227,
+      "tend_temp_ic95": 0.112,
+      "tend_temp_sen": 0.227,
+      "q_temp": 0.001,
+      "cambio_temp": 0.626
+    },
+    {
+      "departamento": "Lima",
+      "zona": "Costa",
+      "altitud_m": 2631.0,
+      "tend_temp": 0.219,
+      "tend_temp_ic95": 0.082,
+      "tend_temp_sen": 0.229,
+      "q_temp": 0.0,
+      "cambio_temp": 0.511
+    },
+    {
+      "departamento": "Madre de Dios",
+      "zona": "Selva",
+      "altitud_m": 484.0,
+      "tend_temp": 0.213,
+      "tend_temp_ic95": 0.134,
+      "tend_temp_sen": 0.177,
+      "q_temp": 0.023,
+      "cambio_temp": 0.344
+    },
+    {
+      "departamento": "Cusco",
+      "zona": "Sierra",
+      "altitud_m": 2767.0,
+      "tend_temp": 0.213,
+      "tend_temp_ic95": 0.102,
+      "tend_temp_sen": 0.225,
+      "q_temp": 0.0,
+      "cambio_temp": 0.45
+    },
+    {
+      "departamento": "Puno",
+      "zona": "Sierra",
+      "altitud_m": 3514.0,
+      "tend_temp": 0.209,
+      "tend_temp_ic95": 0.09,
+      "tend_temp_sen": 0.196,
+      "q_temp": 0.0,
+      "cambio_temp": 0.452
+    },
+    {
+      "departamento": "Junín",
+      "zona": "Sierra",
+      "altitud_m": 2664.0,
+      "tend_temp": 0.198,
+      "tend_temp_ic95": 0.091,
+      "tend_temp_sen": 0.206,
+      "q_temp": 0.0,
+      "cambio_temp": 0.45
+    },
+    {
+      "departamento": "Arequipa",
+      "zona": "Sierra",
+      "altitud_m": 2786.0,
+      "tend_temp": 0.195,
+      "tend_temp_ic95": 0.08,
+      "tend_temp_sen": 0.178,
+      "q_temp": 0.0,
+      "cambio_temp": 0.459
+    },
+    {
+      "departamento": "La Libertad",
+      "zona": "Costa",
+      "altitud_m": 1759.0,
+      "tend_temp": 0.178,
+      "tend_temp_ic95": 0.102,
+      "tend_temp_sen": 0.196,
+      "q_temp": 0.002,
+      "cambio_temp": 0.467
+    },
+    {
+      "departamento": "Huancavelica",
+      "zona": "Sierra",
+      "altitud_m": 3704.0,
+      "tend_temp": 0.177,
+      "tend_temp_ic95": 0.085,
+      "tend_temp_sen": 0.177,
+      "q_temp": 0.001,
+      "cambio_temp": 0.356
+    },
+    {
+      "departamento": "Ayacucho",
+      "zona": "Sierra",
+      "altitud_m": 3324.0,
+      "tend_temp": 0.17,
+      "tend_temp_ic95": 0.088,
+      "tend_temp_sen": 0.158,
+      "q_temp": 0.001,
+      "cambio_temp": 0.381
+    },
+    {
+      "departamento": "Loreto",
+      "zona": "Selva",
+      "altitud_m": 194.0,
+      "tend_temp": 0.16,
+      "tend_temp_ic95": 0.115,
+      "tend_temp_sen": 0.189,
+      "q_temp": 0.002,
+      "cambio_temp": 0.371
+    },
+    {
+      "departamento": "Lambayeque",
+      "zona": "Costa",
+      "altitud_m": 791.0,
+      "tend_temp": 0.159,
+      "tend_temp_ic95": 0.125,
+      "tend_temp_sen": 0.189,
+      "q_temp": 0.009,
+      "cambio_temp": 0.415
+    },
+    {
+      "departamento": "Piura",
+      "zona": "Costa",
+      "altitud_m": 583.0,
+      "tend_temp": 0.143,
+      "tend_temp_ic95": 0.133,
+      "tend_temp_sen": 0.175,
+      "q_temp": 0.012,
+      "cambio_temp": 0.386
+    },
+    {
+      "departamento": "Callao",
+      "zona": "Costa",
+      "altitud_m": 1195.0,
+      "tend_temp": 0.131,
+      "tend_temp_ic95": 0.112,
+      "tend_temp_sen": 0.154,
+      "q_temp": 0.01,
+      "cambio_temp": 0.269
+    },
+    {
+      "departamento": "Apurímac",
+      "zona": "Sierra",
+      "altitud_m": 3878.0,
+      "tend_temp": 0.107,
+      "tend_temp_ic95": 0.108,
+      "tend_temp_sen": 0.114,
+      "q_temp": 0.032,
+      "cambio_temp": 0.183
+    },
+    {
+      "departamento": "Ica",
+      "zona": "Costa",
+      "altitud_m": 981.0,
+      "tend_temp": 0.101,
+      "tend_temp_ic95": 0.103,
+      "tend_temp_sen": 0.118,
+      "q_temp": 0.031,
+      "cambio_temp": 0.22
+    }
+  ],
+  "ranking_lluvia": [
+    {
+      "departamento": "Piura",
+      "lluvia_p1": 354.246,
+      "lluvia_p2": 213.156,
+      "cambio_lluvia_pct": -39.828,
+      "cambio_lluvia_mm": -141.089,
+      "tend_lluvia_pct": -13.201,
+      "p_lluvia": 0.016,
+      "q_lluvia": 0.045
+    },
+    {
+      "departamento": "Tumbes",
+      "lluvia_p1": 400.274,
+      "lluvia_p2": 275.94,
+      "cambio_lluvia_pct": -31.062,
+      "cambio_lluvia_mm": -124.334,
+      "tend_lluvia_pct": -11.78,
+      "p_lluvia": 0.218,
+      "q_lluvia": 0.296
+    },
+    {
+      "departamento": "Amazonas",
+      "lluvia_p1": 850.981,
+      "lluvia_p2": 648.759,
+      "cambio_lluvia_pct": -23.763,
+      "cambio_lluvia_mm": -202.222,
+      "tend_lluvia_pct": -7.268,
+      "p_lluvia": 0.008,
+      "q_lluvia": 0.028
+    },
+    {
+      "departamento": "Ucayali",
+      "lluvia_p1": 1558.528,
+      "lluvia_p2": 1198.468,
+      "cambio_lluvia_pct": -23.103,
+      "cambio_lluvia_mm": -360.06,
+      "tend_lluvia_pct": -9.47,
+      "p_lluvia": 0.0,
+      "q_lluvia": 0.0
+    },
+    {
+      "departamento": "Lambayeque",
+      "lluvia_p1": 221.759,
+      "lluvia_p2": 172.225,
+      "cambio_lluvia_pct": -22.337,
+      "cambio_lluvia_mm": -49.534,
+      "tend_lluvia_pct": -3.468,
+      "p_lluvia": 0.153,
+      "q_lluvia": 0.274
+    },
+    {
+      "departamento": "Cajamarca",
+      "lluvia_p1": 562.006,
+      "lluvia_p2": 454.851,
+      "cambio_lluvia_pct": -19.067,
+      "cambio_lluvia_mm": -107.155,
+      "tend_lluvia_pct": -3.103,
+      "p_lluvia": 0.506,
+      "q_lluvia": 0.506
+    },
+    {
+      "departamento": "San Martín",
+      "lluvia_p1": 1160.633,
+      "lluvia_p2": 970.339,
+      "cambio_lluvia_pct": -16.396,
+      "cambio_lluvia_mm": -190.294,
+      "tend_lluvia_pct": -3.779,
+      "p_lluvia": 0.096,
+      "q_lluvia": 0.209
+    },
+    {
+      "departamento": "Áncash",
+      "lluvia_p1": 375.232,
+      "lluvia_p2": 330.25,
+      "cambio_lluvia_pct": -11.988,
+      "cambio_lluvia_mm": -44.983,
+      "tend_lluvia_pct": 1.391,
+      "p_lluvia": 0.328,
+      "q_lluvia": 0.373
+    },
+    {
+      "departamento": "Huánuco",
+      "lluvia_p1": 1196.892,
+      "lluvia_p2": 1076.503,
+      "cambio_lluvia_pct": -10.058,
+      "cambio_lluvia_mm": -120.389,
+      "tend_lluvia_pct": -2.726,
+      "p_lluvia": 0.225,
+      "q_lluvia": 0.296
+    },
+    {
+      "departamento": "Pasco",
+      "lluvia_p1": 523.06,
+      "lluvia_p2": 475.511,
+      "cambio_lluvia_pct": -9.091,
+      "cambio_lluvia_mm": -47.549,
+      "tend_lluvia_pct": -2.274,
+      "p_lluvia": 0.4,
+      "q_lluvia": 0.417
+    },
+    {
+      "departamento": "Madre de Dios",
+      "lluvia_p1": 1544.054,
+      "lluvia_p2": 1544.198,
+      "cambio_lluvia_pct": 0.009,
+      "cambio_lluvia_mm": 0.144,
+      "tend_lluvia_pct": -2.205,
+      "p_lluvia": 0.183,
+      "q_lluvia": 0.289
+    },
+    {
+      "departamento": "La Libertad",
+      "lluvia_p1": 268.688,
+      "lluvia_p2": 271.128,
+      "cambio_lluvia_pct": 0.908,
+      "cambio_lluvia_mm": 2.439,
+      "tend_lluvia_pct": 6.809,
+      "p_lluvia": 0.1,
+      "q_lluvia": 0.209
+    },
+    {
+      "departamento": "Loreto",
+      "lluvia_p1": 2089.331,
+      "lluvia_p2": 2181.534,
+      "cambio_lluvia_pct": 4.413,
+      "cambio_lluvia_mm": 92.203,
+      "tend_lluvia_pct": 2.056,
+      "p_lluvia": 0.197,
+      "q_lluvia": 0.289
+    },
+    {
+      "departamento": "Cusco",
+      "lluvia_p1": 714.871,
+      "lluvia_p2": 752.037,
+      "cambio_lluvia_pct": 5.199,
+      "cambio_lluvia_mm": 37.166,
+      "tend_lluvia_pct": 0.729,
+      "p_lluvia": 0.197,
+      "q_lluvia": 0.289
+    },
+    {
+      "departamento": "Junín",
+      "lluvia_p1": 374.027,
+      "lluvia_p2": 406.212,
+      "cambio_lluvia_pct": 8.605,
+      "cambio_lluvia_mm": 32.185,
+      "tend_lluvia_pct": 5.6,
+      "p_lluvia": 0.113,
+      "q_lluvia": 0.217
+    },
+    {
+      "departamento": "Puno",
+      "lluvia_p1": 781.436,
+      "lluvia_p2": 849.485,
+      "cambio_lluvia_pct": 8.708,
+      "cambio_lluvia_mm": 68.049,
+      "tend_lluvia_pct": 1.525,
+      "p_lluvia": 0.03,
+      "q_lluvia": 0.075
+    },
+    {
+      "departamento": "Tacna",
+      "lluvia_p1": 99.662,
+      "lluvia_p2": 112.167,
+      "cambio_lluvia_pct": 12.547,
+      "cambio_lluvia_mm": 12.504,
+      "tend_lluvia_pct": 6.526,
+      "p_lluvia": 0.389,
+      "q_lluvia": 0.417
+    },
+    {
+      "departamento": "Lima",
+      "lluvia_p1": 77.468,
+      "lluvia_p2": 88.617,
+      "cambio_lluvia_pct": 14.392,
+      "cambio_lluvia_mm": 11.149,
+      "tend_lluvia_pct": 13.363,
+      "p_lluvia": 0.248,
+      "q_lluvia": 0.31
+    },
+    {
+      "departamento": "Callao",
+      "lluvia_p1": 27.976,
+      "lluvia_p2": 34.279,
+      "cambio_lluvia_pct": 22.532,
+      "cambio_lluvia_mm": 6.304,
+      "tend_lluvia_pct": 17.833,
+      "p_lluvia": 0.291,
+      "q_lluvia": 0.346
+    },
+    {
+      "departamento": "Moquegua",
+      "lluvia_p1": 106.625,
+      "lluvia_p2": 139.018,
+      "cambio_lluvia_pct": 30.381,
+      "cambio_lluvia_mm": 32.393,
+      "tend_lluvia_pct": 13.221,
+      "p_lluvia": 0.016,
+      "q_lluvia": 0.045
+    },
+    {
+      "departamento": "Huancavelica",
+      "lluvia_p1": 305.105,
+      "lluvia_p2": 403.125,
+      "cambio_lluvia_pct": 32.127,
+      "cambio_lluvia_mm": 98.02,
+      "tend_lluvia_pct": 11.08,
+      "p_lluvia": 0.005,
+      "q_lluvia": 0.02
+    },
+    {
+      "departamento": "Apurímac",
+      "lluvia_p1": 458.659,
+      "lluvia_p2": 625.915,
+      "cambio_lluvia_pct": 36.466,
+      "cambio_lluvia_mm": 167.256,
+      "tend_lluvia_pct": 11.997,
+      "p_lluvia": 0.001,
+      "q_lluvia": 0.005
+    },
+    {
+      "departamento": "Arequipa",
+      "lluvia_p1": 141.406,
+      "lluvia_p2": 199.112,
+      "cambio_lluvia_pct": 40.809,
+      "cambio_lluvia_mm": 57.706,
+      "tend_lluvia_pct": 15.226,
+      "p_lluvia": 0.0,
+      "q_lluvia": 0.002
+    },
+    {
+      "departamento": "Ayacucho",
+      "lluvia_p1": 284.212,
+      "lluvia_p2": 419.027,
+      "cambio_lluvia_pct": 47.435,
+      "cambio_lluvia_mm": 134.816,
+      "tend_lluvia_pct": 16.403,
+      "p_lluvia": 0.0,
+      "q_lluvia": 0.0
+    },
+    {
+      "departamento": "Ica",
+      "lluvia_p1": 50.806,
+      "lluvia_p2": 95.967,
+      "cambio_lluvia_pct": 88.889,
+      "cambio_lluvia_mm": 45.161,
+      "tend_lluvia_pct": 32.468,
+      "p_lluvia": 0.0,
+      "q_lluvia": 0.0
+    }
+  ],
+  "zonas": {
+    "Costa": {
+      "tend_temp": 0.181,
+      "cambio_temp": 0.447,
+      "cambio_lluvia_pct": 8.491,
+      "tend_max": 0.223,
+      "tend_min": 0.157
+    },
+    "Selva": {
+      "tend_temp": 0.266,
+      "cambio_temp": 0.63,
+      "cambio_lluvia_pct": -11.768,
+      "tend_max": 0.318,
+      "tend_min": 0.237
+    },
+    "Sierra": {
+      "tend_temp": 0.209,
+      "cambio_temp": 0.485,
+      "cambio_lluvia_pct": 11.741,
+      "tend_max": 0.182,
+      "tend_min": 0.173
+    }
+  },
+  "altitud_vs_tendencia": {
+    "depto_spearman": -0.07307692307692308,
+    "depto_p": 0.7284839479101772,
+    "celdas_spearman": 0.2261507730774759,
+    "celdas_p": 2.106145657460018e-06
+  },
+  "temporada": {
+    "1": {
+      "tend_temp": 0.1761963109354414,
+      "cambio_lluvia_pct": -1.6948832770110833
+    },
+    "2": {
+      "tend_temp": 0.18250065876152854,
+      "cambio_lluvia_pct": -1.1726195992660116
+    },
+    "3": {
+      "tend_temp": 0.12265480895915679,
+      "cambio_lluvia_pct": 2.1060573376227687
+    },
+    "4": {
+      "tend_temp": 0.1827206851119894,
+      "cambio_lluvia_pct": -4.487914423790096
+    },
+    "5": {
+      "tend_temp": 0.201471673254282,
+      "cambio_lluvia_pct": -5.745049996215334
+    },
+    "6": {
+      "tend_temp": 0.21516864295125157,
+      "cambio_lluvia_pct": 10.835859905906942
+    },
+    "7": {
+      "tend_temp": 0.29098945981554714,
+      "cambio_lluvia_pct": 7.4310857099175065
+    },
+    "8": {
+      "tend_temp": 0.23296442687747038,
+      "cambio_lluvia_pct": -9.051497094252014
+    },
+    "9": {
+      "tend_temp": 0.28856521739130453,
+      "cambio_lluvia_pct": -12.792101185841243
+    },
+    "10": {
+      "tend_temp": 0.27308827404479585,
+      "cambio_lluvia_pct": -3.638275093590504
+    },
+    "11": {
+      "tend_temp": 0.26193675889328055,
+      "cambio_lluvia_pct": 1.0711217567776155
+    },
+    "12": {
+      "tend_temp": 0.1591277997364954,
+      "cambio_lluvia_pct": 5.574852371868455
+    }
+  },
+  "era5": {
+    "departamentos": 25,
+    "media_nasa_depto": 0.21038245059288532,
+    "media_nasa_celda": 0.20572270531400969,
+    "media_era5": 0.2074232938076416,
+    "era5_positivos": 22,
+    "spearman_celda": 0.3538461538461538,
+    "spearman_depto": 0.4084615384615385,
+    "temp": [
+      {
+        "departamento": "Amazonas",
+        "tend_era5": 0.22,
+        "tend_nasa_celda": 0.236,
+        "tend_temp": 0.229
+      },
+      {
+        "departamento": "Apurímac",
+        "tend_era5": 0.302,
+        "tend_nasa_celda": 0.105,
+        "tend_temp": 0.107
+      },
+      {
+        "departamento": "Arequipa",
+        "tend_era5": 0.261,
+        "tend_nasa_celda": 0.243,
+        "tend_temp": 0.195
+      },
+      {
+        "departamento": "Ayacucho",
+        "tend_era5": 0.22,
+        "tend_nasa_celda": 0.073,
+        "tend_temp": 0.17
+      },
+      {
+        "departamento": "Cajamarca",
+        "tend_era5": 0.066,
+        "tend_nasa_celda": 0.3,
+        "tend_temp": 0.249
+      },
+      {
+        "departamento": "Callao",
+        "tend_era5": -0.052,
+        "tend_nasa_celda": 0.131,
+        "tend_temp": 0.131
+      },
+      {
+        "departamento": "Cusco",
+        "tend_era5": 0.27,
+        "tend_nasa_celda": 0.148,
+        "tend_temp": 0.213
+      },
+      {
+        "departamento": "Huancavelica",
+        "tend_era5": 0.206,
+        "tend_nasa_celda": 0.14,
+        "tend_temp": 0.177
+      },
+      {
+        "departamento": "Huánuco",
+        "tend_era5": 0.198,
+        "tend_nasa_celda": 0.282,
+        "tend_temp": 0.302
+      },
+      {
+        "departamento": "Ica",
+        "tend_era5": -0.054,
+        "tend_nasa_celda": 0.17,
+        "tend_temp": 0.101
+      },
+      {
+        "departamento": "Junín",
+        "tend_era5": 0.18,
+        "tend_nasa_celda": 0.215,
+        "tend_temp": 0.198
+      },
+      {
+        "departamento": "La Libertad",
+        "tend_era5": 0.153,
+        "tend_nasa_celda": 0.223,
+        "tend_temp": 0.178
+      },
+      {
+        "departamento": "Lambayeque",
+        "tend_era5": -0.034,
+        "tend_nasa_celda": 0.02,
+        "tend_temp": 0.159
+      },
+      {
+        "departamento": "Lima",
+        "tend_era5": 0.219,
+        "tend_nasa_celda": 0.262,
+        "tend_temp": 0.219
+      },
+      {
+        "departamento": "Loreto",
+        "tend_era5": 0.235,
+        "tend_nasa_celda": 0.044,
+        "tend_temp": 0.16
+      },
+      {
+        "departamento": "Madre de Dios",
+        "tend_era5": 0.406,
+        "tend_nasa_celda": 0.253,
+        "tend_temp": 0.213
+      },
+      {
+        "departamento": "Moquegua",
+        "tend_era5": 0.302,
+        "tend_nasa_celda": 0.223,
+        "tend_temp": 0.227
+      },
+      {
+        "departamento": "Pasco",
+        "tend_era5": 0.315,
+        "tend_nasa_celda": 0.258,
+        "tend_temp": 0.253
+      },
+      {
+        "departamento": "Piura",
+        "tend_era5": 0.064,
+        "tend_nasa_celda": 0.111,
+        "tend_temp": 0.143
+      },
+      {
+        "departamento": "Puno",
+        "tend_era5": 0.407,
+        "tend_nasa_celda": 0.251,
+        "tend_temp": 0.209
+      },
+      {
+        "departamento": "San Martín",
+        "tend_era5": 0.281,
+        "tend_nasa_celda": 0.242,
+        "tend_temp": 0.256
+      },
+      {
+        "departamento": "Tacna",
+        "tend_era5": 0.339,
+        "tend_nasa_celda": 0.307,
+        "tend_temp": 0.245
+      },
+      {
+        "departamento": "Tumbes",
+        "tend_era5": 0.187,
+        "tend_nasa_celda": 0.227,
+        "tend_temp": 0.227
+      },
+      {
+        "departamento": "Ucayali",
+        "tend_era5": 0.296,
+        "tend_nasa_celda": 0.405,
+        "tend_temp": 0.469
+      },
+      {
+        "departamento": "Áncash",
+        "tend_era5": 0.199,
+        "tend_nasa_celda": 0.273,
+        "tend_temp": 0.229
+      }
+    ],
+    "promedio_25_puntos": {
+      "por_decada": 0.20742329380764135,
+      "ic95": 0.08977225811472966,
+      "cambio_temp": 0.4600699999999929,
+      "anios_mas_calidos": [
+        2024,
+        2023,
+        1998
+      ]
+    },
+    "era5_significativos_positivos": 20,
+    "lluvia": [
+      {
+        "departamento": "Amazonas",
+        "cambio_era5_pct": -4.61,
+        "cambio_nasa_celda_pct": -29.84,
+        "lluvia_era5_p2": 1447.62,
+        "lluvia_nasa_celda_p2": 645.05,
+        "cambio_lluvia_pct": -23.76,
+        "mismo_signo": true
+      },
+      {
+        "departamento": "Apurímac",
+        "cambio_era5_pct": -2.09,
+        "cambio_nasa_celda_pct": 29.5,
+        "lluvia_era5_p2": 1610.8,
+        "lluvia_nasa_celda_p2": 690.84,
+        "cambio_lluvia_pct": 36.47,
+        "mismo_signo": false
+      },
+      {
+        "departamento": "Arequipa",
+        "cambio_era5_pct": -5.28,
+        "cambio_nasa_celda_pct": 25.55,
+        "lluvia_era5_p2": 200.33,
+        "lluvia_nasa_celda_p2": 122.51,
+        "cambio_lluvia_pct": 40.81,
+        "mismo_signo": false
+      },
+      {
+        "departamento": "Ayacucho",
+        "cambio_era5_pct": -2.5,
+        "cambio_nasa_celda_pct": 52.13,
+        "lluvia_era5_p2": 1531.78,
+        "lluvia_nasa_celda_p2": 560.11,
+        "cambio_lluvia_pct": 47.43,
+        "mismo_signo": false
+      },
+      {
+        "departamento": "Cajamarca",
+        "cambio_era5_pct": 10.48,
+        "cambio_nasa_celda_pct": -31.91,
+        "lluvia_era5_p2": 1666.82,
+        "lluvia_nasa_celda_p2": 375.51,
+        "cambio_lluvia_pct": -19.07,
+        "mismo_signo": false
+      },
+      {
+        "departamento": "Callao",
+        "cambio_era5_pct": 6.96,
+        "cambio_nasa_celda_pct": 22.53,
+        "lluvia_era5_p2": 114.66,
+        "lluvia_nasa_celda_p2": 34.28,
+        "cambio_lluvia_pct": 22.53,
+        "mismo_signo": true
+      },
+      {
+        "departamento": "Cusco",
+        "cambio_era5_pct": -4.13,
+        "cambio_nasa_celda_pct": 14.7,
+        "lluvia_era5_p2": 2748.18,
+        "lluvia_nasa_celda_p2": 756.86,
+        "cambio_lluvia_pct": 5.2,
+        "mismo_signo": false
+      },
+      {
+        "departamento": "Huancavelica",
+        "cambio_era5_pct": 2.44,
+        "cambio_nasa_celda_pct": 27.74,
+        "lluvia_era5_p2": 1610.86,
+        "lluvia_nasa_celda_p2": 389.87,
+        "cambio_lluvia_pct": 32.13,
+        "mismo_signo": true
+      },
+      {
+        "departamento": "Huánuco",
+        "cambio_era5_pct": -0.07,
+        "cambio_nasa_celda_pct": -4.52,
+        "lluvia_era5_p2": 3333.02,
+        "lluvia_nasa_celda_p2": 1051.54,
+        "cambio_lluvia_pct": -10.06,
+        "mismo_signo": true
+      },
+      {
+        "departamento": "Ica",
+        "cambio_era5_pct": 7.67,
+        "cambio_nasa_celda_pct": 111.9,
+        "lluvia_era5_p2": 47.11,
+        "lluvia_nasa_celda_p2": 119.19,
+        "cambio_lluvia_pct": 88.89,
+        "mismo_signo": true
+      },
+      {
+        "departamento": "Junín",
+        "cambio_era5_pct": 0.58,
+        "cambio_nasa_celda_pct": 2.42,
+        "lluvia_era5_p2": 2160.74,
+        "lluvia_nasa_celda_p2": 355.91,
+        "cambio_lluvia_pct": 8.6,
+        "mismo_signo": true
+      },
+      {
+        "departamento": "La Libertad",
+        "cambio_era5_pct": 7.77,
+        "cambio_nasa_celda_pct": 12.61,
+        "lluvia_era5_p2": 2597.25,
+        "lluvia_nasa_celda_p2": 217.51,
+        "cambio_lluvia_pct": 0.91,
+        "mismo_signo": true
+      },
+      {
+        "departamento": "Lambayeque",
+        "cambio_era5_pct": -39.2,
+        "cambio_nasa_celda_pct": -9.56,
+        "lluvia_era5_p2": 307.22,
+        "lluvia_nasa_celda_p2": 110.71,
+        "cambio_lluvia_pct": -22.34,
+        "mismo_signo": true
+      },
+      {
+        "departamento": "Lima",
+        "cambio_era5_pct": 3.37,
+        "cambio_nasa_celda_pct": 40.26,
+        "lluvia_era5_p2": 1096.75,
+        "lluvia_nasa_celda_p2": 64.03,
+        "cambio_lluvia_pct": 14.39,
+        "mismo_signo": true
+      },
+      {
+        "departamento": "Loreto",
+        "cambio_era5_pct": -7.45,
+        "cambio_nasa_celda_pct": 16.91,
+        "lluvia_era5_p2": 2402.97,
+        "lluvia_nasa_celda_p2": 2459.24,
+        "cambio_lluvia_pct": 4.41,
+        "mismo_signo": false
+      },
+      {
+        "departamento": "Madre de Dios",
+        "cambio_era5_pct": 2.69,
+        "cambio_nasa_celda_pct": -1.2,
+        "lluvia_era5_p2": 2068.88,
+        "lluvia_nasa_celda_p2": 1654.51,
+        "cambio_lluvia_pct": 0.01,
+        "mismo_signo": true
+      },
+      {
+        "departamento": "Moquegua",
+        "cambio_era5_pct": -3.43,
+        "cambio_nasa_celda_pct": 31.42,
+        "lluvia_era5_p2": 368.5,
+        "lluvia_nasa_celda_p2": 101.38,
+        "cambio_lluvia_pct": 30.38,
+        "mismo_signo": false
+      },
+      {
+        "departamento": "Pasco",
+        "cambio_era5_pct": -9.48,
+        "cambio_nasa_celda_pct": -12.72,
+        "lluvia_era5_p2": 1872.8,
+        "lluvia_nasa_celda_p2": 432.89,
+        "cambio_lluvia_pct": -9.09,
+        "mismo_signo": true
+      },
+      {
+        "departamento": "Piura",
+        "cambio_era5_pct": -41.04,
+        "cambio_nasa_celda_pct": -41.23,
+        "lluvia_era5_p2": 500.33,
+        "lluvia_nasa_celda_p2": 155.73,
+        "cambio_lluvia_pct": -39.83,
+        "mismo_signo": true
+      },
+      {
+        "departamento": "Puno",
+        "cambio_era5_pct": -2.59,
+        "cambio_nasa_celda_pct": -4.36,
+        "lluvia_era5_p2": 1453.06,
+        "lluvia_nasa_celda_p2": 522.27,
+        "cambio_lluvia_pct": 8.71,
+        "mismo_signo": false
+      },
+      {
+        "departamento": "San Martín",
+        "cambio_era5_pct": -4.24,
+        "cambio_nasa_celda_pct": -17.04,
+        "lluvia_era5_p2": 2232.76,
+        "lluvia_nasa_celda_p2": 810.15,
+        "cambio_lluvia_pct": -16.4,
+        "mismo_signo": true
+      },
+      {
+        "departamento": "Tacna",
+        "cambio_era5_pct": -10.16,
+        "cambio_nasa_celda_pct": 0.18,
+        "lluvia_era5_p2": 347.88,
+        "lluvia_nasa_celda_p2": 107.47,
+        "cambio_lluvia_pct": 12.55,
+        "mismo_signo": false
+      },
+      {
+        "departamento": "Tumbes",
+        "cambio_era5_pct": -25.22,
+        "cambio_nasa_celda_pct": -31.06,
+        "lluvia_era5_p2": 777.98,
+        "lluvia_nasa_celda_p2": 275.94,
+        "cambio_lluvia_pct": -31.06,
+        "mismo_signo": true
+      },
+      {
+        "departamento": "Ucayali",
+        "cambio_era5_pct": -0.51,
+        "cambio_nasa_celda_pct": -15.3,
+        "lluvia_era5_p2": 2695.08,
+        "lluvia_nasa_celda_p2": 1148.25,
+        "cambio_lluvia_pct": -23.1,
+        "mismo_signo": true
+      },
+      {
+        "departamento": "Áncash",
+        "cambio_era5_pct": 3.31,
+        "cambio_nasa_celda_pct": -19.21,
+        "lluvia_era5_p2": 2021.67,
+        "lluvia_nasa_celda_p2": 384.31,
+        "cambio_lluvia_pct": -11.99,
+        "mismo_signo": false
+      }
+    ],
+    "lluvia_mismo_signo": 15,
+    "lluvia_n": 25,
+    "spearman_lluvia": 0.3253846153846154,
+    "caida_ambas_10": [
+      "Lambayeque",
+      "Piura",
+      "Tumbes"
+    ],
+    "subida_ambas_10": [],
+    "norte_sin_anios_el_nino": {
+      "Lambayeque": {
+        "nasa_pct": -24.85610408378064,
+        "era5_pct": -6.927710843373502
+      },
+      "Piura": {
+        "nasa_pct": -39.20821893047394,
+        "era5_pct": -21.53358101706464
+      },
+      "Tumbes": {
+        "nasa_pct": -21.3370690405823,
+        "era5_pct": -17.545912916856608
+      }
+    }
+  },
+  "celdas": {
+    "n": 431,
+    "positivas": 407,
+    "p10": 0.050889328063240945,
+    "p90": 0.40478370663153285
+  }
+}
