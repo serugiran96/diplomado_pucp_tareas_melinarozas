@@ -1,0 +1,8 @@
+# Clonación de voz y subtítulos, en un entorno aparte porque qwen-tts fija sus dependencias
+qwen-tts
+faster-whisper
+av<16
+pillow
+imageio-ffmpeg
+soundfile
+numpy

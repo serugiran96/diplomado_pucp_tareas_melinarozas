@@ -1,0 +1,10 @@
+# Datos, análisis, capturas y video
+pandas
+numpy
+scipy
+shapely
+requests
+pillow
+imageio-ffmpeg
+soundfile
+playwright

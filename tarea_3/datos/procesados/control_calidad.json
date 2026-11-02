@@ -1,0 +1,19 @@
+{
+  "filas_crudas": 252135,
+  "celdas": 431,
+  "filas_mes_13_descartadas": 19395,
+  "duplicados_eliminados": 0,
+  "faltantes_por_variable": {
+    "temp_media": 0,
+    "temp_max": 0,
+    "temp_min": 0,
+    "lluvia_mm_dia": 0
+  },
+  "valores_imposibles": 0,
+  "filas_validas": 232740,
+  "anios_incompletos": 0,
+  "departamentos": 25,
+  "anio_min": 1981,
+  "anio_max": 2025,
+  "observaciones_mensuales": 13500
+}

@@ -1,0 +1,30 @@
+{
+  "titulo": "El Perú se calienta. La lluvia cuenta otra historia.",
+  "fuente": "NASA POWER 1981-2025, contraste con ERA5",
+  "escenas": [
+    {
+      "id": "gancho",
+      "frase": "¿Todo el Perú se está calentando por igual? Revisamos {45|cuarenta y cinco} años de temperatura y lluvia en los {25|veinticinco} departamentos."
+    },
+    {
+      "id": "nacional",
+      "frase": "El país sí se calienta. Los últimos {20|veinte} años son {0.50 °C|medio grado} más cálidos que los primeros {20|veinte} de la serie. Y {2024|dos mil veinticuatro} fue el año más cálido."
+    },
+    {
+      "id": "desigual",
+      "frase": "Pero no todos al mismo ritmo. Según la NASA, Ucayali sube {0.47 °C|cero punto cuarenta y siete grados} por década, e Ica, apenas {0.10|cero punto diez}. Otra base de datos, ERA5, confirma el promedio nacional, pero cambia el orden."
+    },
+    {
+      "id": "lluvia",
+      "frase": "Con la lluvia, no hay una tendencia nacional clara. El cambio más sólido está en el norte: Piura, Tumbes y Lambayeque reciben más de {20 %|veinte por ciento} menos en las dos fuentes, aunque parte se explica por los grandes El Niño de los años ochenta y noventa."
+    },
+    {
+      "id": "cautela",
+      "frase": "En otros lugares, como Ica o Ayacucho, las fuentes no coinciden. Ahí, estos datos no alcanzan para sacar conclusiones."
+    },
+    {
+      "id": "cierre",
+      "frase": "Explora tu departamento en el dashboard: el enlace está en la publicación. Los datos son de la NASA, y esta voz fue generada con inteligencia artificial."
+    }
+  ]
+}
