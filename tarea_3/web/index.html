@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clima del Perú</title>
+  <meta name="description" content="Dashboard interactivo: qué departamentos del Perú se han calentado más desde 1981 y dónde ha cambiado más la lluvia.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="assets/estilos.css">
+  <script src="assets/d3.min.js"></script>
+</head>
+<body>
+  <div id="franjas" role="img" aria-label="Franjas de temperatura del Perú de 1981 a 2025: cada franja es un año, azul más frío y rojo más cálido que la normal 1991-2020"></div>
+
+  <header class="contenedor cabecera">
+    <div class="cabecera-fila">
+      <h1>El Perú se calienta. La lluvia cuenta otra historia.</h1>
+      <button id="tema" type="button">Tema oscuro</button>
+    </div>
+    <p class="pregunta">¿Qué departamentos del Perú se han calentado más desde 1981 y dónde ha cambiado más la lluvia?</p>
+    <p class="contexto">Hablar de un promedio nacional oculta lo que importa para planificar agua, agricultura y prevención de riesgos. Este tablero compara 45 años de temperatura y lluvia en los 25 departamentos para ver qué cambió, dónde y con cuánta certeza.</p>
+    <dl class="ficha">
+      <div><dt>Cobertura:</dt><dd>25 departamentos (incluye Callao), 1981-2025</dd></div>
+      <div><dt>Fuente:</dt><dd><a href="https://power.larc.nasa.gov/">NASA POWER</a>, contrastada con <a href="https://open-meteo.com/en/docs/historical-weather-api">ERA5</a></dd></div>
+      <div><dt>Datos descargados:</dt><dd>1 de noviembre de 2026</dd></div>
+    </dl>
+    <nav class="anclas" aria-label="Secciones">
+      <a href="#explorar">Explorar</a><a href="#hallazgos">Hallazgos</a><a href="#metodologia">Metodología</a><a href="#limitaciones">Limitaciones</a><a href="#fuentes">Fuentes</a>
+    </nav>
+  </header>
+
+  <div class="filtros">
+    <div class="contenedor filtros-fila" role="group" aria-label="Filtros">
+      <label class="campo">Indicador<select id="f-ind"></select></label>
+      <label class="campo">Desde<select id="f-desde"></select></label>
+      <label class="campo">Hasta<select id="f-hasta"></select></label>
+      <label class="campo">Temporada<select id="f-temporada"></select></label>
+      <label class="campo">Zona<select id="f-zona"></select></label>
+      <label class="campo">Departamento<select id="f-dep"></select></label>
+      <label class="campo">Comparar con<select id="f-comp"></select></label>
+      <button id="f-limpiar" class="boton" type="button">Restablecer</button>
+    </div>
+  </div>
+
+  <main class="contenedor" id="explorar">
+    <div id="alcance" aria-live="polite"></div>
+    <p id="aviso-lluvia" class="aviso" hidden>Los valores de lluvia son de NASA POWER y en muchos departamentos no coinciden con ERA5. Revisa el gráfico de contraste antes de sacar conclusiones.</p>
+    <div class="kpis" id="kpis"></div>
+
+    <div class="rejilla" id="rejilla">
+      <article class="tarjeta c5">
+        <h3 id="titulo-mapa">Dónde cambió la temperatura</h3>
+        <p class="sub" id="sub-mapa"></p>
+        <div class="grafico" id="mapa"></div>
+        <div class="escala" id="mapa-escala"></div>
+        <div class="zonas-bloque">
+          <h4>Promedio por zona natural</h4>
+          <p>Tendencia por década. Agrupación propia; haz clic para filtrar.</p>
+          <div id="zonas"></div>
+        </div>
+      </article>
+      <div class="c7" style="display:grid;gap:16px;align-content:start;min-width:0">
+        <article class="tarjeta">
+          <h3 id="titulo-linea"></h3>
+          <p class="sub" id="sub-linea"></p>
+          <div class="leyenda" id="linea-leyenda"></div>
+          <div class="grafico" id="linea"></div>
+        </article>
+        <article class="tarjeta">
+          <h3>¿En qué meses cambió?</h3>
+          <p class="sub" id="sub-estacional"></p>
+          <div class="leyenda" id="estacional-leyenda"></div>
+          <div class="grafico" id="estacional"></div>
+        </article>
+      </div>
+
+      <article class="tarjeta c12">
+        <h3>Cada departamento, año por año</h3>
+        <p class="sub" id="sub-franjas"></p>
+        <div class="grafico" id="franjas-depto"></div>
+        <div class="escala" id="franjas-escala"></div>
+      </article>
+
+      <article class="tarjeta c6">
+        <h3>Ranking de tendencias</h3>
+        <p class="sub" id="sub-ranking"></p>
+        <div class="grafico" id="ranking"></div>
+      </article>
+      <div class="c6" style="display:grid;gap:16px;align-content:start;min-width:0">
+        <article class="tarjeta">
+          <h3>Altitud y tendencia</h3>
+          <p class="sub" id="sub-dispersion"></p>
+          <div class="leyenda" id="dispersion-leyenda"></div>
+          <div class="grafico" id="dispersion"></div>
+        </article>
+        <article class="tarjeta">
+          <h3 id="titulo-contraste"></h3>
+          <p class="sub" id="sub-contraste"></p>
+          <div class="grafico" id="contraste"></div>
+        </article>
+      </div>
+
+      <article class="tarjeta c12">
+        <h3>Tabla de departamentos</h3>
+        <p class="sub">Usa los mismos filtros. Haz clic en un encabezado para ordenar y en una fila para seleccionar.</p>
+        <div class="tabla-control">
+          <label class="campo">Buscar departamento<input id="buscar" type="search" placeholder="Ej.: Ucayali"></label>
+          <button id="descargar" class="boton" type="button">Descargar datos filtrados (CSV)</button>
+        </div>
+        <p class="sub" id="tabla-nota" aria-live="polite"></p>
+        <div class="tabla-caja"><table id="tabla"><thead></thead><tbody></tbody></table></div>
+      </article>
+    </div>
+
+    <section class="texto" id="hallazgos">
+      <h2>Tres hallazgos</h2>
+      <div class="hallazgos"><article class="hallazgo">
+          <div class="cifra">+0.22 °C</div>
+          <h3>El calentamiento nacional es sólido</h3>
+          <p>La temperatura media sube 0.22 °C por década (IC 95 %: ±0.10), o 0.50 °C entre 1981-2000 y 2006-2025. ERA5, un producto independiente, da un resultado casi igual: 0.21 °C por década y 0.46 °C. En ambos, 2024 y 2023 son los dos años más cálidos. Todos los departamentos suben en NASA POWER; en ERA5 suben 22 de 25.</p>
+        </article>
+        <article class="hallazgo">
+          <div class="cifra">+0.47 vs +0.10</div>
+          <h3>El ritmo es desigual, y el orden depende de la fuente</h3>
+          <p>En NASA POWER, Ucayali lidera (+0.47 °C por década) e Ica es el último (+0.10). Ucayali supera el promedio también en ERA5 (+0.30), pero allí es séptimo y Puno encabeza (+0.41). La correlación de rangos entre fuentes es solo 0.41. Lo más estable es el otro extremo: Ica, Callao, Piura y Lambayeque están entre los que menos suben en ambas.</p>
+        </article>
+        <article class="hallazgo">
+          <div class="cifra">3 de 25</div>
+          <h3>La lluvia solo cae con claridad en el norte</h3>
+          <p>El total nacional casi no cambia (−0.8 %, sin significancia). Solo Piura, Tumbes y Lambayeque caen más de 10 % en ambas fuentes (de −22 % a −41 %), y ningún departamento sube más de 10 % en ambas. Parte de la caída viene de los El Niño extremos: sin 1983, 1998, 2017 y 2023, Piura y Tumbes siguen bajando al menos 17 %, pero Lambayeque baja solo 7 % en ERA5.</p>
+        </article></div>
+    </section>
+
+    <section class="texto" id="metodologia">
+      <h2>Metodología, limitaciones y fuentes</h2>
+      <div class="columnas"><div>
+          <h3>Cómo se construyó</h3>
+          <ul>
+            <li><strong>Datos:</strong> 431 puntos de una malla de 0.5° dentro de los 25 departamentos, con datos mensuales de 1981 a 2025.</li>
+            <li><strong>Limpieza:</strong> se descartó el resumen anual de la API (mes 13) y se revisaron duplicados, faltantes (-999) y valores imposibles. No se encontró ninguno de estos tres últimos. Quedan 13,500 observaciones de departamento por mes.</li>
+            <li><strong>Agregación:</strong> promedio de las celdas de cada departamento, ponderado por área. El valor nacional cuenta cada celda una vez.</li>
+            <li><strong>Tendencia:</strong> regresión lineal por década con intervalo de confianza al 95 %. En Python se comprobó con Theil-Sen y Mann-Kendall, con corrección por comparaciones múltiples.</li>
+            <li><strong>Periodos:</strong> se compara 1981-2000 con 2006-2025. Las anomalías usan la normal 1991-2020.</li>
+            <li><strong>Contraste:</strong> ERA5 en un punto interior de cada departamento frente a NASA POWER en la celda más cercana.</li>
+            <li><strong>Zonas:</strong> costa, sierra y selva son una agrupación propia por región predominante, no una clasificación oficial.</li>
+          </ul>
+        </div>
+        <div id="limitaciones">
+          <h3>Limitaciones</h3>
+          <ul>
+            <li><strong>Son reanálisis, no estaciones.</strong> Combinan modelos y observaciones a baja resolución (unos 50 km en NASA POWER). No reemplazan a las estaciones del SENAMHI, que este trabajo no usa.</li>
+            <li><strong>La lluvia es la variable más débil.</strong> Los productos difieren mucho incluso en el nivel: en Áncash, ERA5 da unos 2,000 mm al año y NASA POWER unos 380 mm. Solo se toma como hallazgo lo que aparece en ambos.</li>
+            <li><strong>Relieve.</strong> Una celda promedia valles y cumbres. Callao se representa con un solo punto, cuya celda tiene casi 1,200 m de altitud pese a estar en la costa.</li>
+            <li><strong>ERA5 se consultó en un punto por departamento,</strong> por los límites de la API. Compara mejor el sentido del cambio que su valor exacto.</li>
+            <li><strong>Extremos.</strong> El Niño de 1983 y 1998 pesa en el primer periodo, y los años cálidos de 2023-2024 pesan al final de la serie.</li>
+            <li><strong>No hay atribución causal.</strong> Una tendencia describe lo ocurrido; este análisis no separa causas como El Niño, el cambio climático global o el uso del suelo.</li>
+          </ul>
+          <h3 id="fuentes">Fuentes</h3>
+          <ul>
+            <li><a href="https://power.larc.nasa.gov/">NASA POWER</a>, API mensual (MERRA-2), consultada el 1 de noviembre de 2026.</li>
+            <li><a href="https://open-meteo.com/en/docs/historical-weather-api">ERA5 (Copernicus) vía Open-Meteo</a>, consultada el 1 de noviembre de 2026.</li>
+            <li><a href="https://github.com/juaneladio/peru-geojson">Límites departamentales</a>, peru-geojson (MPL 2.0).</li>
+          </ul>
+        </div></div>
+    </section>
+  </main>
+
+  <footer class="contenedor">Elaborado por Melina Rozas · Tarea 3, Python Intermedio, Diplomado PUCP · <a href="https://github.com/serugiran96/diplomado_pucp_tareas_melinarozas/tree/main/tarea_3">Código y datos en GitHub</a></footer>
+  <div id="ayuda" role="status"></div>
+  <script src="assets/app.js"></script>
+</body>
+</html>
