@@ -8,10 +8,26 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 if [ "${1:-}" = "--aprobar" ]; then
+  REPO=serugiran96/diplomado_pucp_tareas_melinarozas
+  URL=https://serugiran96.github.io/diplomado_pucp_tareas_melinarozas/
   gh pr merge tarea-3 --merge --delete-branch
   git checkout -q main
   git pull -q origin main
-  echo "Listo: tarea_3 ya está en main."
+  echo "1/3 tarea_3 ya está en main."
+  (cd "$(git rev-parse --show-toplevel)" \
+    && git subtree split -q --prefix tarea_3/web -b sitio-web \
+    && git push -q -f origin sitio-web:gh-pages \
+    ; git branch -q -D sitio-web)
+  gh api -X POST "repos/$REPO/pages" -f 'source[branch]=gh-pages' -f 'source[path]=/' >/dev/null 2>&1 \
+    || gh api "repos/$REPO/pages" >/dev/null
+  echo "2/3 GitHub Pages activado. Esperando a que el sitio esté en línea..."
+  for _ in $(seq 1 40); do
+    [ "$(curl -s -o /dev/null -w '%{http_code}' "${URL}data/clima.json")" = "200" ] && break
+    sleep 15
+  done
+  .venv/bin/python scripts/capturar_dashboard.py "$URL"
+  git checkout -q -- linkedin reel/recursos
+  echo "3/3 Dashboard probado en línea: $URL"
   exit 0
 fi
 
