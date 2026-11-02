@@ -5,8 +5,8 @@
 | Producto | Enlace |
 |---|---|
 | Dashboard público | https://serugiran96.github.io/diplomado_pucp_tareas_melinarozas/ |
-| Publicación de LinkedIn | PENDIENTE_LINKEDIN |
-| Reel | [`reel/`](reel/) |
+| Publicación de LinkedIn | No realizada |
+| Reel | [`reel/reel.mp4`](reel/reel.mp4) |
 
 > **Estado del reel:** versión final con voz clonada a partir de la voz de la autora.
 

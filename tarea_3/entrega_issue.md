@@ -8,4 +8,4 @@
 
 **Dashboard público:** https://serugiran96.github.io/diplomado_pucp_tareas_melinarozas/
 
-**Publicación de LinkedIn:** PENDIENTE_LINKEDIN
+**Publicación de LinkedIn:** No realizada. Reel: https://github.com/serugiran96/diplomado_pucp_tareas_melinarozas/blob/main/tarea_3/reel/reel.mp4
