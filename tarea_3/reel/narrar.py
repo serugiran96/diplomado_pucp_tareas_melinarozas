@@ -61,6 +61,25 @@ def remuestrear(w, sr, sr_nuevo=16000):
     return np.interp(np.arange(0, len(w), sr / sr_nuevo), np.arange(len(w)), w).astype(np.float32)
 
 
+def quitar_arranque(w, sr):
+    """Qwen3 abre cada toma con un soplido de unos 0.2 s antes del habla: se silencia sin mover los tiempos."""
+    marco = int(.02 * sr)
+    pico = float(np.abs(w).max()) or 1
+    niveles = [20 * np.log10(np.sqrt((w[k:k + marco] ** 2).mean()) / pico + 1e-9) for k in range(0, min(len(w), int(1.5 * sr)) - marco, marco)]
+    silencio = next((k for k in range(min(50, len(niveles) - 2)) if max(niveles[k:k + 3]) < -43), None)
+    if silencio is None:
+        return w
+    habla = next((k for k in range(silencio, len(niveles)) if niveles[k] > -38), None)
+    if habla is None:
+        return w
+    corte = max(0, habla - 2) * marco
+    limpio = np.array(w, np.float32)
+    limpio[:corte] = 0
+    rampa = min(int(.01 * sr), len(limpio) - corte)
+    limpio[corte:corte + rampa] *= np.linspace(0, 1, rampa, dtype=np.float32)
+    return limpio
+
+
 class Whisper:
     def __init__(self):
         from faster_whisper import WhisperModel
@@ -95,7 +114,7 @@ class VozClonada:
 
     def decir(self, frase):
         wavs, sr = self.tts.generate_voice_clone(text=[frase], language=["Spanish"], voice_clone_prompt=self.prompt)
-        return np.asarray(wavs[0], np.float32), sr
+        return quitar_arranque(np.asarray(wavs[0], np.float32), sr), sr
 
 
 class VozSistema:
@@ -216,6 +235,8 @@ def main():
         pal = asr.palabras(remuestrear(w, sr), d["frase"])
         pal = [(p[0] + t, p[1] + t, p[2]) for p in pal]
         al = alinear(d["fichas"], pal, t, t + dur)
+        al[0]["ini"] = max(al[0]["ini"], t + int(np.argmax(np.abs(w) > 1e-6)) / sr)   # el subtítulo espera a la primera palabra
+        al[0]["fin"] = max(al[0]["fin"], al[0]["ini"] + 0.05)
         todos.extend(al)
         escenas.append({"id": d["id"], "ini": round(t, 3), "fin": round(t + dur, 3), "error": d["error"], "oido": d["oido"]})
         trozos += [w, np.zeros(int(PAUSA * sr), np.float32)]

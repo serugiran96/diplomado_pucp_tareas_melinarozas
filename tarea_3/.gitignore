@@ -2,7 +2,7 @@
 .venv-voz/
 __pycache__/
 *.pyc
-reel/mi_voz.*
+mi_voz.*
 reel/.cache/
 .DS_Store
 .captura_oscuro.png

@@ -45,10 +45,10 @@ if [ "${1:-}" = "--publicar" ]; then
   [ -f reel/reel.mp4 ] || { echo "Aún no existe reel/reel.mp4"; exit 1; }
   git rm -q --cached --ignore-unmatch reel/reel_borrador.mp4
   rm -f reel/reel_borrador.mp4
-  git add reel/reel.mp4 reel/subtitulos.srt reel/tiempos.json
+  git add reel/reel.mp4 reel/subtitulos.srt reel/tiempos.json reel/narrar.py .gitignore reel/finalizar_reel.sh
   sed -i '' 's/^> \*\*Estado del reel:.*$/> **Estado del reel:** versión final con voz clonada a partir de la voz de la autora./' README.md
   git add README.md
-  git commit -q -m "reel: versión final con voz clonada de la autora"
+  git commit -q -m "reel: versión final con voz clonada de la autora" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
   git push -q origin main
   echo "Listo: reel subido a GitHub."
   exit 0

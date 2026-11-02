@@ -8,7 +8,7 @@
 | Publicación de LinkedIn | PENDIENTE_LINKEDIN |
 | Reel | [`reel/`](reel/) |
 
-> **Estado del reel:** borrador con voz provisional del sistema (`reel/reel_borrador.mp4`); falta generar la narración con la voz de la autora.
+> **Estado del reel:** versión final con voz clonada a partir de la voz de la autora.
 
 ## Descripción
 

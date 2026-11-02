@@ -1,0 +1,321 @@
+{
+ "duracion": 71.94,
+ "provisional": false,
+ "aceleracion": 1.0,
+ "escenas": [
+  {
+   "id": "gancho",
+   "ini": 0.3,
+   "fin": 8.94,
+   "error": 0.0,
+   "oido": "¿Todo el Perú se está calentando por igual? Revisamos cuarenta y cinco años de temperatura y lluvia en los veinticinco departamentos."
+  },
+  {
+   "id": "nacional",
+   "ini": 9.29,
+   "fin": 19.53,
+   "error": 0.0,
+   "oido": "El país sí se calienta. Los últimos veinte años son medio grado más cálidos que los primeros veinte de la serie. Y dos mil veinticuatro fue el año más cálido."
+  },
+  {
+   "id": "desigual",
+   "ini": 19.88,
+   "fin": 34.36,
+   "error": 0.0,
+   "oido": "Pero no todos al mismo ritmo. Según la NASA, Ucayali sube cero punto cuarenta y siete grados por década e Ica, apenas cero punto diez. Otra base de datos, ERA5, confirma el promedio nacional, pero cambia el orden."
+  },
+  {
+   "id": "lluvia",
+   "ini": 34.71,
+   "fin": 51.99,
+   "error": 0.0,
+   "oido": "Con la lluvia, no hay una tendencia nacional clara. El cambio más sólido está en el norte. Piura, Tumbes y Lambayeque reciben más de veinte por ciento menos en las dos fuentes, aunque parte se explica por los grandes El Niño de los años ochenta y noventa."
+  },
+  {
+   "id": "cautela",
+   "ini": 52.34,
+   "fin": 60.26,
+   "error": 0.0,
+   "oido": "En otros lugares, como Ica o Ayacucho, las fuentes no coinciden. Ahí, estos datos no alcanzan para sacar conclusiones."
+  },
+  {
+   "id": "cierre",
+   "ini": 60.61,
+   "fin": 70.69,
+   "error": 0.0,
+   "oido": "Explora tu departamento en el dashboard. El enlace está en la publicación. Los datos son de la NASA, y esta voz fue generada con inteligencia artificial."
+  }
+ ],
+ "subtitulos": [
+  {
+   "t": "¿Todo el Perú se",
+   "ini": 1.26,
+   "fin": 2.04
+  },
+  {
+   "t": "está calentando por igual?",
+   "ini": 2.04,
+   "fin": 3.24
+  },
+  {
+   "t": "Revisamos 45 años de",
+   "ini": 3.94,
+   "fin": 5.66
+  },
+  {
+   "t": "temperatura y lluvia en",
+   "ini": 5.66,
+   "fin": 7.04
+  },
+  {
+   "t": "los 25 departamentos.",
+   "ini": 7.04,
+   "fin": 8.44
+  },
+  {
+   "t": "El país sí se",
+   "ini": 9.77,
+   "fin": 10.63
+  },
+  {
+   "t": "calienta.",
+   "ini": 10.63,
+   "fin": 11.21
+  },
+  {
+   "t": "Los últimos 20 años",
+   "ini": 11.47,
+   "fin": 13.03
+  },
+  {
+   "t": "son 0.50 °C más cálidos",
+   "ini": 13.03,
+   "fin": 14.57
+  },
+  {
+   "t": "que los primeros 20",
+   "ini": 14.57,
+   "fin": 15.67
+  },
+  {
+   "t": "de la serie.",
+   "ini": 15.67,
+   "fin": 16.23
+  },
+  {
+   "t": "Y 2024 fue el",
+   "ini": 16.55,
+   "fin": 18.31
+  },
+  {
+   "t": "año más cálido.",
+   "ini": 18.31,
+   "fin": 19.15
+  },
+  {
+   "t": "Pero no todos al",
+   "ini": 20.54,
+   "fin": 21.56
+  },
+  {
+   "t": "mismo ritmo.",
+   "ini": 21.56,
+   "fin": 22.22
+  },
+  {
+   "t": "Según la NASA,",
+   "ini": 22.48,
+   "fin": 23.54
+  },
+  {
+   "t": "Ucayali sube 0.47 °C por",
+   "ini": 23.88,
+   "fin": 26.74
+  },
+  {
+   "t": "década,",
+   "ini": 26.74,
+   "fin": 27.12
+  },
+  {
+   "t": "e Ica,",
+   "ini": 27.12,
+   "fin": 27.62
+  },
+  {
+   "t": "apenas 0.10.",
+   "ini": 27.8,
+   "fin": 29.16
+  },
+  {
+   "t": "Otra base de datos,",
+   "ini": 29.7,
+   "fin": 30.96
+  },
+  {
+   "t": "ERA5,",
+   "ini": 31.2,
+   "fin": 31.62
+  },
+  {
+   "t": "confirma el promedio",
+   "ini": 31.76,
+   "fin": 32.72
+  },
+  {
+   "t": "nacional,",
+   "ini": 32.72,
+   "fin": 33.14
+  },
+  {
+   "t": "pero cambia el orden.",
+   "ini": 33.42,
+   "fin": 34.22
+  },
+  {
+   "t": "Con la lluvia,",
+   "ini": 35.77,
+   "fin": 36.53
+  },
+  {
+   "t": "no hay una tendencia",
+   "ini": 36.65,
+   "fin": 37.69
+  },
+  {
+   "t": "nacional clara.",
+   "ini": 37.69,
+   "fin": 38.57
+  },
+  {
+   "t": "El cambio más sólido",
+   "ini": 38.85,
+   "fin": 40.27
+  },
+  {
+   "t": "está en el norte:",
+   "ini": 40.27,
+   "fin": 41.17
+  },
+  {
+   "t": "Piura,",
+   "ini": 41.55,
+   "fin": 41.89
+  },
+  {
+   "t": "Tumbes y Lambayeque",
+   "ini": 42.37,
+   "fin": 43.67
+  },
+  {
+   "t": "reciben más de 20 %",
+   "ini": 43.67,
+   "fin": 45.65
+  },
+  {
+   "t": "menos en las dos",
+   "ini": 45.65,
+   "fin": 46.67
+  },
+  {
+   "t": "fuentes,",
+   "ini": 46.67,
+   "fin": 47.19
+  },
+  {
+   "t": "aunque parte se explica",
+   "ini": 47.63,
+   "fin": 48.67
+  },
+  {
+   "t": "por los grandes El",
+   "ini": 48.67,
+   "fin": 49.75
+  },
+  {
+   "t": "Niño de los años",
+   "ini": 49.75,
+   "fin": 50.55
+  },
+  {
+   "t": "ochenta y noventa.",
+   "ini": 50.55,
+   "fin": 51.49
+  },
+  {
+   "t": "En otros lugares,",
+   "ini": 53.04,
+   "fin": 53.84
+  },
+  {
+   "t": "como Ica o Ayacucho,",
+   "ini": 54.0,
+   "fin": 55.3
+  },
+  {
+   "t": "las fuentes no coinciden.",
+   "ini": 55.4,
+   "fin": 56.72
+  },
+  {
+   "t": "Ahí,",
+   "ini": 57.0,
+   "fin": 57.24
+  },
+  {
+   "t": "estos datos no alcanzan",
+   "ini": 57.44,
+   "fin": 58.92
+  },
+  {
+   "t": "para sacar conclusiones.",
+   "ini": 58.92,
+   "fin": 60.06
+  },
+  {
+   "t": "Explora tu departamento en",
+   "ini": 61.67,
+   "fin": 63.07
+  },
+  {
+   "t": "el dashboard:",
+   "ini": 63.07,
+   "fin": 63.53
+  },
+  {
+   "t": "el enlace está en",
+   "ini": 63.81,
+   "fin": 65.23
+  },
+  {
+   "t": "la publicación.",
+   "ini": 65.23,
+   "fin": 65.87
+  },
+  {
+   "t": "Los datos son de",
+   "ini": 66.23,
+   "fin": 67.33
+  },
+  {
+   "t": "la NASA,",
+   "ini": 67.33,
+   "fin": 67.69
+  },
+  {
+   "t": "y esta voz fue",
+   "ini": 68.03,
+   "fin": 68.77
+  },
+  {
+   "t": "generada con inteligencia",
+   "ini": 68.77,
+   "fin": 70.11
+  },
+  {
+   "t": "artificial.",
+   "ini": 70.11,
+   "fin": 70.29
+  }
+ ]
+}
