@@ -1,0 +1,9 @@
+indicador,grupo,categoria,pct,ee,ic_inf,ic_sup,cv_pct,n,poblacion
+pobre,dominio geográfico,Sierra norte,45.8346,1.9651,41.9830,49.6863,4.2900,6268,1879722
+pobre,dominio geográfico,Sierra centro,30.3632,1.1387,28.1314,32.5950,3.7500,16693,3977806
+pobre,dominio geográfico,Selva,29.9698,1.0634,27.8855,32.0540,3.5500,25343,4307763
+pobre,dominio geográfico,Lima Metropolitana,28.0330,1.1930,25.6948,30.3712,4.2600,13563,11388153
+pobre,dominio geográfico,Sierra sur,25.6652,1.2945,23.1281,28.2024,5.0400,13005,4512966
+pobre,dominio geográfico,Costa norte,24.1846,1.0709,22.0856,26.2836,4.4300,16357,5081318
+pobre,dominio geográfico,Costa sur,20.0918,1.8975,16.3728,23.8109,9.4400,6576,698440
+pobre,dominio geográfico,Costa centro,13.9095,1.0949,11.7635,16.0555,7.8700,10859,2301598

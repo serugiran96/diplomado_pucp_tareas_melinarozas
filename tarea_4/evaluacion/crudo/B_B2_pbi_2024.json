@@ -1,0 +1,17 @@
+{
+ "respuesta": "Según el BCRP, **el PBI real del Perú creció 3.5 % en 2024** (el dato exacto es 3.5153 %, variación anual).\n\n- **Serie:** PM04923AA, \"Producto bruto interno por tipo de gasto (variaciones porcentuales reales) - PBI\", anual. La serie PM04983AA, \"PBI por sectores productivos (variación porcentual interanual)\", da la misma cifra (3.5153 %), así que el dato es coherente.\n- **Periodo:** 2024 (año completo frente a 2023).\n- **Fuente:** BCRP, Estadísticas – https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PM04923AA/json/2024/2024\n\nLa serie se actualizó por última vez el 2026-08-20 y ya puede incluir revisiones de las cuentas nacionales. Por eso la cifra puede ser algo distinta de la primera estimación que se publicó a inicios de 2025.\n\nRESPUESTA: 3.52",
+ "herramientas": [
+  "ToolSearch",
+  "mcp__bcrp__buscar_series",
+  "mcp__bcrp__serie",
+  "mcp__bcrp__serie"
+ ],
+ "skills": [],
+ "turnos": 5,
+ "costo_usd": 0.1517714,
+ "duracion_ms": 15087,
+ "error": "",
+ "modo": "B",
+ "segundos": 17.2,
+ "id": "B2_pbi_2024"
+}

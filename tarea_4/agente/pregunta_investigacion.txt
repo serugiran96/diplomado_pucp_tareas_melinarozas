@@ -1,0 +1,12 @@
+Pregunta de investigación: ¿Cómo evolucionaron la inflación y la actividad económica del Perú entre 2020 y 2024, y qué brechas de pobreza monetaria entre departamentos y entre áreas urbana y rural había al cerrar ese período, según la ENAHO 2024?
+
+Actúa como el agente de investigación socioeconómica de este proyecto.
+
+1. Escribe primero un plan breve: qué parte de la pregunta responde el BCRP (servidor MCP bcrp) y qué parte la ENAHO 2024 (skills del proyecto).
+2. BCRP: usa las herramientas MCP. Confirma los códigos con buscar_series (o el recurso bcrp://series-clave), calcula con resumen y comparar_periodos (por ejemplo 2020-2022 frente a 2023-2024) y guarda con graficar_serie un gráfico de la inflación a 12 meses de Lima y otro del crecimiento del PBI de 2020 a 2024. No hagas ninguna cuenta a mano.
+3. ENAHO: usa las skills limpiando-enaho (revisa salidas/validacion.txt), graficando-enaho (área urbana y rural, y al menos otro grupo pertinente) y mapeando-enaho (mapa departamental).
+4. Contrasta tus cifras con las referencias oficiales: salidas/validacion.txt, salidas/validacion_mapa.txt y las URL del BCRP que devuelven las herramientas.
+5. Escribe informes/informe_final.md con estas secciones: Pregunta de investigación (tema, objetivo y delimitación); Fuentes y metodología; Resultados, con al menos 3 hallazgos numerados y cada cifra con su fuente (código de serie y periodo, o archivo de salidas/); Visualizaciones (inserta con rutas relativas ../figuras/... y ../mapas/... al menos un gráfico del BCRP, uno de la ENAHO y el mapa); Interpretación; Limitaciones (cobertura temporal, IPC de Lima frente a pobreza nacional, distinto nivel de agregación, error muestral de la encuesta, asociación no es causalidad); Reproducibilidad (comandos, scripts, series y archivos usados); y Registro de herramientas (las herramientas MCP y skills que usaste en esta ejecución).
+6. Si una herramienta falla, no encuentra datos o devuelve algo incompatible, dilo en el informe en lugar de inventar.
+
+No escribas cifras de memoria: toda cifra del informe debe salir de una herramienta o de un archivo generado en esta ejecución.

@@ -1,0 +1,17 @@
+{
+ "respuesta": "Según el Banco Central de Reserva del Perú (BCRP), el tipo de cambio interbancario venta promedio de diciembre de 2024 fue de **3.737 soles por dólar** (S/ 3.73655789… por US$).\n\n- **Serie:** \"Tipo de cambio - promedio del periodo (S/ por US$) - Interbancario - Venta\", código PN01206PM.\n- **Periodo:** diciembre de 2024, promedio del mes.\n- **Fuente:** API de series estadísticas del BCRP (estadisticas.bcrp.gob.pe), consultada directamente.\n\nComo referencia, la compra interbancaria promedio de ese mes fue 3.734 S/ por US$, y el promedio entre compra y venta fue 3.736.\n\nRESPUESTA: 3.737",
+ "herramientas": [
+  "ToolSearch",
+  "Bash",
+  "WebFetch",
+  "WebFetch"
+ ],
+ "skills": [],
+ "turnos": 5,
+ "costo_usd": 0.0858362,
+ "duracion_ms": 25840,
+ "error": "",
+ "modo": "A",
+ "segundos": 26.7,
+ "id": "B3_tc_dic2024"
+}

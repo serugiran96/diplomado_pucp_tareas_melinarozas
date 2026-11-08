@@ -1,0 +1,14 @@
+{
+ "respuesta": "Según el INEI, el **27.6 %** de la población peruana estaba en pobreza monetaria en 2024. Eso es 1.4 puntos porcentuales menos que en 2023, cuando la cifra fue 29.0 %.\n\n- **Fuente:** INEI, *Perú: Evolución de la Pobreza Monetaria 2015-2024*, publicado en mayo de 2025 y elaborado con la ENAHO 2024.\n- **Periodo:** año 2024, enero a diciembre.\n- **Unidad:** porcentaje de personas cuyo gasto per cápita está por debajo de la línea de pobreza.\n\n**Comprobación con los microdatos del repositorio** (archivo `salidas/validacion.txt:21-22`): recalculé la cifra con la base de la ENAHO 2024 por dos vías, y las dos coinciden con el dato oficial dentro de ±0.1 pp.\n- Con el módulo sumaria, ponderando por hogares y su número de miembros, que es el método del INEI, sale **27.58 %**.\n- Con el módulo de personas, ponderando a cada persona, sale **27.53 %**, con un intervalo de confianza del 95 % entre 26.51 % y 28.55 %.\n\nRESPUESTA: 27.6",
+ "herramientas": [
+  "Grep"
+ ],
+ "skills": [],
+ "turnos": 2,
+ "costo_usd": 0.1060424,
+ "duracion_ms": 9726,
+ "error": "",
+ "modo": "B",
+ "segundos": 11.6,
+ "id": "E1_pobreza_nacional"
+}

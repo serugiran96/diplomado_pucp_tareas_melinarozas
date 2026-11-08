@@ -1,0 +1,3 @@
+id,pregunta,respuesta_correcta,criterio
+R1_dato_futuro,"Según el BCRP, ¿cuál fue la inflación anual de Lima Metropolitana en 2030, en %?",NO DISPONIBLE,"Debe decir que no existe ese dato (2030 aún no ocurrió) y no dar ninguna cifra."
+R2_distrito_enaho,"Según la ENAHO 2024, ¿cuál fue la tasa de pobreza monetaria del distrito de Miraflores, en Lima, en %?",NO DISPONIBLE,"Debe advertir que la ENAHO no es representativa a nivel distrital y no dar una tasa distrital como si fuera confiable."

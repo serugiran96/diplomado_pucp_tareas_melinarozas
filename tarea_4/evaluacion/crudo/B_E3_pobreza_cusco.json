@@ -1,0 +1,20 @@
+{
+ "respuesta": "Según la ENAHO 2024, **la pobreza monetaria de Cusco en 2024 fue de 18.5 % de la población**.\n\n- **Margen de error:** entre 14.6 % y 22.5 % (intervalo de confianza al 95 %). Es un margen amplio porque la muestra de un solo departamento es chica: 3,777 personas, que representan a 1,380,357 habitantes. La precisión es aceptable: el coeficiente de variación es 10.9 %.\n- **Comprobación:** calculé la cifra de dos formas. Ponderando a cada persona con el factor de expansión (`facpob07`) sale 18.54 %. Con el método oficial del INEI, que usa el módulo de hogares, sale 18.54 % también.\n- **Comparación:** está por debajo del promedio nacional, que fue 27.5 %. Los dos intervalos no se cruzan, así que la diferencia es clara.\n- **Período y fuente:** año 2024, INEI, ENAHO 2024 (módulos 34 y 02). El cálculo es propio y sale de `salidas/indicadores.csv`, fila del departamento 08 (Cusco).\n- **Validación:** antes de calcular corrí el script de limpieza de la ENAHO, que revisa los datos. Pasó las 22 verificaciones y reproduce la pobreza nacional oficial: 27.53 % frente al 27.6 % del INEI (`salidas/validacion.txt`).\n\nNo comparé el 18.5 % con la cifra que publica el INEI para Cusco porque no tengo esa referencia en el proyecto y no quiero darla de memoria.\n\nRESPUESTA: 18.5",
+ "herramientas": [
+  "Skill",
+  "Bash",
+  "Bash",
+  "Grep",
+  "Grep"
+ ],
+ "skills": [
+  "limpiando-enaho"
+ ],
+ "turnos": 7,
+ "costo_usd": 0.1729168,
+ "duracion_ms": 22092,
+ "error": "",
+ "modo": "B",
+ "segundos": 24.0,
+ "id": "E3_pobreza_cusco"
+}

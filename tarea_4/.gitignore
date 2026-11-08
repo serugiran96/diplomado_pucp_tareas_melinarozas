@@ -1,0 +1,15 @@
+# Entorno
+.venv/
+__pycache__/
+.pytest_cache/
+.DS_Store
+
+# Microdatos originales y descargas (se bajan con las instrucciones del README)
+datos/
+
+# Bases intermedias derivadas de los microdatos (se regeneran con limpiando-enaho)
+salidas/*.parquet
+
+# Credenciales
+.env
+*.key

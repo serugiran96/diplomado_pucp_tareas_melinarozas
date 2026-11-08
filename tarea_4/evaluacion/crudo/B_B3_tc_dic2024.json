@@ -1,0 +1,16 @@
+{
+ "respuesta": "Según el BCRP, el tipo de cambio interbancario venta promedio de **diciembre de 2024** fue **S/ 3.7366 por dólar** (S/ por US$).\n\n- **Serie:** PN01206PM, «Tipo de cambio - promedio del periodo (S/ por US$) - Interbancario - Venta», de frecuencia mensual.\n- **Periodo:** 2024-12.\n- **Fuente:** BCRP, Estadísticas (API): https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN01206PM/json/2024-12/2024-12\n\nEs el promedio del mes, no el valor al cierre. El cierre está en otra serie, la PN01215PM, que no consulté.\n\nRESPUESTA: 3.7366",
+ "herramientas": [
+  "ToolSearch",
+  "mcp__bcrp__buscar_series",
+  "mcp__bcrp__serie"
+ ],
+ "skills": [],
+ "turnos": 4,
+ "costo_usd": 0.11882399999999999,
+ "duracion_ms": 10733,
+ "error": "",
+ "modo": "B",
+ "segundos": 13.0,
+ "id": "B3_tc_dic2024"
+}

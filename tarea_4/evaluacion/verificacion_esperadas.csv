@@ -1,0 +1,11 @@
+id,esperado,tolerancias,recalculado,procedimiento,coincide
+B1_inflacion_2022,8.4592,0.05,8.4592,API BCRP PM05197PA/2022,True
+B2_pbi_2024,3.5153,0.05,3.5153,API BCRP PM04923AA/2024,True
+B3_tc_dic2024,3.7366,0.005,3.7366,API BCRP PN01206PM/2024-12,True
+B4_max_inflacion,2022-06;8.8126,exacto;0.05,Jun.2022; 8.8126,"API BCRP PN01273PM/2020-1/2024-12, máximo",True
+E1_pobreza_nacional,27.6,0.1,27.58,"sumaria 2024, factor07 × mieperho",True
+E2_pobreza_rural,39.3,0.2,39.3,"sumaria 2024, estrato >= 6",True
+E3_pobreza_cusco,18.5,0.2,18.54,"sumaria 2024, ubigeo[:2] == 08",True
+E4_max_departamento,Cajamarca;45.0,exacto;0.2,Cajamarca; 45.01,"sumaria 2024, máximo por ubigeo[:2]",True
+M1_inflacion_y_pobreza,1.9663;27.6;no,0.05;0.1;exacto,1.9663; 27.58; no (criterio),API BCRP PM05197PA/2024 + sumaria 2024,True
+M2_caida_inflacion_y_brecha,6.4929;14.5,0.05;0.3,6.4929; 14.49,API BCRP PM05197PA 2022-2024 + sumaria 2024 (rural - urbana),True

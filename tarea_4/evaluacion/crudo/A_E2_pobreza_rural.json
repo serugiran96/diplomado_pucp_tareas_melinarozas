@@ -1,0 +1,19 @@
+{
+ "respuesta": "Según la ENAHO 2024 del INEI, **el 39.3 % de la población del área rural del Perú estaba en pobreza monetaria en 2024**. En 2023 la tasa había sido de 39.8 %, así que bajó 0.5 puntos porcentuales.\n\nComo comparación, en 2024 la tasa nacional fue de 27.6 % y la del área urbana, de 24.8 %.\n\n**Fuente:** INEI, ENAHO 2024, informe sobre la evolución de la pobreza monetaria publicado en mayo de 2025. No pude abrir la nota oficial del INEI en gob.pe porque el servidor bloqueó el acceso. Saqué la cifra de dos medios que publicaron el dato del INEI y coinciden en 39.3 %:\n- [Forbes Perú (09/05/2025)](https://forbes.pe/economia-y-finanzas/2025-05-09/pobreza-monetaria-se-redujo-en-2024-esto-es-lo-que-hay-que-saber/)\n- [Infobae Perú (08/05/2025)](https://www.infobae.com/peru/2025/05/08/la-pobreza-en-el-peru-alcanzo-a-94-millones-de-personas-durante-el-segundo-ano-de-gobierno-de-dina-boluarte/)\n\nOtro dato apunta a la misma cifra. Según [Energiminas](https://energiminas.com/2026/05/05/inei-pobreza-monetaria-alcanzo-al-257-de-la-poblacion-en-peru-durante-2025/), la pobreza rural de 2025 fue 35.5 %, 3.8 puntos menos que en 2024, lo que da 39.3 %. Nota oficial no verificada directamente: [INEI – gob.pe](https://www.gob.pe/institucion/inei/noticias/1164173-pobreza-monetaria-afecto-al-27-6-de-la-poblacion-del-pais-en-el-ano-2024).\n\nRESPUESTA: 39.3",
+ "herramientas": [
+  "ToolSearch",
+  "WebSearch",
+  "WebFetch",
+  "WebFetch",
+  "WebFetch",
+  "WebFetch"
+ ],
+ "skills": [],
+ "turnos": 7,
+ "costo_usd": 0.1325115,
+ "duracion_ms": 45019,
+ "error": "",
+ "modo": "A",
+ "segundos": 45.7,
+ "id": "E2_pobreza_rural"
+}

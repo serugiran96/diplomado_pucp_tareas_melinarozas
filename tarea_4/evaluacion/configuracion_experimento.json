@@ -1,0 +1,27 @@
+{
+ "modelo": "claude-opus-5-5",
+ "herramientas_generales_ambos_modos": [
+  "Read",
+  "Glob",
+  "Grep",
+  "WebSearch",
+  "WebFetch",
+  "Bash(uv run:*)",
+  "Bash(python3:*)",
+  "Bash(ls:*)",
+  "Bash(cat:*)",
+  "Bash(head:*)",
+  "Bash(wc:*)",
+  "Bash(echo:*)",
+  "Bash(test:*)"
+ ],
+ "solo_modo_B": [
+  "mcp__bcrp__*",
+  "Skill",
+  "Write",
+  "Edit",
+  "MCP bcrp (.mcp.json)",
+  "Skills de .claude/skills"
+ ],
+ "instrucciones": "Responde en español. Da la cifra pedida con su unidad, el periodo y la fuente que usaste. No inventes datos: si no puedes obtener o verificar una cifra, dilo. Termina siempre con una última línea con el formato `RESPUESTA: valor1; valor2; ...` con los valores pedidos en el orden de la pregunta (números con punto decimal y sin el signo %, meses como AAAA-MM, respuestas de sí o no como sí o no). Si no tienes un valor, escribe NO DISPONIBLE en su lugar."
+}

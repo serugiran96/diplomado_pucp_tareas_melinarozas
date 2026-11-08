@@ -1,0 +1,19 @@
+{
+ "respuesta": "En la ENAHO 2024, **Cajamarca** fue el departamento con la tasa de pobreza monetaria más alta: **45,0 %** de su población, en el año 2024.\n\n- **Fuente oficial:** el informe del INEI *\"Perú: Evolución de la Pobreza Monetaria, 2015-2024\"*, publicado el 8 de mayo de 2025 con datos de la ENAHO. No pude abrir el PDF del INEI. La cifra la confirmé con dos medios que citan al INEI.\n- **Forbes Perú (9 de mayo de 2025):** \"Cajamarca y Loreto presentaron los mayores índices de pobreza monetaria con el 45,0% y el 43,0%, respectivamente.\"\n- **Bloomberg Línea:** también pone a Cajamarca en primer lugar con 45 % y a Loreto segundo con 43 %.\n- **Evolución:** según Expreso, la tasa de Cajamarca pasó de 44,5 % en 2023 a 45,0 % en 2024. Fue de los pocos departamentos donde la pobreza subió, mientras que el promedio nacional bajó a 27,6 %.\n- **Precisión:** el INEI suele agrupar los departamentos por intervalos de confianza. El 45,0 % es la estimación puntual que difundieron los medios.\n\nFuentes:\n- [INEI – Perú: Evolución de la Pobreza Monetaria 2015-2024 (gob.pe)](https://www.gob.pe/institucion/inei/informes-publicaciones/6763186-peru-evolucion-de-la-pobreza-mone)\n- [Forbes Perú – Pobreza monetaria se redujo en 2024](https://forbes.pe/economia-y-finanzas/2025-05-09/pobreza-monetaria-se-redujo-en-2024-esto-es-lo-que-hay-que-saber/)\n- [Bloomberg Línea – Los departamentos más golpeados por la pobreza monetaria en Perú](https://www.bloomberglinea.com/latinoamerica/peru/los-departamentos-mas-golpeados-por-la-pobreza-monetaria-en-peru-segun-el-inei/)\n- [Expreso – La pobreza retrocede, pero no es para festejar aún](https://www.expreso.com.pe/opinion/la-pobreza-retrocede-pero-no-es-para-festejar-aun/)\n\nRESPUESTA: Cajamarca; 45.0",
+ "herramientas": [
+  "ToolSearch",
+  "WebSearch",
+  "WebFetch",
+  "WebFetch",
+  "WebSearch",
+  "WebFetch"
+ ],
+ "skills": [],
+ "turnos": 7,
+ "costo_usd": 0.16794219999999999,
+ "duracion_ms": 52457,
+ "error": "",
+ "modo": "A",
+ "segundos": 53.1,
+ "id": "E4_max_departamento"
+}

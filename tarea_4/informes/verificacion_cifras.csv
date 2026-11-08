@@ -1,0 +1,7 @@
+n,fuente,afirmacion,valor_informe,valor_recalculado,procedimiento,tolerancia,diferencia,coincide
+1,BCRP,Inflación anual dic/dic de Lima en 2024: 1.97 %,1.97,1.9663,API BCRP PM05197PA/2024,0.005,0.0037,True
+2,BCRP,Máximo de la inflación a 12 meses 2020-2024: 8.81 % en junio de 2022,8.81,8.8126,"API BCRP PN01273PM 2020-1/2024-12, máximo en Jun.2022",0.005,-0.0026,True
+3,BCRP,Crecimiento del PBI real en 2024: 3.52 %,3.52,3.5153,API BCRP PM04923AA/2024,0.005,0.0047,True
+4,ENAHO,"Pobreza monetaria nacional 2024: 27.5 % (personas, facpob07)",27.53,27.58,"sumaria 2024, factor07 × mieperho; INEI publicó 27.6 %",0.1,-0.05,True
+5,ENAHO,Brecha rural - urbana 2024: 14.7 puntos (39.4 % frente a 24.7 %),14.7,14.49,"sumaria 2024: rural 39.3 %, urbana 24.81 %; INEI publicó 39.3 % y 24.8 % (14.5 pp)",0.3,0.21,True
+6,ENAHO,"Cajamarca, el departamento más pobre en 2024: 45.0 %",45.0,45.01,"sumaria 2024, ubigeo[:2] == 06; INEI publicó 45.0 %",0.1,-0.01,True

@@ -1,0 +1,20 @@
+{
+ "respuesta": "Según el BCRP, el PBI real del Perú creció **3,3%** en 2024, frente al año anterior.\n\n- **Fuente BCRP:** la Nota de Estudios N.° 14-2025 (febrero de 2025) dice: *\"el PBI creció 4,2 por ciento en el cuarto trimestre y 3,3 por ciento en el año 2024\"*. El BCRP toma este dato de las cifras oficiales del INEI. No pude abrir el PDF directamente porque el sitio del BCRP bloquea el acceso automático. La cita la obtuve de los resultados de búsqueda.\n- **Cifra con más decimales (INEI):** 3,33%, ayudada por un crecimiento de 4,85% en diciembre de 2024.\n- **Comparación con lo proyectado:** a lo largo de 2024 el BCRP esperaba entre 3,0% y 3,2%. El resultado final quedó por encima.\n- **Posibles revisiones:** es la cifra preliminar publicada en febrero de 2025. No encontré ninguna revisión posterior del dato de 2024, pero tampoco la descarté revisando las cuentas nacionales anuales del INEI.\n\nFuentes:\n- [BCRP – Nota de Estudios N.° 14-2025](https://www.bcrp.gob.pe/docs/Publicaciones/Notas-Estudios/2025/nota-de-estudios-14-2025.pdf)\n- [Andina – Perú fue uno de los países con mayor crecimiento en América Latina en 2024](https://andina.pe/agencia/noticia-peru-fue-uno-los-paises-mayor-crecimiento-america-latina-2024-1018905.aspx)\n- [Portafolio – Economía peruana crece 3,3% en 2024 tras incremento de 4,5% en diciembre](https://www.portafolio.co/internacional/economia-peruana-crece-3-3-en-2024-tras-incremento-de-4-5-en-diciembre-623963)\n- [BBVA Research – Perú: el PIB creció 3,3% en 2024](https://www.bbvaresearch.com/publicaciones/peru-el-pib-continuo-acelerandose-a-fines-del-ano-pasado-y-crecio-asi-33-en-2024/)\n- [Forbes Perú – BCRP ajustó a 3,2% la proyección de crecimiento del PBI para 2024](https://forbes.pe/economia-y-finanzas/2024-12-23/bcrp-ajusto-a-32-la-proyeccion-de-crecimiento-del-pbi-para-2024)\n\nRESPUESTA: 3.3",
+ "herramientas": [
+  "ToolSearch",
+  "WebSearch",
+  "WebSearch",
+  "WebFetch",
+  "WebSearch",
+  "WebSearch",
+  "WebSearch"
+ ],
+ "skills": [],
+ "turnos": 8,
+ "costo_usd": 0.27544909999999995,
+ "duracion_ms": 68434,
+ "error": "",
+ "modo": "A",
+ "segundos": 69.4,
+ "id": "B2_pbi_2024"
+}
