@@ -52,8 +52,22 @@ def catalogo():
     df = df.rename(columns={"Código de serie": "codigo", "Categoría de serie": "categoria", "Grupo de serie": "grupo",
                             "Nombre de serie": "nombre", "Frecuencia": "frecuencia",
                             "Fecha de actualización": "actualizada", "Fecha de inicio": "inicio"})
-    df["texto"] = (df.categoria + " " + df.grupo + " " + df.nombre).map(_sin_tildes)
+    df["texto"] = (df.categoria + " " + df.grupo + " " + df.nombre).map(_sin_tildes).map(_con_sinonimos)
     return df
+
+
+# El catálogo dice lo mismo de varias formas: "var% 12 meses" en el IPC y "variación porcentual interanual" en el
+# PBI. Se agregan los equivalentes al texto de búsqueda para que cualquiera de las dos formas encuentre la serie.
+SINONIMOS = [("variacion porcentual interanual", "var% 12 meses interanual"),
+             ("var% 12 meses", "interanual variacion porcentual"),
+             ("variaciones porcentuales", "var% variacion porcentual"),
+             ("variacion porcentual", "var%"),
+             ("producto bruto interno", "pbi")]
+
+
+def _con_sinonimos(texto):
+    extra = [equivalente for frase, equivalente in SINONIMOS if frase in texto]
+    return texto + (" " + " ".join(extra) if extra else "")
 
 
 def _ficha(codigo):
@@ -80,10 +94,13 @@ def buscar_series(texto: str, frecuencia: str | None = None, limite: int = 10) -
         m &= df.texto.str.contains(re.escape(palabra))
     if frecuencia:
         m &= df.frecuencia.str.lower() == frecuencia.lower()
-    # primero las series vigentes y, entre ellas, las de nombre más corto (las más generales)
+    # primero las series vigentes; luego aquellas cuyo nombre corto está formado solo por palabras pedidas (así
+    # "pbi var% 12 meses" pone la serie llamada "PBI" antes que un sector); y, a igualdad, las de nombre más corto
     sel = df[m]
-    orden = sel.assign(vieja=sel.actualizada < "2025", largo=(sel.grupo + sel.nombre).str.len())
-    return [_ficha(c) for c in orden.sort_values(["vieja", "largo"]).head(limite).codigo]
+    palabras = set(_sin_tildes(texto).split())
+    exacto = sel.nombre.map(lambda n: set(re.findall(r"[\w%]+", _sin_tildes(n))) <= palabras)
+    orden = sel.assign(vieja=sel.actualizada < "2025", otro=~exacto, largo=(sel.grupo + sel.nombre).str.len())
+    return [_ficha(c) for c in orden.sort_values(["vieja", "otro", "largo"]).head(limite).codigo]
 
 
 # ---------- serie ----------
@@ -185,16 +202,31 @@ def serie(codigo: str, desde: str, hasta: str) -> dict:
 
 
 # ---------- resumen ----------
-def _estadisticas(datos):
-    """Primero, último, cambio, variación %, promedio, máximo y mínimo de una lista [{periodo, valor}]."""
+NOTA_TASA = ("La serie ya es una tasa (variación %): el cambio está en puntos porcentuales y no se calcula "
+             "la variación % de una tasa, que no tiene sentido económico.")
+
+
+def _es_tasa(nombre):
+    """True si la serie ya es una variación porcentual (inflación, crecimiento del PBI...)."""
+    return bool(re.search(r"var\s*%|variaci[oó]n", nombre, re.IGNORECASE))
+
+
+def _estadisticas(datos, tasa=False):
+    """Primero, último, cambio, variación %, promedio, máximo y mínimo de una lista [{periodo, valor}].
+
+    Si tasa=True (la serie ya es una variación %), variacion_pct es None y se agrega una nota.
+    """
     df = pd.DataFrame(datos)
     primero, ultimo = float(df.valor.iloc[0]), float(df.valor.iloc[-1])
     punto = lambda i: {"periodo": df.periodo[i], "valor": float(df.valor[i])}
-    return {"n": len(df), "primero": punto(0), "ultimo": punto(len(df) - 1),
-            "cambio": round(ultimo - primero, 4),
-            "variacion_pct": round((ultimo / primero - 1) * 100, 4) if primero else None,
-            "promedio": round(float(df.valor.mean()), 4),
-            "maximo": punto(df.valor.idxmax()), "minimo": punto(df.valor.idxmin())}
+    r = {"n": len(df), "primero": punto(0), "ultimo": punto(len(df) - 1),
+         "cambio": round(ultimo - primero, 4),
+         "variacion_pct": None if tasa or not primero else round((ultimo / primero - 1) * 100, 4),
+         "promedio": round(float(df.valor.mean()), 4),
+         "maximo": punto(df.valor.idxmax()), "minimo": punto(df.valor.idxmin())}
+    if tasa:
+        r["nota"] = NOTA_TASA
+    return r
 
 
 @mcp.tool(annotations=SOLO_LECTURA)
@@ -203,11 +235,12 @@ def resumen(codigo: str, desde: str, hasta: str) -> dict:
 
     Úsenla en vez de hacer cuentas a mano: para "cuánto subió", "cuál fue el promedio" o "cuándo fue el máximo".
     Mismas fechas que serie. cambio = último - primero; variacion_pct = (último / primero - 1) × 100.
-    Ojo: si la serie ya es una variación % (como la inflación), el cambio está en puntos porcentuales.
+    Si la serie ya es una variación % (inflación, crecimiento del PBI), el cambio está en puntos porcentuales
+    y variacion_pct es None: la variación % de una tasa no tiene sentido económico.
     """
     s = _serie(codigo, desde, hasta)
     return {"codigo": s["codigo"], "nombre": s["nombre"], "frecuencia": s["frecuencia"],
-            **_estadisticas(s["datos"]), "fuente": s["fuente"]}
+            **_estadisticas(s["datos"], _es_tasa(s["nombre"])), "fuente": s["fuente"]}
 
 
 # ---------- herramienta propia principal: comparar_periodos ----------
@@ -227,7 +260,7 @@ def comparar_periodos(codigo: str, desde_a: str, hasta_a: str, desde_b: str, has
     - periodo_a y periodo_b: n, primero, último, cambio, variación %, promedio, máximo y mínimo de cada intervalo;
     - diferencia_promedios = promedio B - promedio A (en las unidades de la serie; si la serie es una
       variación %, la diferencia está en puntos porcentuales);
-    - variacion_pct_promedios = (promedio B / promedio A - 1) × 100;
+    - variacion_pct_promedios = (promedio B / promedio A - 1) × 100 (None si la serie ya es una tasa);
     - mayor_promedio: "A", "B" o "iguales";
     - las dos URL de la fuente. Los intervalos pueden tener distinta duración, pero cada uno debe ir de
       desde a hasta (desde <= hasta).
@@ -236,15 +269,19 @@ def comparar_periodos(codigo: str, desde_a: str, hasta_a: str, desde_b: str, has
         if _orden(d) > _orden(h):
             raise ToolError(f"En el periodo {nombre}, desde ({d}) es posterior a hasta ({h}).")
     a, b = _serie(codigo, desde_a, hasta_a), _serie(codigo, desde_b, hasta_b)
-    ea, eb = _estadisticas(a["datos"]), _estadisticas(b["datos"])
+    tasa = _es_tasa(a["nombre"])
+    ea, eb = _estadisticas(a["datos"], tasa), _estadisticas(b["datos"], tasa)
+    ea.pop("nota", None), eb.pop("nota", None)
     dif = round(eb["promedio"] - ea["promedio"], 4)
     return {"codigo": a["codigo"], "nombre": a["nombre"], "frecuencia": a["frecuencia"], "unidad": a["unidad"],
             "periodo_a": {"desde": a["datos"][0]["periodo"], "hasta": a["datos"][-1]["periodo"], **ea},
             "periodo_b": {"desde": b["datos"][0]["periodo"], "hasta": b["datos"][-1]["periodo"], **eb},
             "diferencia_promedios": dif,
+            "unidad_diferencia": "puntos porcentuales" if tasa else "unidades de la serie",
             "variacion_pct_promedios": (round((eb["promedio"] / ea["promedio"] - 1) * 100, 4)
-                                        if ea["promedio"] else None),
+                                        if ea["promedio"] and not tasa else None),
             "mayor_promedio": "iguales" if dif == 0 else ("B" if dif > 0 else "A"),
+            **({"nota": NOTA_TASA} if tasa else {}),
             "fuentes": [a["fuente"], b["fuente"]]}
 
 
@@ -288,14 +325,25 @@ def graficar_serie(codigos: list[str], desde: str, hasta: str, titulo: str = "",
         ax.annotate(f"{df.valor.iloc[-1]:.2f}", (x[-1], df.valor.iloc[-1]), textcoords="offset points",
                     xytext=(4, 0), va="center", fontsize=9)
     unidad = series[0]["unidad"] or series[0]["nombre"]
+    entre_parentesis = re.findall(r"\(([^()]+)\)", unidad)
+    if _es_tasa(series[0]["nombre"]):
+        eje = "Variación porcentual (%)"
+    elif entre_parentesis:
+        eje = entre_parentesis[-1]                     # p. ej. "S/ por US$" o "índice 2007 = 100"
+    else:
+        eje = unidad if len(unidad) <= 45 else unidad[:44] + "…"
     ax.set_title(titulo or series[0]["nombre"], fontsize=12, loc="left", fontweight="bold")
-    ax.set_ylabel(unidad[:60], fontsize=9)
+    ax.set_ylabel(eje, fontsize=9)
     ax.spines[["top", "right"]].set_visible(False)
     ax.grid(axis="y", alpha=0.3)
     if min(min(p["valor"] for p in s["datos"]) for s in series) < 0:
         ax.axhline(0, color="black", linewidth=0.8)
     if len(series) > 1:
         ax.legend(fontsize=8, frameon=False)
+    if all(s["frecuencia"].lower() == "anual" for s in series):   # datos anuales: una marca por año, sin meses
+        import matplotlib.dates as mdates
+        ax.xaxis.set_major_locator(mdates.YearLocator())
+        ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
     nota = (f"Fuente: BCRP, estadisticas.bcrp.gob.pe, series {', '.join(s['codigo'] for s in series)}. "
             f"Periodo {series[0]['datos'][0]['periodo']} a {series[0]['datos'][-1]['periodo']}. "
             f"Consultado el {date.today():%d/%m/%Y}.")
