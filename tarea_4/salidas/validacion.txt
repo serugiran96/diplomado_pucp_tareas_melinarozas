@@ -1,4 +1,4 @@
-VALIDACIÓN ENAHO 2024 · generado 2026-11-08 12:12
+VALIDACIÓN ENAHO 2024 · generado 2026-11-08 12:31
 Archivos: 966-Modulo34.zip/966-Modulo34/sumaria-2024.dta y 966-Modulo02.zip/966-Modulo02/enaho01-2024-200.dta
 Filtro de residentes: ((p204 == 1) & (p205 == 2)) | ((p204 == 2) & (p206 == 1))
 Unión: personas.merge(sumaria, on=[conglome, vivienda, hogar], validate='m:1')

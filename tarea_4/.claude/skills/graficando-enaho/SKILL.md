@@ -23,7 +23,9 @@ argument-hint: "[area|sexo|sexo_jefe|edad|region|dominio|departamento|todos]"
 | departamentos, regiones, comparación territorial | `departamento` |
 | todo lo anterior | `todos` |
 
-   Si piden pobreza extrema, agrega `--indicador pobre_extremo`. Si el pedido es `$ARGUMENTS`, úsalo como tipo.
+   Si piden pobreza extrema, agrega `--indicador pobre_extremo`. Si la skill se invocó con argumentos
+   (`$ARGUMENTS`) y son un tipo válido de la tabla, úsalos tal cual; si son una frase, tradúcela con la tabla
+   (puede dar más de un `--tipo`: corre el script una vez por cada uno).
 3. Corre desde la raíz del proyecto:
 
    ```bash

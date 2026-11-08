@@ -52,13 +52,13 @@ def titulo_analitico(t, indicador, grupo, tipo):
         f_alto, f_bajo = FRASES.get((tipo, alto.categoria), alto.categoria), FRASES.get((tipo, bajo.categoria),
                                                                                         bajo.categoria)
         if brecha < 1.96 * (alto.ee ** 2 + bajo.ee ** 2) ** 0.5:
-            return (f"La {nombre} es similar en {f_alto} ({alto.pct:.1f} %) y {f_bajo} ({bajo.pct:.1f} %): "
+            return (f"La {nombre} es similar en {f_alto} ({alto.pct:.1f}\u00a0%) y {f_bajo} ({bajo.pct:.1f}\u00a0%): "
                     "la diferencia está dentro del margen de error")
-        return (f"La {nombre} es {brecha:.1f} puntos mayor en {f_alto} ({alto.pct:.1f} %) "
-                f"que en {f_bajo} ({bajo.pct:.1f} %)")
+        return (f"La {nombre} es {brecha:.1f} puntos mayor en {f_alto} ({alto.pct:.1f}\u00a0%) "
+                f"que en {f_bajo} ({bajo.pct:.1f}\u00a0%)")
     razon = alto.pct / bajo.pct if bajo.pct else float("nan")
     et = (lambda c: f"{c} años") if tipo == "edad" else (lambda c: c)
-    return (f"La {nombre} va de {bajo.pct:.1f} % ({et(bajo.categoria)}) a {alto.pct:.1f} % "
+    return (f"La {nombre} va de {bajo.pct:.1f}\u00a0% ({et(bajo.categoria)}) a {alto.pct:.1f}\u00a0% "
             f"({et(alto.categoria)}): {razon:.1f} veces más según {grupo}")
 
 
