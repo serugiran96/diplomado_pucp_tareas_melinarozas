@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "bcrp": {
+      "command": "uv",
+      "args": ["run", "--quiet", "mcp/server.py"]
+    }
+  }
+}
