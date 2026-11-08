@@ -1,0 +1,31 @@
+VALIDACIÓN ENAHO 2024 · generado 2026-11-08 12:12
+Archivos: 966-Modulo34.zip/966-Modulo34/sumaria-2024.dta y 966-Modulo02.zip/966-Modulo02/enaho01-2024-200.dta
+Filtro de residentes: ((p204 == 1) & (p205 == 2)) | ((p204 == 2) & (p206 == 1))
+Unión: personas.merge(sumaria, on=[conglome, vivienda, hogar], validate='m:1')
+Pobreza: pobre = pobreza <= 2; ponderación con facpob07 (personas). Error estándar por diseño (conglome dentro de estrato).
+
+[OK] Llaves de sumaria como texto con ceros iniciales (conglome, vivienda, hogar)             valor: sí                     referencia: sí                         APROBADA (esencial)
+[OK] Llaves únicas en sumaria                                                                 valor: 0 duplicados           referencia: 0 duplicados               APROBADA (esencial)
+[OK] Llaves de miembros como texto con ceros iniciales (conglome, vivienda, hogar, codperso)  valor: sí                     referencia: sí                         APROBADA (esencial)
+[OK] Llaves únicas en miembros                                                                valor: 0 duplicados           referencia: 0 duplicados               APROBADA (esencial)
+[OK] Hogares en la sumaria                                                                    valor: 33,691                 referencia: 33,691                     APROBADA (esencial)
+[OK] Residentes habituales                                                                    valor: 108,664                referencia: 108,664                    APROBADA (esencial)  · de 117,721 filas del módulo 02
+[OK] Unión m:1 sin duplicar filas                                                             valor: 108,664 -> 108,664     referencia: igual número de filas      APROBADA (esencial)
+[OK] Todas las personas encuentran su hogar                                                   valor: 0 sin hogar            referencia: 0                          APROBADA (esencial)
+[OK] Persona única después de la unión                                                        valor: 0 duplicados           referencia: 0                          APROBADA (esencial)
+[OK] El ubigeo de la persona coincide con el del hogar                                        valor: 100.00%                referencia: 100 %                      APROBADA (informativa)
+[OK] Códigos de departamento (ubigeo[:2])                                                     valor: 25: 01-25              referencia: 25: 01-25                  APROBADA (esencial)
+[OK] Lima (15) y Callao (07) separados                                                        valor: sí                     referencia: sí                         APROBADA (esencial)
+[OK] facpob07 presente y positivo en todos los residentes                                     valor: 0 nulos o <= 0         referencia: 0                          APROBADA (esencial)
+[OK] Población expandida (suma de facpob07)                                                   valor: 34,147,768             referencia: ≈ 34 millones (proyección INEI 2024) APROBADA (esencial)
+[OK] Pobreza monetaria nacional (personas, facpob07)                                          valor: 27.53 %                referencia: 27.6 % ± 0.1               APROBADA (esencial)  · IC 95 %: 26.51-28.55
+[OK] Pobreza monetaria nacional (sumaria, factor07 × mieperho)                                valor: 27.58 %                referencia: 27.6 % ± 0.1               APROBADA (esencial)  · cálculo independiente con la sumaria: es el método oficial del INEI
+[OK] El factor cambia el resultado (pobreza sin ponderar ≠ ponderada)                         valor: 25.61 % sin ponderar   referencia: distinta de la ponderada   APROBADA (informativa)  · muestra por qué no se aceptan promedios simples
+[OK] Pobreza urbana (estrato <= 5)                                                            valor: 24.74 % | 24.81 %      referencia: ≈ 24.8 %                   APROBADA (informativa)  · personas+facpob07 | sumaria+factor07×mieperho; dif. entre métodos -0.07 pp
+[OK] Pobreza rural (estrato >= 6)                                                             valor: 39.44 % | 39.30 %      referencia: ≈ 39.3 %                   APROBADA (informativa)  · personas+facpob07 | sumaria+factor07×mieperho; dif. entre métodos +0.14 pp
+[OK] Pobreza extrema nacional                                                                 valor: 5.50 % | 5.50 %        referencia: ≈ 5.5 %                    APROBADA (informativa)  · personas+facpob07 | sumaria+factor07×mieperho; dif. entre métodos -0.00 pp
+[OK] Pobreza en Lima Metropolitana (dominio 8)                                                valor: 28.03 % | 28.21 %      referencia: ≈ 28.2 %                   APROBADA (informativa)  · personas+facpob07 | sumaria+factor07×mieperho; dif. entre métodos -0.18 pp
+[OK] Departamentos con estimación en indicadores.csv                                          valor: 25                     referencia: 25                         APROBADA (esencial)
+
+Resumen: 22/22 verificaciones aprobadas; 0 esenciales fallidas.
+RESULTADO: APROBADA. Base guardada en salidas/personas_2024.parquet (108,664 personas) e indicadores en salidas/indicadores.csv.

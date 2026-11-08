@@ -1,0 +1,12 @@
+VALIDACIÓN DEL MAPA · Pobreza monetaria, ENAHO 2024
+Mapa: mapas/pobreza_departamento.png
+
+[OK] Unidades territoriales en el GeoJSON: 25 (referencia: 25) APROBADA
+[OK] Departamentos unidos con dato (ubigeo[:2] = FIRST_IDDP): 25 (referencia: 25) APROBADA
+[OK] Lima (15) y Callao (07) como unidades separadas: CALLAO, LIMA (referencia: CALLAO, LIMA) APROBADA
+[OK] Máx. diferencia con la referencia, método INEI (sumaria): 0.0 pp (referencia: <= 0.1 pp) APROBADA
+[OK] Máx. diferencia con la referencia, base de personas (facpob07): 0.5 pp (Huánuco) (referencia: <= 0.6 pp) APROBADA
+[OK] Referencia dentro del IC 95 % de la estimación: 25/25 (referencia: 25/25) APROBADA
+[OK] Mismo departamento con mayor y menor pobreza que la referencia: Cajamarca / Ica (referencia: Cajamarca / Ica) APROBADA
+
+Comparación completa en salidas/comparacion_mapa_referencia.csv. La referencia del curso se calculó con la sumaria (factor07 × mieperho); la base de personas cuenta a los residentes habituales, por eso hay diferencias de algunas décimas, siempre dentro del IC 95 %.
