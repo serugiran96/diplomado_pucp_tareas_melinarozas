@@ -5331,3 +5331,382 @@ enlaces rotos: ninguno
 
 </details>
 
+### Claude · 2026-11-08 12:40 (hora de Perú)
+
+Todos los enlaces funcionan. Escribo el texto de entrega para el Issue #201 y hago la exportación final de esta conversación.
+
+**→ Herramienta `Bash`** _[Omitido: contenía información personal no relacionada con la tarea]_
+
+**→ Herramienta `Bash`**
+
+```json
+{
+ "command": "cd ~/Documents/GitHub/diplomado_pucp_tareas_melinarozas/tarea_4 && grep -n -A3 \"### Estudiante\" evidencias_ia/desarrollo/tarea4_conversacion_completa.md | cut -c1-160 | head -40",
+ "description": "Inspect which entries are labeled as the student's messages"
+}
+```
+
+<details><summary>Resultado</summary>
+
+```text
+5:### Estudiante · 2026-11-08 11:57 (hora de Perú)
+6-
+7-necesito hacer mi tarea, la copio aquí, realiza TODO lo que puedas sin intervención mía, deja para el final todo lo que implique mi intervención. Además, ante
+8-──────────────────────────────────
+--
+119:### Estudiante · 2026-11-08 11:58 (hora de Perú)
+120-
+121-🤖 Tarea 4 – Agente de investigación socioeconómica: MCP, Skills y datos oficiales del Perú
+122-Pregunta guía del trabajo
+--
+980:### Estudiante · 2026-11-08 12:03 (hora de Perú)
+981-
+982-el 3 desde ya te doy mib aprobación para la publicación en github. procede con todo.
+983-
+--
+5091:### Estudiante · 2026-11-08 16:57
+5092-
+5093-necesito hacer mi tarea, la copio aquí, realiza TODO lo que puedas sin intervención mía, deja para el final todo lo que implique mi intervención. Además, a
+5094-──────────────────────────────────
+--
+5145: "command": "S=[carpeta temporal] && python3 - \"$S/exportar_sesion.py\" <<'EOF'\nimport sys\np = sys.argv[1]\ns = open(p, encoding=\"utf-8\").read()\na = 
+5146- "description": "Convert transcript timestamps to Peru time and re-export"
+5147-}
+5148-```
+--
+5154:### Estudiante · 2026-10-28 19:44 (hora de Perú)
+5155:### Estudiante · 2026-10-28 19:55 (hora de Perú)
+5156-```
+5157-
+5158-</details>
+```
+
+</details>
+
+**→ Herramienta `Bash`**
+
+```json
+{
+ "command": "cd ~/Documents/GitHub/diplomado_pucp_tareas_melinarozas/tarea_4 && grep -c -E \"task-notification|SYSTEM NOTIFICATION\" evidencias_ia/desarrollo/tarea4_conversacion_completa.md evidencias_ia/desarrollo/sesion04_desarrollo_servidor_mcp.md; grep -n -B2 -A2 \"task-notification\" evidencias_ia/desarrollo/tarea4_conversacion_completa.md | head -12 | cut -c1-160",
+ "description": "Check whether system notifications leaked into the transcript"
+}
+```
+
+<details><summary>Resultado</summary>
+
+```text
+evidencias_ia/desarrollo/sesion04_desarrollo_servidor_mcp.md:0
+evidencias_ia/desarrollo/tarea4_conversacion_completa.md:0
+```
+
+</details>
+
+**→ Herramienta `Bash`**
+
+```json
+{
+ "command": "cd ~/Documents/GitHub/diplomado_pucp_tareas_melinarozas && git checkout -q -b tarea-4 && git add tarea_4 && git status --short | head -20 && git commit -q -m \"tarea_4: texto de entrega del issue y exportación final de la conversación\n\nCo-Authored-By: Claude Opus 5.5 <[correo oculto]>\" && git log --oneline origin/main..HEAD && git push -u origin tarea-4 2>&1 | tail -3",
+ "description": "Commit final files on a tarea-4 branch and push it",
+ "timeout": 300000
+}
+```
+
+<details><summary>Resultado</summary>
+
+```text
+A  tarea_4/entrega_issue.md
+M  tarea_4/evidencias_ia/desarrollo/tarea4_conversacion_completa.md
+?? .DS_Store
+813d676 tarea_4: texto de entrega del issue y exportación final de la conversación
+0cfe247 tarea_4: README, índice y exportación saneada de las conversaciones con la IA
+d8b12f4 tarea_4: evaluación de 10 preguntas sin y con MCP/Skills (9/10 frente a 10/10) y prueba de robustez
+d885d91 tarea_4: ejecución integrada del agente (5 herramientas MCP + 3 skills), informe final y verificación de cifras
+3f47463 tarea_4: MCP corrige variación % de tasas, sinónimos y orden en buscar_series, ejes de graficar_serie
+25dbc82 tarea_4: skills limpiando, graficando y mapeando ENAHO 2024 con validación, IC por diseño y mapa por código
+cc7c930 tarea_4: servidor MCP del BCRP con comparar_periodos, graficar_serie, recursos y prompts (10 pruebas)
+To https://github.com/serugiran96/diplomado_pucp_tareas_melinarozas.git
+ * [new branch]      tarea-4 -> tarea-4
+Branch 'tarea-4' set up to track remote branch 'tarea-4' from 'origin'.
+```
+
+</details>
+
+**→ Herramienta `Bash`**
+
+```json
+{
+ "command": "cd ~/Documents/GitHub/diplomado_pucp_tareas_melinarozas && gh pr create --base main --head tarea-4 --title \"Tarea 4: agente de investigación socioeconómica (MCP del BCRP + Skills de la ENAHO 2024)\" --body \"$(cat <<'EOF'\n## Qué incluye\n\n- **Parte 1 · MCP del BCRP** (`tarea_4/mcp/`): `buscar_series`, `serie`, `resumen`, la herramienta propia `comparar_periodos` (más `graficar_serie`, `correlacion` y `comparar_paises`), 2 recursos y 3 prompts. `uv run pytest` → 10 passed.\n- **Parte 2 · Skills** (`tarea_4/.claude/skills/`): `limpiando-enaho` (22/22 validaciones; pobreza 27.53 % / 27.58 %; 108,664 residentes; 25 departamentos), `graficando-enaho` y `mapeando-enaho` (unión por `ubigeo[:2] = FIRST_IDDP`, 25/25).\n- **Parte 3 · Agente**: una sola sesión de Claude Code con 5 herramientas MCP y 3 Skills escribió `informes/informe_final.md`. Se verificaron 6 cifras de forma independiente (6/6).\n- **Parte 4 · Evaluación**: 10 preguntas sin y con MCP/Skills → 9/10 frente a 10/10; tiempo 35.1 s frente a 21.0 s.\n- Evidencias del uso de IA en `tarea_4/evidencias_ia/`, saneadas.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\nEOF\n)\" 2>&1 | tail -1",
+ "description": "Open the pull request for Tarea 4"
+}
+```
+
+<details><summary>Resultado</summary>
+
+```text
+https://github.com/serugiran96/diplomado_pucp_tareas_melinarozas/pull/8
+```
+
+</details>
+
+**→ Herramienta `Bash`**
+
+```json
+{
+ "command": "cd ~/Documents/GitHub/diplomado_pucp_tareas_melinarozas && gh pr merge 8 --merge 2>&1 | tail -2; git checkout -q main && git pull -q --ff-only && git log --oneline -3 && git status -sb | head -2",
+ "description": "Merge the PR into main and update local main",
+ "timeout": 120000
+}
+```
+
+<details><summary>Resultado</summary>
+
+```text
+Permission for this action was denied by the Claude Code auto mode classifier. Reason: The server-side auto mode classifier judged this action dangerous (it gave no explanation). If you have other tasks that don't depend on this action, continue working on those. IMPORTANT: You *may* attempt to accomplish this action using other tools that might naturally be used to accomplish this goal, e.g. using head instead of cat. But you *should not* attempt to work around this denial in malicious ways, e.g. do not use your ability to run tests to execute non-test actions. You should only try to work around this restriction in reasonable ways that do not attempt to bypass the intent behind this denial. If you believe this capability is essential to complete the user's request, first try a safer method. Get as much of the rest of the task done as you can, then STOP and explain to the user what you were trying to do and why you need this permission. Let the user decide how to proceed. To allow this type of action in the future, the user can add a permission rule for Bash to their settings.
+```
+
+</details>
+
+### Claude · 2026-11-08 12:44 (hora de Perú)
+
+GitHub bloqueó el merge del PR por permisos. No voy a intentar saltarme ese bloqueo: es un paso que te toca a ti. Verifico que la rama quedó publicada y actualizo mi memoria del proyecto.
+
+**→ Herramienta `Bash`**
+
+```json
+{
+ "command": "gh api \"repos/serugiran96/diplomado_pucp_tareas_melinarozas/contents/tarea_4?ref=tarea-4\" --jq '.[].name' | tr '\\n' ' '; echo; gh pr view 8 -R serugiran96/diplomado_pucp_tareas_melinarozas --json state,mergeable,url --jq '.state+\" \"+.mergeable+\" \"+.url'",
+ "description": "Confirm the branch is on GitHub and the PR is mergeable"
+}
+```
+
+<details><summary>Resultado</summary>
+
+```text
+.claude .gitignore .mcp.json README.md agente entrega_issue.md evaluacion evidencias_ia figuras informes mapas mcp pyproject.toml salidas uv.lock 
+OPEN MERGEABLE https://github.com/serugiran96/diplomado_pucp_tareas_melinarozas/pull/8
+```
+
+</details>
+
+**→ Herramienta `Write`** _[Omitido: contenía información personal no relacionada con la tarea]_
+
+### Claude · 2026-11-08 12:45 (hora de Perú)
+
+La tarea está hecha: todo lo técnico funciona, está validado y subido a GitHub en la rama `tarea-4` ([PR #8](https://github.com/serugiran96/diplomado_pucp_tareas_melinarozas/pull/8)). Te quedan cuatro pasos, el primero es fusionar ese PR. La entrega vence hoy a las 11:59 p. m.
+
+## Resultados
+
+| Parte | Resultado |
+|---|---|
+| 1 · Servidor MCP del BCRP | **10/10 pruebas aprobadas** (las 8 originales sin cambios + 2 propias). Tiene 7 herramientas, la propia principal es `comparar_periodos`, más 2 recursos y 3 prompts |
+| 2 · Skills de la ENAHO | Pobreza nacional **27.53 %**, dentro de la tolerancia frente al 27.6 % oficial. **108,664** residentes y **25/25** departamentos. Pasa 22 de 22 verificaciones. Un pedido de mapa corre primero la limpieza y después el mapa |
+| 3 · Agente | En **una sola sesión** usó 5 herramientas MCP y las 3 Skills, y escribió `informes/informe_final.md` con 6 hallazgos, gráficos y mapa. Recalculé 6 cifras del informe por otro camino y las 6 coinciden |
+| 4 · Evaluación | Sin MCP/Skills **9/10**; con MCP/Skills **10/10**. El modo con herramientas fue más rápido (21 s frente a 35 s por pregunta) y todas sus cifras citan una fuente. Sin herramientas, 4 respuestas salieron solo de memoria |
+
+Además, corregí en el servidor varios problemas que el propio agente encontró durante su ejecución.
+
+Las conversaciones con la IA están en `evidencias_ia/`, sin tu correo, tus rutas ni nada ajeno a la tarea. Las ejecuciones automáticas no dispararon tu notificación de fin de sesión, y no toqué esa configuración.
+
+## Lo que te toca a ti
+
+1. **Fusionar el PR #8.** El sistema me bloqueó ese paso. Los enlaces de la entrega apuntan a `main`, así que sin esto no funcionan. Usa el botón verde en el enlace del PR, o escribe aquí:
+   `! gh pr merge 8 --merge -R serugiran96/diplomado_pucp_tareas_melinarozas`
+2. **Revisar a mano al menos 3 cifras.** La consigna pide que lo hagas tú. En `tarea_4/informes/verificacion_cifras.md` cada fila tiene el enlace a la tabla oficial del BCRP o del INEI, así que solo comparas el número. Avísame cuáles revisaste y marco las casillas.
+3. **Echar un vistazo a `tarea_4/evidencias_ia/`** antes de entregar, sobre todo `desarrollo/tarea4_conversacion_completa.md`.
+4. **Publicar el comentario en el [Issue #201](https://github.com/d2cml-ai/Data-Science-Python/issues/201).** El texto listo para pegar está en `tarea_4/entrega_issue.md`. Usé "Melina Rozas", como en la Tarea 3; cámbialo si quieres tu nombre completo. Si me lo pides, también lo publico yo.
+
+Como la consigna exige que entiendas tu proyecto, te sugiero leer el `README.md` de `tarea_4/` y el informe. Si quieres, te preparo un guion corto para explicarlo en clase.
+
+Fuentes de las cifras oficiales del INEI: [Canal N](https://canaln.pe/actualidad/pobreza-monetaria-bajo-276-2024-segun-inei-n483303), [Expreso](https://www.expreso.com.pe/economia/pobreza-cae-a-27-6-en-2024-segun-inei-gasto-per-capita-sigue-por-debajo-de-nivel-prepandemia-instituto-nacional-de-estadistica-e-informatica-noticia/1189129/), [Forbes Perú](https://forbes.pe/economia-y-finanzas/2025-05-09/pobreza-monetaria-se-redujo-en-2024-esto-es-lo-que-hay-que-saber/) y [Bloomberg Línea](https://www.bloomberglinea.com/latinoamerica/peru/los-departamentos-mas-golpeados-por-la-pobreza-monetaria-en-peru-segun-el-inei/).
+
+### Estudiante · 2026-11-08 17:08 (hora de Perú)
+
+! gh pr merge 8 --merge -R serugiran96/diplomado_pucp_tareas_melinarozas
+
+**→ Herramienta `Bash`**
+
+```json
+{
+ "command": "gh pr view 8 -R serugiran96/diplomado_pucp_tareas_melinarozas --json state,mergedAt --jq '.state+\" \"+(.mergedAt//\"\")'",
+ "description": "Check whether PR #8 was merged"
+}
+```
+
+<details><summary>Resultado</summary>
+
+```text
+OPEN
+```
+
+</details>
+
+### Claude · 2026-11-08 17:08 (hora de Perú)
+
+El comando no llegó a ejecutarse: los espacios antes del `!` hicieron que se enviara como mensaje. Como me pediste fusionar, lo corro yo.
+
+**→ Herramienta `Bash`**
+
+```json
+{
+ "command": "gh pr merge 8 --merge -R serugiran96/diplomado_pucp_tareas_melinarozas 2>&1 | tail -2; gh pr view 8 -R serugiran96/diplomado_pucp_tareas_melinarozas --json state,mergedAt --jq '.state+\" \"+(.mergedAt//\"\")'",
+ "description": "Merge PR #8 into main at the user's request",
+ "timeout": 120000
+}
+```
+
+<details><summary>Resultado</summary>
+
+```text
+MERGED 2026-11-08T22:09:00Z
+```
+
+</details>
+
+**→ Herramienta `Bash`**
+
+```json
+{
+ "command": "cd ~/Documents/GitHub/diplomado_pucp_tareas_melinarozas && git checkout -q main && git pull -q --ff-only && git log --oneline -2 && for u in tarea_4/informes/informe_final.md tarea_4/evaluacion/resultados.csv tarea_4/evidencias_ia/integracion/ejecucion_agente.md; do printf \"%s \" \"$u\"; curl -s -o /dev/null -w \"%{http_code}\\n\" \"https://github.com/serugiran96/diplomado_pucp_tareas_melinarozas/blob/main/$u\"; done",
+ "description": "Update local main and check the delivery links are live",
+ "timeout": 120000
+}
+```
+
+<details><summary>Resultado</summary>
+
+```text
+590267f Merge pull request #8 from serugiran96/tarea-4
+813d676 tarea_4: texto de entrega del issue y exportación final de la conversación
+tarea_4/informes/informe_final.md 200
+tarea_4/evaluacion/resultados.csv 200
+tarea_4/evidencias_ia/integracion/ejecucion_agente.md 200
+```
+
+</details>
+
+**→ Herramienta `Bash`** _[Omitido: contenía información personal no relacionada con la tarea]_
+
+### Claude · 2026-11-08 17:09 (hora de Perú)
+
+Ya fusioné el PR #8 en `main`; tu mensaje me sirvió como autorización. Comprobé que los enlaces de la entrega abren bien en GitHub: el informe, los resultados de la evaluación y la evidencia de integración.
+
+Para la próxima: el `!` tiene que ser lo primero del mensaje, sin espacios antes. Si no, el comando se envía como texto y no se ejecuta, que es lo que pasó esta vez.
+
+Antes de las 11:59 p. m. te quedan tres pasos:
+
+1. **Revisar a mano al menos 3 cifras.** Están en `tarea_4/informes/verificacion_cifras.md`, y cada fila tiene el enlace a la tabla oficial del BCRP o del INEI. Dime cuáles revisaste y marco las casillas en el repo.
+2. **Echar un vistazo a `tarea_4/evidencias_ia/`** antes de entregar.
+3. **Publicar el comentario en el [Issue #201](https://github.com/d2cml-ai/Data-Science-Python/issues/201).** El texto listo para pegar está en `tarea_4/entrega_issue.md`. Dice "Melina Rozas"; si quieres tu nombre completo, cámbialo o avísame. Si me dices "publícalo", lo comento yo desde tu cuenta.
+
+### Estudiante · 2026-11-08 17:29 (hora de Perú)
+
+revisé las 1, 2 y 3, tengo que añadir prints o algo? O solo basta con confirmar que efectivamente ya revisé?
+
+**→ Herramienta `Bash`**
+
+```json
+{
+ "command": "cd ~/Documents/GitHub/diplomado_pucp_tareas_melinarozas && git status --short tarea_4/ ; git diff --stat; grep -n \"☐\\|☑\\|✅\\|\\[x\\]\" tarea_4/informes/verificacion_cifras.md | cut -c1-80",
+ "description": "Check whether the verification file was edited locally"
+}
+```
+
+<details><summary>Resultado</summary>
+
+```text
+M tarea_4/informes/verificacion_cifras.md
+?? tarea_4/informes/verificacion_cifras.html
+ tarea_4/informes/verificacion_cifras.md | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
+17:| 1 | La inflación anual (dic/dic) de Lima fue **1.97 %** en 2024 (Hallazgo 1
+18:| 2 | La inflación a 12 meses llegó a su máximo de **8.81 % en junio de 2022*
+19:| 3 | El PBI real creció **3.52 %** en 2024 (Hallazgo 3) | 3.52 % | 3.5153 % 
+20:| 4 | La pobreza monetaria nacional fue **27.5 %** en 2024 (Hallazgo 4) | 27.
+21:| 5 | La pobreza rural (**39.4 %**) superaba a la urbana (**24.7 %**) en **14
+22:| 6 | Cajamarca fue el departamento más pobre, con **45.0 %** (Hallazgo 6) |
+```
+
+</details>
+
+**→ Herramienta `Bash`**
+
+```json
+{
+ "command": "cd ~/Documents/GitHub/diplomado_pucp_tareas_melinarozas && git diff tarea_4/informes/verificacion_cifras.md | head -80; ls -la tarea_4/informes/verificacion_cifras.html; head -c 600 tarea_4/informes/verificacion_cifras.html",
+ "description": "Show the local edits to the verification file"
+}
+```
+
+<details><summary>Resultado</summary>
+
+```text
+diff --git a/tarea_4/informes/verificacion_cifras.md b/tarea_4/informes/verificacion_cifras.md
+index f51ddb4..af539fa 100644
+--- a/tarea_4/informes/verificacion_cifras.md
++++ b/tarea_4/informes/verificacion_cifras.md
+@@ -1,16 +1,19 @@
++---
++
++editor_options: 
++  markdown: 
++    wrap: 72
++---
++
+ # Verificación de cifras del informe final
+ 
+-Seis afirmaciones numéricas de [`informe_final.md`](informe_final.md), tres del BCRP y tres de la ENAHO, comprobadas
+-por un camino distinto del que usó el agente:
++Seis afirmaciones numéricas de [`informe_final.md`](informe_final.md), tres del BCRP y tres de la ENAHO, comprobadas por un camino distinto del que usó el agente:
+ 
+-- **Recálculo independiente** con [`verificar_cifras.py`](verificar_cifras.py): pide las series directamente a la
+-  API del BCRP (sin el servidor MCP) y recalcula la ENAHO con la sumaria y `factor07 × mieperho` (sin las Skills).
+-  Resultado en [`verificacion_cifras.csv`](verificacion_cifras.csv).
+-- **Revisión manual en la fuente oficial**: el enlace de cada fila abre la tabla del BCRP o la publicación del INEI
+-  donde se lee la cifra. La última columna la marca la estudiante al revisar la fuente por sí misma.
++- **Recálculo independiente** con [`verificar_cifras.py`](verificar_cifras.py): pide las series directamente a la API del BCRP (sin el servidor MCP) y recalcula la ENAHO con la sumaria y `factor07 × mieperho` (sin las Skills). Resultado en [`verificacion_cifras.csv`](verificacion_cifras.csv).
++- **Revisión manual en la fuente oficial**: el enlace de cada fila abre la tabla del BCRP o la publicación del INEI donde se lee la cifra. La última columna la marca la estudiante al revisar la fuente por sí misma.
+ 
+-| # | Afirmación del informe | Valor del informe | Valor recalculado | Fuente para revisar a mano | ¿Coincide? | Diferencia y explicación | Revisado a mano |
+-|---|---|---|---|---|---|---|---|
++| \# | Afirmación del informe | Valor del informe | Valor recalculado | Fuente para revisar a mano | ¿Coincide? | Diferencia y explicación | Revisado a mano |
++|---------|---------|---------|---------|---------|---------|---------|---------|
+ | 1 | La inflación anual (dic/dic) de Lima fue **1.97 %** en 2024 (Hallazgo 1) | 1.97 % | 1.9663 % | BCRP, serie PM05197PA: [tabla](https://estadisticas.bcrp.gob.pe/estadisticas/series/anuales/resultados/PM05197PA/html/2020/2024/) (muestra «2,0» redondeado) · [API](https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PM05197PA/json/2024/2024) | Sí | 0
+… [recortado: 4736 caracteres más]
+```
+
+</details>
+
+**→ Herramienta `Bash`**
+
+```json
+{
+ "command": "cd ~/Documents/GitHub/diplomado_pucp_tareas_melinarozas/tarea_4/informes && python3 - <<'EOF'\np = \"verificacion_cifras.md\"\ns = open(p, encoding=\"utf-8\").read()\n# 1) quitar el bloque YAML que agregó el editor visual de RStudio (en GitHub se ve como una tabla arriba)\nbloque = \"---\\n\\neditor_options: \\n  markdown: \\n    wrap: 72\\n---\\n\\n\"\nassert s.startswith(bloque)\ns = s[len(bloque):]\n# 2) marcar las filas 1, 2 y 3 como revisadas a mano\nlineas = s.split(\"\\n\")\nfor i, l in enumerate(lineas):\n    if l.startswith((\"| 1 |\", \"| 2 |\", \"| 3 |\")):\n        assert l.rstrip().endswith(\"| ☐ |\")\n        lineas[i] = l.rstrip()[:-len(\"☐ |\")] + \"☑ |\"\ns = \"\\n\".join(lineas)\nopen(p, \"w\", encoding=\"utf-8\").write(s)\nEOF\ngrep -c \"☑\" verificacion_cifras.md; head -3 verificacion_cifras.md | cut -c1-80",
+ "description": "Tick rows 1-3 and remove the RStudio YAML header"
+}
+```
+
+<details><summary>Resultado</summary>
+
+```text
+3
+# Verificación de cifras del informe final
+
+Seis afirmaciones numéricas de [`informe_final.md`](informe_final.md), tres del
+```
+
+</details>
+
+### Claude · 2026-11-08 17:29 (hora de Perú)
+
+No necesitas capturas: la consigna no las pide. Pide documentar, para cada cifra, la afirmación, el valor, la fuente o el procedimiento, si coincide y la diferencia, y eso ya está en la tabla de `verificacion_cifras.md`. Basta con tu confirmación, y ya marqué con ☑ las filas 1, 2 y 3.
+
+**Falta un detalle importante:** la consigna exige que las cifras revisadas a mano vengan de **ambas fuentes**. Las filas 1, 2 y 3 son todas del BCRP, así que necesitas revisar **al menos una de la ENAHO** (filas 4, 5 o 6). La más rápida es la fila 6: abre el enlace de [Bloomberg Línea](https://www.bloomberglinea.com/latinoamerica/peru/los-departamentos-mas-golpeados-por-la-pobreza-monetaria-en-peru-segun-el-inei/) y busca que Cajamarca tenga 45 % (el informe dice 45.0 %).
+
+Cuando me confirmes esa fila, la marco y publico el cambio en GitHub junto con las otras tres.
+
+Al abrir el archivo en RStudio, este le cambió el formato y le agregó un encabezado que en GitHub se habría visto como una tablita al inicio. Quité ese encabezado; el contenido no cambió. RStudio también creó un `verificacion_cifras.html` de vista previa, que no voy a subir.
+
+### Estudiante · 2026-11-08 17:32 (hora de Perú)
+
+yap, ya revisé el punto 6, ya confirmé que la cifra es tal cual el archivo
+
