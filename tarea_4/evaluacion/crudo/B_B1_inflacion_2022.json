@@ -1,0 +1,19 @@
+{
+ "respuesta": "En 2022 la inflación anual de Lima Metropolitana, medida de diciembre de 2021 a diciembre de 2022, fue de **8.46 %** (8.4592 %).\n\n**Fuente:** BCRP, Estadísticas (API de series). Lo comprobé con tres series del IPC de Lima que llegan a la misma cifra:\n\n| Serie | Código | Dato (2022-12) |\n|---|---|---|\n| IPC Lima, variación % a 12 meses | PN01273PM | 8.4592 % |\n| IPC Lima, variación % acumulada en el año | PN01272PM | 8.4592 % |\n| IPC Lima, índice con base Dic.2021 = 100 | PN38705PM | Pasa de 100 (2021-12) a 108.4592 (2022-12), es decir +8.4592 % |\n\n- https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN01273PM/json/2022-12/2022-12\n- https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN01272PM/json/2022-12/2022-12\n- https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN38705PM/json/2021-12/2022-12\n\nEs la inflación más alta de los últimos 25 años y está muy por encima del rango meta del BCRP (1 % a 3 %).\n\nRESPUESTA: 8.46",
+ "herramientas": [
+  "ToolSearch",
+  "mcp__bcrp__buscar_series",
+  "mcp__bcrp__serie",
+  "mcp__bcrp__buscar_series",
+  "mcp__bcrp__serie",
+  "mcp__bcrp__resumen"
+ ],
+ "skills": [],
+ "turnos": 7,
+ "costo_usd": 0.18212680000000003,
+ "duracion_ms": 17595,
+ "error": "",
+ "modo": "B",
+ "segundos": 19.8,
+ "id": "B1_inflacion_2022"
+}

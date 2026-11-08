@@ -1,0 +1,21 @@
+{
+ "respuesta": "Ya tengo las cifras de varias fuentes. Las comparo y te doy la respuesta.\n\n**1. Inflación de Lima Metropolitana (BCRP, IPC de diciembre a diciembre)**\n\n| Año | Inflación anual |\n|---|---|\n| 2022 | 8,46 % |\n| 2023 | 3,24 % |\n| 2024 | 1,97 % |\n\nEntre 2022 y 2024 la inflación bajó **8,46 − 1,97 = 6,49 puntos porcentuales**.\n\n- Fuente: la [Memoria 2024 del BCRP](https://www.bcrp.gob.pe/docs/Publicaciones/Memoria/2024/memoria-bcrp-2024-4.pdf), cuya tabla de variación anual del IPC trae la serie 8,46 / 3,24 / 1,97. El buscador me mostró ese fragmento de la tabla, pero no abrí el PDF completo.\n- El 1,97 % de 2024 también aparece en el [Resumen Informativo del BCRP del 2 de enero de 2025](https://www.bcrp.gob.pe/docs/Publicaciones/Nota-Semanal/2025/resumen-informativo-2025-01-02.pdf), en [Andina](https://andina.pe/agencia/noticia-inflacion-lima-metropolitana-cerro-2024-tasa-197-1013414.aspx) y en [Gestión](https://gestion.pe/economia/inflacion-2024-precios-subieron-197-su-nivel-mas-bajo-tras-cuatro-anos-ipc-inei-bcrp-noticia/).\n- Andina da 3,4 % para 2023, lo que parece un redondeo o un error. Usé el 3,24 % del BCRP. Ese dato no cambia el cálculo, que solo usa 2022 y 2024.\n\n**2. Brecha de pobreza monetaria entre zona rural y urbana (INEI, ENAHO 2024)**\n\n- Rural: **39,3 %** (en 2023 fue 39,8 %)\n- Urbana: **24,8 %** (en 2023 fue 26,4 %)\n- Nacional: 27,6 %\n\nLa diferencia es **39,3 − 24,8 = 14,5 puntos porcentuales**.\n\n- Fuente: los resultados de pobreza monetaria 2024 que publicó el INEI en mayo de 2025, según [Forbes Perú](https://forbes.pe/economia-y-finanzas/2025-05-09/pobreza-monetaria-se-redujo-en-2024-esto-es-lo-que-hay-que-saber/), donde verifiqué las cifras textualmente. Coinciden con el informe [Pobreza 2004-2024 de la Mesa de Concertación](https://intranet.mesadeconcertacion.org.pe/storage/documentos/2025-09-16/pobreza-2004-2024.pdf).\n- El nacional de 27,6 % aparece en la [nota del INEI en gob.pe](https://www.gob.pe/institucion/inei/noticias/1164173-pobreza-monetaria-afecto-al-27-6-de-la-poblacion-del-pais-en-el-ano-2024).\n- No pude abrir directamente esa nota del INEI ni el recuadro del [Reporte de Inflación de junio de 2025 del BCRP](https://www.bcrp.gob.pe/docs/Publicaciones/Reporte-Inflacion/2025/junio/reporte-de-inflacion-junio-2025-recuadro-3.pdf) porque los sitios bloquearon el acceso. Por eso las cifras urbana y rural están confirmadas por fuentes secundarias que coinciden, no por el documento oficial.\n\nRESPUESTA: 6.49; 14.5",
+ "herramientas": [
+  "ToolSearch",
+  "WebSearch",
+  "WebSearch",
+  "WebFetch",
+  "WebFetch",
+  "WebFetch",
+  "WebFetch",
+  "WebFetch"
+ ],
+ "skills": [],
+ "turnos": 9,
+ "costo_usd": 0.18807450000000003,
+ "duracion_ms": 48210,
+ "error": "",
+ "modo": "A",
+ "segundos": 49.0,
+ "id": "M2_caida_inflacion_y_brecha"
+}

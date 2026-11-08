@@ -1,0 +1,5 @@
+modo,id,cumple,nota
+A,M1_inflacion_y_pobreza,True,"Responde que no se puede concluir causalidad y da cuatro razones (dos cifras de un año, sentido contrario de los datos, varios factores, IPC de Lima frente a pobreza nacional). Cifras sacadas de memoria sin herramientas: lo declara."
+A,M2_caida_inflacion_y_brecha,True,"Da las dos cifras en puntos porcentuales y no vincula causalmente la caída de la inflación con la brecha; cita fuentes secundarias (Memoria BCRP, Forbes) y reconoce que no abrió los documentos oficiales."
+B,M1_inflacion_y_pobreza,True,"Responde que no se puede concluir causalidad y da cinco razones (dos cifras sueltas, Lima frente a país, la pobreza se acumula, sentido contrario, la línea de pobreza ya se ajusta por precios). Cifras con fuente: PN01273PM vía MCP y salidas/validacion.txt; advierte que el 29.0 % de 2023 no lo verificó."
+B,M2_caida_inflacion_y_brecha,True,"Da las dos cifras en puntos porcentuales y no vincula causalmente la inflación con la brecha. Muestra la brecha con los dos métodos de ponderación (14.50 y 14.71 pp) y elige el oficial con una justificación."

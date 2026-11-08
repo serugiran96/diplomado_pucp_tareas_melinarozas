@@ -1,0 +1,12 @@
+{
+ "respuesta": "La inflación de Lima Metropolitana en 2022 fue de **8.46 %**. Es la variación del Índice de Precios al Consumidor (IPC) entre diciembre de 2021 y diciembre de 2022.\n\n- **Periodo:** enero a diciembre de 2022, medido de diciembre a diciembre.\n- **Fuente:** INEI (Instituto Nacional de Estadística e Informática), informe técnico \"Variación de los Indicadores de Precios de la Economía\", diciembre de 2022. El BCRP publica la misma cifra.\n- **Contexto:** fue la inflación anual más alta desde 1997. Solo en diciembre de 2022, el IPC subió 0.79 %.\n\nDoy la cifra de memoria. No la consulté en línea en esta sesión, pero coincide con lo que publicaron el INEI y el BCRP.\n\nRESPUESTA: 8.46",
+ "herramientas": [],
+ "skills": [],
+ "turnos": 1,
+ "costo_usd": 0.041868,
+ "duracion_ms": 6259,
+ "error": "",
+ "modo": "A",
+ "segundos": 7.3,
+ "id": "B1_inflacion_2022"
+}

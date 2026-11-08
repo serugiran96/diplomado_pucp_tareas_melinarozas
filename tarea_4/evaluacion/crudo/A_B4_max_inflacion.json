@@ -1,0 +1,12 @@
+{
+ "respuesta": "La inflación a 12 meses de Lima Metropolitana llegó a su máximo en **junio de 2022, con 8.81 %**. Fue la tasa interanual más alta en unos 26 años.\n\n- **Periodo revisado:** de enero de 2020 a diciembre de 2024, con datos mensuales de la variación a 12 meses del IPC de Lima Metropolitana.\n- **Fuente:** INEI (Informe Técnico de Variación de los Indicadores de Precios de la Economía) y la serie del BCRP, que usa el INEI como base. Me baso en lo que sé de estas fuentes. En esta sesión no consulté las bases de datos en línea.\n- **Meses cercanos al máximo:** en mayo de 2022 fue 8.09 % y en julio de 2022 bajó a 8.74 %. Luego se mantuvo alrededor de 8.3 % a 8.7 % hasta inicios de 2023 (enero de 2023: 8.66 %). Después bajó y volvió al rango meta en 2024.\n\nSi necesitas confirmarlo, la serie oficial está en el BCRP (código PN01273PM) y en los informes técnicos mensuales del INEI.\n\nRESPUESTA: 2022-06; 8.81",
+ "herramientas": [],
+ "skills": [],
+ "turnos": 1,
+ "costo_usd": 0.031023000000000002,
+ "duracion_ms": 8547,
+ "error": "",
+ "modo": "A",
+ "segundos": 9.4,
+ "id": "B4_max_inflacion"
+}

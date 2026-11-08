@@ -1,0 +1,22 @@
+{
+ "respuesta": "**Cajamarca** tuvo la tasa de pobreza monetaria más alta en 2024: **45.0 %** de su población (IC 95 %: 40.5–49.5 %, muestra de 4,468 personas).\n\n- **Fuente:** INEI, ENAHO 2024 (módulos 34 y 02). Es un cálculo propio ponderado con `facpob07` y está en `salidas/indicadores.csv`.\n- **Validación:** antes de leer la tabla corrí `limpiar.py` y aprobó 22 de 22 verificaciones. La pobreza nacional salió en 27.5 %; la cifra oficial es 27.6 %.\n- **Otro cálculo:** con la sumaria (`factor07 × mieperho`), que es el método del INEI, Cajamarca sale en 45.0 %. Coincide con la referencia del curso en `salidas/comparacion_mapa_referencia.csv`. No consulté el informe publicado del INEI.\n\nLos cinco departamentos con la pobreza más alta:\n\n| Departamento | Pobreza (%) | IC 95 % |\n|---|---|---|\n| Cajamarca | 45.0 | 40.5–49.5 |\n| Loreto | 42.6 | 38.1–47.1 |\n| Puno | 40.4 | 35.8–45.0 |\n| Huánuco | 39.5 | 34.3–44.7 |\n| Pasco | 39.3 | 34.3–44.2 |\n\nCajamarca tiene la cifra más alta, pero su intervalo de confianza se superpone con los de Loreto, Puno, Huánuco y Pasco. Por eso no se puede decir que su pobreza sea claramente mayor que la de esos departamentos; es más correcto decir que están en un grupo de pobreza alta parecida.\n\nRESPUESTA: Cajamarca; 45.0",
+ "herramientas": [
+  "Skill",
+  "Bash",
+  "Bash",
+  "Bash",
+  "Bash",
+  "Bash",
+  "Bash"
+ ],
+ "skills": [
+  "limpiando-enaho"
+ ],
+ "turnos": 9,
+ "costo_usd": 0.22759020000000005,
+ "duracion_ms": 33265,
+ "error": "",
+ "modo": "B",
+ "segundos": 35.1,
+ "id": "E4_max_departamento"
+}

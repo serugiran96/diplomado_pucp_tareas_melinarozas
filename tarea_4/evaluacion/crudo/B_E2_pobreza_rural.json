@@ -1,0 +1,16 @@
+{
+ "respuesta": "Según la ENAHO 2024 del INEI, la pobreza monetaria en el área rural del Perú fue de **39.3 %** en 2024. Es decir, alrededor de 4 de cada 10 personas del área rural eran pobres.\n\n**De dónde sale la cifra**\n- **Fuente:** INEI, ENAHO 2024, módulo 34 (sumaria) y módulo 02 (miembros del hogar). El área rural corresponde a los estratos 6 en adelante.\n- **Periodo:** año 2024.\n- **Cálculo:** lo hizo la skill `limpiando-enaho`. El archivo `salidas/validacion.txt`, generado hoy (2026-11-08 12:23), aprobó las 22 verificaciones.\n  - **Método oficial del INEI** (sumaria, ponderada por factor07 × mieperho): **39.30 %**. Coincide con la cifra publicada por el INEI, de alrededor de 39.3 %.\n  - **Método por personas** (ponderado con facpob07): **39.44 %**, con un intervalo de confianza al 95 % de 37.8 % a 41.1 % (n = 36,071 personas). Sale de `salidas/indicadores.csv`. Los dos métodos difieren en 0.14 puntos porcentuales.\n\nPara contrastar, la pobreza urbana fue de 24.8 % y la nacional de 27.6 %, según el método oficial.\n\nRESPUESTA: 39.3",
+ "herramientas": [
+  "Grep",
+  "Read",
+  "Read"
+ ],
+ "skills": [],
+ "turnos": 4,
+ "costo_usd": 0.19448700000000002,
+ "duracion_ms": 13524,
+ "error": "",
+ "modo": "B",
+ "segundos": 15.4,
+ "id": "E2_pobreza_rural"
+}
